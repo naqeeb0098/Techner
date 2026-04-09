@@ -1,0 +1,263 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{employee}-{###}",
+ "creation": "2026-03-09 16:47:38.554458",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_information_section",
+  "employee",
+  "employee_name",
+  "column_break_drpd",
+  "designation",
+  "employment_type",
+  "column_break_lygl",
+  "registered_email_address_with_techner",
+  "laptop_details_section",
+  "laptop_brand",
+  "other_brand",
+  "laptop_model",
+  "how_many_computers_you_are_using_related_dataemail_",
+  "column_break_ugwp",
+  "html_znbo",
+  "hardware_specifications_section",
+  "ram_size",
+  "other_ram_size",
+  "hard_disk_size",
+  "other_hard_disk_size",
+  "cpu_processor_type",
+  "other_cpu_processor",
+  "software_details_section",
+  "operating_system",
+  "operating_system_edition",
+  "vpn_software_installed",
+  "windows_original",
+  "antivirus_software_installed",
+  "additional_information_section",
+  "is_your_laptop_encrypted",
+  "is_your_laptop_meeting_your_current_work_needs",
+  "any_additional_comments_or_requests_regarding_your_laptop",
+  "are_you_planning_to_upgrade_your_computer_in_coming_12_months"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "column_break_drpd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Designation"
+  },
+  {
+   "fetch_from": "employee.employment_type",
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Employment Type"
+  },
+  {
+   "fieldname": "column_break_lygl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "registered_email_address_with_techner",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Registered Email Address with Techner"
+  },
+  {
+   "fieldname": "laptop_details_section",
+   "fieldtype": "Section Break",
+   "label": "Laptop Details"
+  },
+  {
+   "fieldname": "laptop_brand",
+   "fieldtype": "Select",
+   "label": "Laptop Brand",
+   "options": "\nHP\nDell\nLenovo\nApple\nMicrosoft\nOther"
+  },
+  {
+   "depends_on": "eval:doc.laptop_brand==\"Other\"",
+   "description": "Please enter the answer(s) if you have chosen 'Other (please specify)' option for any of the above questions: ",
+   "fieldname": "other_brand",
+   "fieldtype": "Data",
+   "label": "Other Brand"
+  },
+  {
+   "fieldname": "laptop_model",
+   "fieldtype": "Data",
+   "label": "Laptop Model"
+  },
+  {
+   "description": "Please fill this form for each computer e.g. if its 2 then fill this form 2 times. ",
+   "fieldname": "how_many_computers_you_are_using_related_dataemail_",
+   "fieldtype": "Data",
+   "label": "How many computers you are using related data/email ? "
+  },
+  {
+   "fieldname": "column_break_ugwp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_znbo",
+   "fieldtype": "HTML",
+   "options": "<div style=\"max-width:900px; margin:20px auto; font-family:Arial, sans-serif;\">\n\n    <h2 style=\"text-align:center; margin-bottom:20px; color:#111827;\">\n        How to Check Laptop System Information\n    </h2>\n\n    <div style=\"display:flex; flex-wrap:wrap;\">\n\n        <!-- Windows Section -->\n        <div style=\"flex:1; min-width:300px; border:1px solid #d1d5db; border-radius:10px; padding:20px; background:#f9fafb; box-shadow:0 2px 6px rgba(0,0,0,0.08);\">\n\n            <h3 style=\"margin-top:0; color:#2563eb;\">Windows</h3>\n\n            <ol style=\"font-size:15px; line-height:1.8; color:#374151;\">\n                <li>\n                    Press \n                    <span style=\"background:#e5e7eb; padding:3px 8px; border-radius:6px;\">\n                        Windows + R\n                    </span>\n                </li>\n\n                <li>\n                    Type \n                    <span style=\"background:#e5e7eb; padding:3px 8px; border-radius:6px;\">\n                        msinfo32\n                    </span>\n                </li>\n\n                <li>\n                    Press \n                    <span style=\"background:#e5e7eb; padding:3px 8px; border-radius:6px;\">\n                        Enter\n                    </span>\n                </li>\n            </ol>\n\n            <div style=\"margin-top:10px; font-size:14px; background:#eef6ff; padding:10px; border-left:4px solid #2563eb; border-radius:6px;\">\n                This will open the <b>System Information</b> window showing full laptop details.\n            </div>\n\n        </div>\n\n        <!-- Mac Section -->\n        <div style=\"flex:1; min-width:300px; border:1px solid #d1d5db; border-radius:10px; padding:20px; background:#f9fafb; box-shadow:0 2px 6px rgba(0,0,0,0.08);\">\n\n            <h3 style=\"margin-top:0; color:#111827;\">Mac</h3>\n\n            <ol style=\"font-size:15px; line-height:1.8; color:#374151;\">\n                <li>\n                    Click the \n                    <span style=\"background:#e5e7eb; padding:3px 8px; border-radius:6px;\">\n                        Apple logo (\uf8ff)\n                    </span> \n                    in the top-left corner.\n                </li>\n\n                <li>\n                    Click \n                    <span style=\"background:#e5e7eb; padding:3px 8px; border-radius:6px;\">\n                        About This Mac\n                    </span>\n                </li>\n            </ol>\n\n            <div style=\"margin-top:10px; font-size:14px; background:#eef6ff; padding:10px; border-left:4px solid #2563eb; border-radius:6px;\">\n                This will display your Mac's hardware information including processor, memory, and macOS version.\n            </div>\n\n        </div>\n\n    </div>\n\n</div>"
+  },
+  {
+   "fieldname": "hardware_specifications_section",
+   "fieldtype": "Section Break",
+   "label": "Hardware Specifications"
+  },
+  {
+   "fieldname": "ram_size",
+   "fieldtype": "Select",
+   "label": "RAM Size",
+   "options": "\n4 BG\n8 GB\n16 GB\n32 GB\nOther"
+  },
+  {
+   "depends_on": "eval:doc.ram_size==\"Other\"",
+   "fieldname": "other_ram_size",
+   "fieldtype": "Data",
+   "label": "Other RAM Size"
+  },
+  {
+   "fieldname": "hard_disk_size",
+   "fieldtype": "Select",
+   "label": "Hard Disk Size",
+   "options": "\n128 GB\n256 GB\n515 GB\n1 TB\nOther"
+  },
+  {
+   "depends_on": "eval:doc.hard_disk_size==\"Other\"",
+   "fieldname": "other_hard_disk_size",
+   "fieldtype": "Data",
+   "label": "Other Hard Disk Size"
+  },
+  {
+   "fieldname": "cpu_processor_type",
+   "fieldtype": "Select",
+   "label": "CPU (Processor) Type",
+   "options": "\nintel i3\nintel i5\nintel i7\nintel i9\nAMD Ryzen 3\nAMD Ryzen 5\nAMD Ryzen 7\nApple M1/M2\nOther"
+  },
+  {
+   "depends_on": "eval:doc.cpu_processor_type==\"Other\"",
+   "fieldname": "other_cpu_processor",
+   "fieldtype": "Data",
+   "label": "Other CPU Processor"
+  },
+  {
+   "fieldname": "software_details_section",
+   "fieldtype": "Section Break",
+   "label": "Software Details"
+  },
+  {
+   "fieldname": "operating_system",
+   "fieldtype": "Select",
+   "label": "Operating System",
+   "options": "\nWindows 10\nWindows 11\nMacOS\nLinux\nOther"
+  },
+  {
+   "fieldname": "operating_system_edition",
+   "fieldtype": "Select",
+   "label": "Operating System Edition",
+   "options": "\nHome\nProfessional\nEnterprise\nOther"
+  },
+  {
+   "fieldname": "vpn_software_installed",
+   "fieldtype": "Select",
+   "label": "VPN Software Installed",
+   "options": "\nYes\nNo\nNot Applicable"
+  },
+  {
+   "fieldname": "windows_original",
+   "fieldtype": "Select",
+   "label": "Windows Original",
+   "options": "\nOriginal\nPirated\nDon't Know"
+  },
+  {
+   "fieldname": "antivirus_software_installed",
+   "fieldtype": "Select",
+   "label": "Antivirus Software Installed",
+   "options": "\nWindows Defender\nNorton\nMcAfee\nOther"
+  },
+  {
+   "fieldname": "additional_information_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "is_your_laptop_encrypted",
+   "fieldtype": "Select",
+   "label": "Is your laptop encrypted",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "is_your_laptop_meeting_your_current_work_needs",
+   "fieldtype": "Select",
+   "label": "Is your laptop meeting your current work needs",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "any_additional_comments_or_requests_regarding_your_laptop",
+   "fieldtype": "Data",
+   "label": "Any additional comments or requests regarding your laptop?"
+  },
+  {
+   "fieldname": "are_you_planning_to_upgrade_your_computer_in_coming_12_months",
+   "fieldtype": "Data",
+   "label": "Are you planning to upgrade your computer in coming 12 months?"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:18.650342",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Laptop Information Collection Form",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

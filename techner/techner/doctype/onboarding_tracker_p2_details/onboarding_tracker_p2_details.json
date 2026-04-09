@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-23 15:55:23.018788",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "days",
+  "onboarding_task_type",
+  "status",
+  "ramarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Days"
+  },
+  {
+   "columns": 6,
+   "fieldname": "onboarding_task_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Onboarding Task Type",
+   "options": "Onboarding Task Type"
+  },
+  {
+   "columns": 2,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nIn-process\nHold\nCompleted"
+  },
+  {
+   "columns": 2,
+   "fieldname": "ramarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:17.729973",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Onboarding Tracker P2 Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

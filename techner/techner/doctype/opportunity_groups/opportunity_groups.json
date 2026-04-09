@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:data",
+ "creation": "2026-01-28 17:34:18.438743",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "data",
+   "fieldtype": "Data",
+   "label": "Data",
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Existing Clients",
+   "link_fieldname": "group"
+  },
+  {
+   "link_doctype": "CRM Leads",
+   "link_fieldname": "group"
+  }
+ ],
+ "modified": "2026-04-07 18:36:15.757647",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Opportunity Groups",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

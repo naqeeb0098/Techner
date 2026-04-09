@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-31 15:41:28.179953",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "site",
+  "site_name",
+  "site_type",
+  "address",
+  "site_tracker"
+ ],
+ "fields": [
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fetch_from": "site.site_name",
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Site Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "site.site_type",
+   "fieldname": "site_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Site Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "site.address",
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "site_tracker",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site Tracker",
+   "options": "Site Tracker"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:22.809441",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Site Projects Site Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

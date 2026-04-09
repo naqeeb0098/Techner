@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SCH-{#####}",
+ "creation": "2026-03-25 10:21:25.980312",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "duration",
+  "week_days",
+  "second_day_of_week",
+  "column_break_dpwm",
+  "start_date",
+  "end_date",
+  "task_details_section",
+  "title",
+  "task_type",
+  "status",
+  "column_break_xieb",
+  "date",
+  "start_time",
+  "end_time",
+  "column_break_hfuf",
+  "assign_to",
+  "notes",
+  "section_break_vasu",
+  "schedule_bulk_assignment_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "duration",
+   "fieldtype": "Select",
+   "label": "Duration",
+   "options": "\nDaily\nWeekly\nBi-Weekly\nMonthly\nBi-Monthly"
+  },
+  {
+   "depends_on": "eval:doc.duration==\"Weekly\" || doc.duration==\"Bi-Weekly\"",
+   "fieldname": "week_days",
+   "fieldtype": "Select",
+   "label": "Week Days",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "depends_on": "eval:doc.duration==\"Bi-Weekly\"",
+   "fieldname": "second_day_of_week",
+   "fieldtype": "Select",
+   "label": "Second Day of Week",
+   "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "fieldname": "column_break_dpwm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "task_details_section",
+   "fieldtype": "Section Break",
+   "label": "Task Details"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "task_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Task Type",
+   "options": "Activity Type"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nCompleted\nHold"
+  },
+  {
+   "fieldname": "column_break_xieb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "End Time"
+  },
+  {
+   "fieldname": "column_break_hfuf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assign_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Assign To",
+   "options": "User"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "section_break_vasu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "schedule_bulk_assignment_details",
+   "fieldtype": "Table",
+   "label": " Schedule Bulk Assignment Details",
+   "options": "Schedule Bulk Assignment Details"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:22.109977",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Schedule Bulk Assignment",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

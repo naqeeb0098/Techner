@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:contact_person_email",
+ "creation": "2026-02-18 16:49:21.022381",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "contact_person_name",
+  "designation",
+  "column_break_khvq",
+  "contact_person_email",
+  "contact_person_number",
+  "column_break_hrjo",
+  "crm_leads",
+  "website",
+  "column_break_rsrd",
+  "sales_manager",
+  "sale_manager_name",
+  "section_break_yjxo",
+  "communication_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "contact_person_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contact Person Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  },
+  {
+   "fieldname": "column_break_khvq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_person_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Contact Person Email",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "contact_person_number",
+   "fieldtype": "Phone",
+   "label": "Contact Person Number"
+  },
+  {
+   "fieldname": "column_break_hrjo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "crm_leads",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "CRM Leads",
+   "options": "CRM Leads"
+  },
+  {
+   "fetch_from": "customer_opportunity.client_website",
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rsrd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_manager",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Manager",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "sales_manager.employee_name",
+   "fieldname": "sale_manager_name",
+   "fieldtype": "Data",
+   "label": "Sale Manager Name"
+  },
+  {
+   "fieldname": "section_break_yjxo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "communication_details",
+   "fieldtype": "Table",
+   "label": "Communication Details",
+   "options": "Contact Task Detail"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:15.147838",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Lead Contact Person",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

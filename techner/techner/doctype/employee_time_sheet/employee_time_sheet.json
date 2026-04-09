@@ -1,0 +1,353 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{employee}-{#####}",
+ "creation": "2026-02-02 18:31:36.836776",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_utgu",
+  "employee",
+  "column_break_pzzk",
+  "name1",
+  "employee_name",
+  "column_break_oflm",
+  "designation",
+  "column_break_rfnn",
+  "employment_type",
+  "column_break_acra",
+  "techner_internal_approval_required",
+  "column_break_umdx",
+  "attachment_compulsory",
+  "attachment",
+  "section_break_aiya",
+  "notification",
+  "section_break_c3gv",
+  "client_name",
+  "mode",
+  "amended_from",
+  "column_break_hfrh",
+  "line_manager",
+  "description",
+  "column_break_suvl",
+  "project",
+  "duration_start_date",
+  "month_name",
+  "column_break_ekzd",
+  "company",
+  "duration_end_date",
+  "month",
+  "section_break_ukcj",
+  "table_eluj",
+  "section_break_kmsl",
+  "total_days",
+  "notes",
+  "column_break_nxfl",
+  "total_hours",
+  "approver_tab",
+  "user",
+  "approver_name",
+  "column_break_xpxq",
+  "employee_email"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_utgu",
+   "fieldtype": "Section Break",
+   "label": "Employee Information"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pzzk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.custom_known_name",
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Known Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oflm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rfnn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.employment_type",
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Employment Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_acra",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.custom_timesheet_line_manager_approval",
+   "fieldname": "techner_internal_approval_required",
+   "fieldtype": "Data",
+   "label": "Techner Internal Approval Required",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_umdx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "employee.custom_timesheet_attachment_compulsory",
+   "fieldname": "attachment_compulsory",
+   "fieldtype": "Check",
+   "label": "Attachment Compulsory ",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.attachment_compulsory == 1\r\n",
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment",
+   "mandatory_depends_on": "eval:doc.attachment_compulsory == 1\r\n"
+  },
+  {
+   "fieldname": "section_break_aiya",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notification",
+   "fieldtype": "HTML",
+   "label": "Notification",
+   "options": "<div style=\"padding: 10px 14px;\n    border: 1px solid #dbeafe;\n    border-left: 4px solid #2563eb;\n    border-radius: 8px;\n    background-color: #eff6ff;\n    font-size: 12px;\n    color: #1e3a8a;\n    line-height: 1.5;\">\n    <strong>Notification</strong><br>\n    After creating this request, please perform the action to forward it to the line manager.\n</div>\n"
+  },
+  {
+   "fieldname": "section_break_c3gv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "employee.custom_client",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "\nDays\nHours",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Time Sheet",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_hfrh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.custom_line_manager",
+   "fieldname": "line_manager",
+   "fieldtype": "Data",
+   "label": "Line Manager",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_suvl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.custom_projects",
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "label": "Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "duration_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Duration Start Date",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "month_name",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Month Name",
+   "options": "\nJanuary 2025\nFebruary 2026"
+  },
+  {
+   "fieldname": "column_break_ekzd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "duration_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Duration End Date",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Month",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ukcj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_eluj",
+   "fieldtype": "Table",
+   "options": "Time Sheet Details"
+  },
+  {
+   "fieldname": "section_break_kmsl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_days",
+   "fieldtype": "Float",
+   "label": "Total Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "column_break_nxfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approver_tab",
+   "fieldtype": "Tab Break",
+   "label": "Approver"
+  },
+  {
+   "fetch_from": "employee.custom_timesheet_approver",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "Timesheet Approver",
+   "options": "User"
+  },
+  {
+   "fetch_from": "user.first_name",
+   "fieldname": "approver_name",
+   "fieldtype": "Data",
+   "label": "Approver Name"
+  },
+  {
+   "fieldname": "column_break_xpxq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "employee_email",
+   "fieldtype": "Link",
+   "label": "Employee Email",
+   "options": "User"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:13.071323",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Employee Time Sheet",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

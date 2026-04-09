@@ -1,0 +1,573 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-05 15:27:40.846080",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "html_jnvc",
+  "basic_information_section",
+  "employee",
+  "employee_name",
+  "designation",
+  "column_break_mbma",
+  "employment_type",
+  "registered_email_address_with_techner",
+  "date",
+  "column_break_vkaf",
+  "staff_audit_duration",
+  "start_date",
+  "end_date",
+  "display_screen_equipment_dse_section",
+  "have_you_set_up_your_workspace_for_comfort",
+  "column_break_wurq",
+  "html_snuv",
+  "section_break_gqve",
+  "are_you_having_regular_breaks",
+  "column_break_rncw",
+  "html_zclf",
+  "section_break_yzky",
+  "are_you_comfortable_with_your_monitor_positioning",
+  "column_break_exhq",
+  "html_wkjv",
+  "section_break_rpys",
+  "do_you_have_needed_accessories",
+  "column_break_frys",
+  "html_ohzl",
+  "computer_setup_for_remote_work_section",
+  "have_access_to_strong_internet_connection",
+  "column_break_tdkn",
+  "html_ikpz",
+  "section_break_frhb",
+  "are_necessary_hardware_specifications_in_place",
+  "section_break_tgsk",
+  "have_proper_software_installation",
+  "column_break_xkgm",
+  "html_dupa",
+  "section_break_cvia",
+  "acilitated_for_needed_technical_support",
+  "section_break_thyw",
+  "have_regular_software_updates",
+  "column_break_felu",
+  "html_zcuk",
+  "section_break_ragq",
+  "have_backup_power_supply_if_required",
+  "column_break_drsx",
+  "html_dlny",
+  "anti_virus_scanning_section",
+  "do_you_regularly_update_anti_virus_software",
+  "column_break_yxzp",
+  "html_pnot",
+  "section_break_aqjw",
+  "do_you_run_full_system_scan",
+  "section_break_miml",
+  "do_you_remove_threats_after_scanning",
+  "column_break_cgov",
+  "html_lztq",
+  "section_break_utgi",
+  "have_you_set_up_regular_scanning",
+  "section_break_qxnw",
+  "after_getting_done_do_you_restart_the_system",
+  "column_break_cmui",
+  "html_eqrx",
+  "cyber_security_section",
+  "are_you_using_strong_passwords",
+  "column_break_uznx",
+  "html_oeuv",
+  "section_break_qbsr",
+  "two_factor_authentication_enabled_where_applicable",
+  "column_break_sblw",
+  "html_lsnm",
+  "section_break_bobx",
+  "do_you_update_software_for_latest_security",
+  "section_break_gcsz",
+  "are_you_keen_towards_phishing_awareness",
+  "column_break_ujuz",
+  "html_ncqh"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "html_jnvc",
+   "fieldtype": "HTML",
+   "options": "<div style=\"font-weight: 700;\n    color: #c65d00;\n    font-size: 16px;\n    line-height: 1.5;\">\n    Staff Audit: H&amp;S, Data Security, and IT Compliance\n</div>"
+  },
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mbma",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.employment_type",
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Employment Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "registered_email_address_with_techner",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Registered Email Address with Techner",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vkaf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "staff_audit_duration",
+   "fieldtype": "Link",
+   "label": "Staff Audit Duration",
+   "options": "Staff Audit Duration",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "staff_audit_duration.start_date",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "staff_audit_duration.end_date",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "read_only": 1
+  },
+  {
+   "description": "Keeping your workspace comfortable and properly set up is important for your health and getting work done.",
+   "fieldname": "display_screen_equipment_dse_section",
+   "fieldtype": "Section Break",
+   "label": "Display Screen Equipment (DSE)"
+  },
+  {
+   "description": "Use a chair and desk that are designed to support your body correctly. This helps you sit properly and lowers the chance of having muscle  or joint problems. Adequate lighting to reduce eye strain.",
+   "fieldname": "have_you_set_up_your_workspace_for_comfort",
+   "fieldtype": "Select",
+   "label": "Have you set up your workspace for comfort?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wurq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_snuv",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/Display.png\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_gqve",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Take regular breaks of at least 5-10 minutes every 2 hours to prevent prolonged sitting and promote blood circulation.\nStand and stretch periodically\nFollow the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds\nSchedule regular exercise or movement sessions",
+   "fieldname": "are_you_having_regular_breaks",
+   "fieldtype": "Select",
+   "label": "Are you having regular breaks?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rncw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_zclf",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/eye.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_yzky",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Use adjustable monitor stands or mounts to position screens at eye level to reduce neck strain.",
+   "fieldname": "are_you_comfortable_with_your_monitor_positioning",
+   "fieldtype": "Select",
+   "label": "Are you comfortable with your monitor positioning?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_exhq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_wkjv",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/Eye laptop.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_rpys",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Try using helpful items like wrist rests and footrests if you need them.",
+   "fieldname": "do_you_have_needed_accessories",
+   "fieldtype": "Select",
+   "label": "Do you have needed accessories? ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_frys",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_ohzl",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/Accessoried.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "description": "A reliable computer setup is essential for efficient remote work.",
+   "fieldname": "computer_setup_for_remote_work_section",
+   "fieldtype": "Section Break",
+   "label": "Computer Setup for Remote Work"
+  },
+  {
+   "description": "Ensure you have access to a reliable internet connection suitable for remote work tasks",
+   "fieldname": "have_access_to_strong_internet_connection",
+   "fieldtype": "Select",
+   "label": "Have access to strong Internet Connection?  ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_tdkn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_ikpz",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/internet.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_frhb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Use laptops or desktop computers with adequate specifications to handle work tasks efficiently.",
+   "fieldname": "are_necessary_hardware_specifications_in_place",
+   "fieldtype": "Select",
+   "label": "Are necessary hardware specifications in place?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_tgsk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Install necessary software for communication, collaboration, and security (e.g., Zoom, Microsoft Teams, antivirus software).",
+   "fieldname": "have_proper_software_installation",
+   "fieldtype": "Select",
+   "label": "Have proper software installation? ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xkgm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_dupa",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/software installation.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_cvia",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Reach out to the IT department or refer to provided resources for technical support and troubleshooting.",
+   "fieldname": "acilitated_for_needed_technical_support",
+   "fieldtype": "Select",
+   "label": "Facilitated for needed Technical Support?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_thyw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Keep your software updated with regular updates and security patches to maintain system integrity.",
+   "fieldname": "have_regular_software_updates",
+   "fieldtype": "Select",
+   "label": "Have regular software updates? ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_felu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_zcuk",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/softwareupdate.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_ragq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "If you are facing regular power failures in your area, it is recommended to have a UPS (Uninterruptible Power Supply) to prevent data loss in case of power outages.",
+   "fieldname": "have_backup_power_supply_if_required",
+   "fieldtype": "Select",
+   "label": "Have Backup Power Supply (if required)?",
+   "options": "\nYes\nNo\nNa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_drsx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_dlny",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/powerbackup.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "description": "Running regular Anti-virus scans is crucial to ensure the security and integrity of your system. ",
+   "fieldname": "anti_virus_scanning_section",
+   "fieldtype": "Section Break",
+   "label": "Anti virus Scanning"
+  },
+  {
+   "description": "Before running a scan, make sure your Anti-Virus software is up-to-date to detect the latest threat",
+   "fieldname": "do_you_regularly_update_anti_virus_software",
+   "fieldtype": "Select",
+   "label": "Do you regularly update anti virus software?",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "column_break_yxzp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_pnot",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/antivirus.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_aqjw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Initiate a full system scan to check all files, folders, and applications for any malicious content.",
+   "fieldname": "do_you_run_full_system_scan",
+   "fieldtype": "Select",
+   "label": "Do you run Full System Scan? ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_miml",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Once the scan is complete, review the scan results and take appropriate action by quarantining or removing detected threats.",
+   "fieldname": "do_you_remove_threats_after_scanning",
+   "fieldtype": "Select",
+   "label": "Do you Remove Threats after scanning? ",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_cgov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_lztq",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/threats removed.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_utgi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Set up scheduled scans to run automatically at specified intervals, ensuring ongoing protection against threats.",
+   "fieldname": "have_you_set_up_regular_scanning",
+   "fieldtype": "Select",
+   "label": "Have you set up Regular Scanning?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_qxnw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Remember to restart after the scan to finalise any removal processes and maintain optimal system performance.",
+   "fieldname": "after_getting_done_do_you_restart_the_system",
+   "fieldtype": "Select",
+   "label": "After getting done, do you restart the system?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_cmui",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_eqrx",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/restart.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "description": "Protecting your digital workspace is crucial for safeguarding sensitive information and maintaining business integrity.",
+   "fieldname": "cyber_security_section",
+   "fieldtype": "Section Break",
+   "label": "Cyber Security"
+  },
+  {
+   "description": "Use complex passwords that include a mix of letters, numbers, and special characters. Change your passwords regularly.",
+   "fieldname": "are_you_using_strong_passwords",
+   "fieldtype": "Select",
+   "label": "Are you using Strong Passwords?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_uznx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_oeuv",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/strong password.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_qbsr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "It is beneficial to have two-factor authentication (2FA) enabled to add an extra layer of security.",
+   "fieldname": "two_factor_authentication_enabled_where_applicable",
+   "fieldtype": "Select",
+   "label": "Two Factor Authentication enabled (where applicable)?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sblw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_lsnm",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/twofactor.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  },
+  {
+   "fieldname": "section_break_bobx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Keep all software, including operating systems and applications, updated with the latest security patches.",
+   "fieldname": "do_you_update_software_for_latest_security",
+   "fieldtype": "Select",
+   "label": "Do you update software for latest security?",
+   "options": "\nYes\nNo\nNA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gcsz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Be vigilant about phishing attempts. Do not click on suspicious links or open attachments from unknown sources.",
+   "fieldname": "are_you_keen_towards_phishing_awareness",
+   "fieldtype": "Select",
+   "label": "Are you keen towards Phishing Awareness?  ",
+   "options": "\nYes\nNo\nNa",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ujuz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_ncqh",
+   "fieldtype": "HTML",
+   "options": "<div style=\"text-align:center; margin:5px 0;\">\n    <img src=\"/files/phisingwmail.png\n\" style=\"width:50%; height:auto; border-radius:6px;\">\n</div>"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:09.598157",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Staff Audit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

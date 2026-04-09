@@ -1,0 +1,496 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:MCAF - {#####}",
+ "creation": "2026-03-17 15:28:41.171746",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "position_details_section",
+  "job_title__rank",
+  "status",
+  "column_break_xglz",
+  "application_opening",
+  "data_gsxu",
+  "location",
+  "designation",
+  "empl",
+  "basic_information_section",
+  "applicant_name",
+  "email_address",
+  "current_location",
+  "professional_overview_section",
+  "years_of_experience",
+  "details__professional_summary",
+  "english_communication",
+  "compensation_and_availability_section",
+  "current_salary",
+  "expected_salary",
+  "notice_period__availability",
+  "licences_documents_held_section",
+  "passport",
+  "passport_attachment",
+  "national_seamans_book__cdc",
+  "national_seamans_book__cdc_attachment",
+  "seaman_identity_document_sid",
+  "seaman_identity_document_sid_attachment",
+  "certificate_of_competency_coc",
+  "certificate_of_competency_coc_attachment",
+  "stcw_endorsement_if_coc_held",
+  "stcw_endorsement_if_coc_held_attachment",
+  "any_valid_visa",
+  "any_valid_visa_attachment",
+  "certifications_held_section",
+  "basic_safety_training_bst",
+  "basic_safety_training_bst_attachment",
+  "personal_survival_techniques_pst",
+  "personal_survival_techniques_pst_attachment",
+  "fire_prevention_and_fire_fighting_fpff",
+  "fire_prevention_and_fire_fighting_fpff_attachment",
+  "personal_safety_and_social_responsibilities_pssr",
+  "personal_safety_and_social_responsibilities_pssr_attachment",
+  "watchkeeping_certificate_rfpnw__rfpew",
+  "watchkeeping_certificate_rfpnw__rfpew_attachment",
+  "advanced_fire_fighting_aff",
+  "advanced_fire_fighting_aff_attachment",
+  "proficiency_in_survival_craft_and_rescue_boats_pscrb",
+  "proficiency_in_survival_craft_and_rescue_boats_pscrb_attachment",
+  "tanker_familiarization__tanker_certification",
+  "tanker_familiarization__tanker_certification_attachment",
+  "dangerous_cargo_endorsement",
+  "dangerous_cargo_endorsement_attachment",
+  "dangerous_cargo_attachment_2",
+  "ecdis__gmdss",
+  "ecdis__gmdss_attachment",
+  "gmdss",
+  "gdmss_attachment",
+  "additional_certifications_if_any",
+  "additional_certifications_details",
+  "final_details_section",
+  "resume_attachment",
+  "applicant_note",
+  "column_break_kzum",
+  "internal_status",
+  "applicant_rating",
+  "resume_preview_section",
+  "preview",
+  "attachments"
+ ],
+ "fields": [
+  {
+   "fieldname": "position_details_section",
+   "fieldtype": "Section Break",
+   "label": "Position Details"
+  },
+  {
+   "fieldname": "job_title__rank",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Title / Rank",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nReplied\nRejected\nHold\nAccepted"
+  },
+  {
+   "fieldname": "column_break_xglz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "application_opening",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Application Opening",
+   "options": "Application Opening"
+  },
+  {
+   "fetch_from": "application_opening.application_opening",
+   "fieldname": "data_gsxu",
+   "fieldtype": "Data",
+   "label": "Application Opening Description",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "application_opening.location",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fetch_from": "application_opening.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fetch_from": "application_opening.employment_type",
+   "fieldname": "empl",
+   "fieldtype": "Link",
+   "label": "Employment Type",
+   "options": "Employment Type"
+  },
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Applicant Name"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "current_location",
+   "fieldtype": "Data",
+   "label": "Current Location"
+  },
+  {
+   "fieldname": "professional_overview_section",
+   "fieldtype": "Section Break",
+   "label": "Professional Overview"
+  },
+  {
+   "fieldname": "years_of_experience",
+   "fieldtype": "Data",
+   "label": "Years of Experience "
+  },
+  {
+   "fieldname": "details__professional_summary",
+   "fieldtype": "Small Text",
+   "label": "Details / Professional Summary "
+  },
+  {
+   "fieldname": "english_communication",
+   "fieldtype": "Select",
+   "label": "English Communication",
+   "options": "\nBasic\nIntermediate\nFluent"
+  },
+  {
+   "fieldname": "compensation_and_availability_section",
+   "fieldtype": "Section Break",
+   "label": "Compensation and Availability"
+  },
+  {
+   "fieldname": "current_salary",
+   "fieldtype": "Data",
+   "label": "Current Salary"
+  },
+  {
+   "fieldname": "expected_salary",
+   "fieldtype": "Data",
+   "label": "Expected Salary"
+  },
+  {
+   "fieldname": "notice_period__availability",
+   "fieldtype": "Data",
+   "label": "Notice Period / Availability"
+  },
+  {
+   "fieldname": "licences_documents_held_section",
+   "fieldtype": "Section Break",
+   "label": "Licences Documents held"
+  },
+  {
+   "fieldname": "passport",
+   "fieldtype": "Select",
+   "label": "Passport",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "passport_attachment",
+   "fieldtype": "Attach",
+   "label": "Passport Attachment"
+  },
+  {
+   "fieldname": "national_seamans_book__cdc",
+   "fieldtype": "Select",
+   "label": "National Seaman's Book / CDC",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "national_seamans_book__cdc_attachment",
+   "fieldtype": "Attach",
+   "label": "National Seaman's Book / CDC Attachment"
+  },
+  {
+   "fieldname": "seaman_identity_document_sid",
+   "fieldtype": "Select",
+   "label": "Seaman Identity Document (SID)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "seaman_identity_document_sid_attachment",
+   "fieldtype": "Attach",
+   "label": "Seaman Identity Document (SID) Attachment"
+  },
+  {
+   "fieldname": "certificate_of_competency_coc",
+   "fieldtype": "Select",
+   "label": "Certificate of Competency (CoC)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "certificate_of_competency_coc_attachment",
+   "fieldtype": "Attach",
+   "label": "Certificate of Competency (CoC) Attachment"
+  },
+  {
+   "fieldname": "stcw_endorsement_if_coc_held",
+   "fieldtype": "Select",
+   "label": "STCW Endorsement (if CoC held)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "stcw_endorsement_if_coc_held_attachment",
+   "fieldtype": "Attach",
+   "label": "STCW Endorsement (if CoC held) Attachment"
+  },
+  {
+   "fieldname": "any_valid_visa",
+   "fieldtype": "Select",
+   "label": "Any Valid Visa",
+   "options": "\nUSA\nSchenzen\nAny Other"
+  },
+  {
+   "fieldname": "any_valid_visa_attachment",
+   "fieldtype": "Attach",
+   "label": "Any Valid Visa Attachment"
+  },
+  {
+   "fieldname": "certifications_held_section",
+   "fieldtype": "Section Break",
+   "label": "Certifications Held"
+  },
+  {
+   "fieldname": "basic_safety_training_bst",
+   "fieldtype": "Select",
+   "label": "Elementary First AID (EFA)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "basic_safety_training_bst_attachment",
+   "fieldtype": "Attach",
+   "label": "Elementary First AID (EFA) Attachment"
+  },
+  {
+   "fieldname": "personal_survival_techniques_pst",
+   "fieldtype": "Select",
+   "label": "Personal Survival Techniques (PST)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "personal_survival_techniques_pst_attachment",
+   "fieldtype": "Attach",
+   "label": "Personal Survival Techniques (PST) Attachment"
+  },
+  {
+   "fieldname": "fire_prevention_and_fire_fighting_fpff",
+   "fieldtype": "Select",
+   "label": "Fire Prevention and Fire Fighting (FPFF)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "fire_prevention_and_fire_fighting_fpff_attachment",
+   "fieldtype": "Attach",
+   "label": "Fire Prevention and Fire Fighting (FPFF) Attachment"
+  },
+  {
+   "fieldname": "personal_safety_and_social_responsibilities_pssr",
+   "fieldtype": "Select",
+   "label": "Personal Safety and Social Responsibilities (PSSR)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "personal_safety_and_social_responsibilities_pssr_attachment",
+   "fieldtype": "Attach",
+   "label": "Personal Safety and Social Responsibilities (PSSR) Attachment"
+  },
+  {
+   "fieldname": "watchkeeping_certificate_rfpnw__rfpew",
+   "fieldtype": "Select",
+   "label": "Watchkeeping Certificate",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "watchkeeping_certificate_rfpnw__rfpew_attachment",
+   "fieldtype": "Attach",
+   "label": "Watchkeeping Certificate Attachment"
+  },
+  {
+   "fieldname": "advanced_fire_fighting_aff",
+   "fieldtype": "Select",
+   "label": "Advanced Fire Fighting (AFF)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "advanced_fire_fighting_aff_attachment",
+   "fieldtype": "Attach",
+   "label": "Advanced Fire Fighting (AFF) Attachment"
+  },
+  {
+   "fieldname": "proficiency_in_survival_craft_and_rescue_boats_pscrb",
+   "fieldtype": "Select",
+   "label": "Proficiency in Survival Craft and Rescue Boats (PSCRB)",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "proficiency_in_survival_craft_and_rescue_boats_pscrb_attachment",
+   "fieldtype": "Attach",
+   "label": "Proficiency in Survival Craft and Rescue Boats (PSCRB) Attachment"
+  },
+  {
+   "fieldname": "tanker_familiarization__tanker_certification",
+   "fieldtype": "Select",
+   "label": "Tanker Familiarization / Tanker Certification",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "tanker_familiarization__tanker_certification_attachment",
+   "fieldtype": "Attach",
+   "label": "Tanker Familiarization / Tanker Certification Attachment"
+  },
+  {
+   "fieldname": "dangerous_cargo_endorsement",
+   "fieldtype": "Select",
+   "label": "Dangerous Cargo Endorsement",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "dangerous_cargo_endorsement_attachment",
+   "fieldtype": "Attach",
+   "label": "Dangerous Cargo Endorsement Attachment"
+  },
+  {
+   "fieldname": "dangerous_cargo_attachment_2",
+   "fieldtype": "Attach",
+   "label": "Dangerous Cargo Attachment 2"
+  },
+  {
+   "fieldname": "ecdis__gmdss",
+   "fieldtype": "Select",
+   "label": "ECDIS",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "ecdis__gmdss_attachment",
+   "fieldtype": "Attach",
+   "label": "ECDIS Attachment"
+  },
+  {
+   "fieldname": "gmdss",
+   "fieldtype": "Select",
+   "label": "GMDSS",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "gdmss_attachment",
+   "fieldtype": "Attach",
+   "label": "GDMSS Attachment"
+  },
+  {
+   "fieldname": "additional_certifications_if_any",
+   "fieldtype": "Data",
+   "label": "Additional Certifications (if any)"
+  },
+  {
+   "fieldname": "additional_certifications_details",
+   "fieldtype": "Table",
+   "label": "Additional Certifications Details",
+   "options": "Additional Certifications Details"
+  },
+  {
+   "fieldname": "final_details_section",
+   "fieldtype": "Section Break",
+   "label": "Final Details"
+  },
+  {
+   "fieldname": "resume_attachment",
+   "fieldtype": "Attach",
+   "label": "Resume Attachment"
+  },
+  {
+   "fieldname": "applicant_note",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Applicant Note"
+  },
+  {
+   "fieldname": "column_break_kzum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Internal Status",
+   "options": "New\nReviewed\nInterviewed\nNot Recommended\nShortlisted"
+  },
+  {
+   "fieldname": "applicant_rating",
+   "fieldtype": "Rating",
+   "label": "Applicant Rating "
+  },
+  {
+   "fieldname": "resume_preview_section",
+   "fieldtype": "Section Break",
+   "label": "Resume Preview"
+  },
+  {
+   "fieldname": "preview",
+   "fieldtype": "HTML",
+   "label": "Preview"
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "Button",
+   "label": "Attachments"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:20.597603",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Application Form",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

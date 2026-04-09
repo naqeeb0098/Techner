@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{employee_name}-{###}",
+ "creation": "2026-03-11 15:57:14.420216",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "html_kctt",
+  "section_break_afqc",
+  "employee",
+  "employee_name",
+  "column_break_wcyd",
+  "designation",
+  "employment_type",
+  "column_break_xzls",
+  "registered_email_address_with_techner",
+  "section_break_salf",
+  "employee_certificate_qualification",
+  "cdm_course",
+  "completion_date_for_cdm_course",
+  "smsts_site_management_safety_training_scheme",
+  "completion_date_for_smsts",
+  "working_safely_at_height_and_confined_spaces",
+  "completion_date_for_working_safely_at_height_confined_spaces",
+  "asbestos_awareness",
+  "completion_date_for_asbestos_awareness",
+  "project_management_training_certification",
+  "completion_date_for_project_management_training_certification",
+  "section_break_wwfq",
+  "employee_certification_other_professional_trainings_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "html_kctt",
+   "fieldtype": "HTML",
+   "options": "<div style='width:90%; margin:15px 0; font-family:\"Segoe UI\", Arial, sans-serif;'>\n\n    <!-- Title -->\n    <div style=\"background:#2563eb; color:#ffffff; padding:12px 16px; border-radius:6px 6px 0 0;\">\n        <h2 style=\"margin:0; font-size:20px; font-weight:600;\">\n            Techner - Employee Certification Record\n        </h2>\n    </div>\n\n    <!-- Content -->\n    <div style=\"border:1px solid #d1d5db; border-top:none; padding:16px; background:#f8fafc; border-radius:0 0 6px 6px;\">\n\n        <p style=\"font-size:14px; line-height:1.6; color:#374151; margin-top:0;\">\n            Please provide the details of the certifications you have completed in the past few months \n            from the list below. Your prompt response will help us maintain an accurate record of \n            training and professional development.\n        </p>\n\n        <!-- Important Note -->\n        <div style=\"margin-top:12px; padding:10px 12px; background:#fff7ed; border-left:4px solid #f97316; border-radius:4px; font-size:13px; color:#374151;\">\n            <strong>Note:</strong> Kindly add the <b>completion date</b> for all certifications you have completed, \n            as it is mandatory for record keeping.\n        </div>\n\n    </div>\n\n</div>"
+  },
+  {
+   "fieldname": "section_break_afqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wcyd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.employment_type",
+   "fieldname": "employment_type",
+   "fieldtype": "Data",
+   "label": "Employment Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xzls",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.user_id",
+   "fieldname": "registered_email_address_with_techner",
+   "fieldtype": "Data",
+   "label": "Registered Email Address with Techner",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_salf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Row 1: i-e B.Sc Electrical Engineering, BBA. \nRow 2: i-e M.Sc Electrical Engineering, MBA\n",
+   "fieldname": "employee_certificate_qualification",
+   "fieldtype": "Table",
+   "label": "Employee Certificate Qualification",
+   "options": "Employee Certificate Qualification",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cdm_course",
+   "fieldtype": "Select",
+   "label": "CDM Course",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "description": "Please enter an estimated completion date if you cant remember the exact one. ",
+   "fieldname": "completion_date_for_cdm_course",
+   "fieldtype": "Date",
+   "label": "Completion date for CDM Course"
+  },
+  {
+   "fieldname": "smsts_site_management_safety_training_scheme",
+   "fieldtype": "Select",
+   "label": "SMSTS (Site Management Safety Training Scheme)",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completion_date_for_smsts",
+   "fieldtype": "Date",
+   "label": "Completion date for SMSTS"
+  },
+  {
+   "fieldname": "working_safely_at_height_and_confined_spaces",
+   "fieldtype": "Select",
+   "label": "Working Safely at Height and Confined Spaces",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completion_date_for_working_safely_at_height_confined_spaces",
+   "fieldtype": "Date",
+   "label": "Completion Date for Working Safely at Height & Confined Spaces"
+  },
+  {
+   "fieldname": "asbestos_awareness",
+   "fieldtype": "Select",
+   "label": "Asbestos Awareness",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completion_date_for_asbestos_awareness",
+   "fieldtype": "Date",
+   "label": "Completion date for Asbestos Awareness"
+  },
+  {
+   "fieldname": "project_management_training_certification",
+   "fieldtype": "Select",
+   "label": "Project Management Training / Certification",
+   "options": "\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completion_date_for_project_management_training_certification",
+   "fieldtype": "Date",
+   "label": "Completion date for Project Management Training / Certification"
+  },
+  {
+   "fieldname": "section_break_wwfq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "employee_certification_other_professional_trainings_details",
+   "fieldtype": "Table",
+   "label": "Employee Certification Other Professional Trainings Details",
+   "options": "Employee Certification Other Professional Trainings Details",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-07 18:36:18.896941",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Employee Certification Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
