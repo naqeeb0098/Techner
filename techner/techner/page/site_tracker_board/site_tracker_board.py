@@ -66,18 +66,13 @@ def get_board_data(filters=None):
 
             data.append(row)
 
-    # Fetch users for dropdown
+    # Fetch users for dropdown (include full_name for searchable display)
     users = frappe.get_all("User", filters={"enabled": 1, "user_type": "System User"}, fields=["name", "full_name"])
-
-    # Fetch statuses from Project Details Milestone Status doctype
-    statuses = frappe.get_all("Project Details Milestone Status", fields=["name", "color"], order_by="name asc")
 
     return {
         "data": data,
         "milestones": sorted(list(milestone_names)),
-        "users": [u.name for u in users],
-        "statuses": [s.name for s in statuses],
-        "status_colors": {s.name: (s.color or "#94a3b8") for s in statuses}
+        "users": [{"name": u.name, "full_name": u.full_name or u.name} for u in users],
     }
 
 @frappe.whitelist()

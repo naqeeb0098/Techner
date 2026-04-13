@@ -74,7 +74,8 @@
   "applicant_rating",
   "resume_preview_section",
   "preview",
-  "attachments"
+  "attachments",
+  "resume_extraction"
  ],
  "fields": [
   {
@@ -463,16 +464,21 @@
    "fieldname": "attachments",
    "fieldtype": "Button",
    "label": "Attachments"
+  },
+  {
+   "fieldname": "resume_extraction",
+   "fieldtype": "Text",
+   "label": "Resume Extraction"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-07 18:36:20.597603",
+ "modified": "2026-04-11 16:52:22.248812",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Application Form",
- "naming_rule": "Expression",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

@@ -24,11 +24,12 @@
   },
   {
    "columns": 1,
+   "default": "Open",
    "fieldname": "status",
-   "fieldtype": "Link",
+   "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Project Details Milestone Status"
+   "options": "\nOpen\nComplete"
   },
   {
    "columns": 1,
@@ -64,7 +65,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-07 18:36:23.223881",
+ "modified": "2026-04-11 11:21:08.717896",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Site Tracker Milestone Details",

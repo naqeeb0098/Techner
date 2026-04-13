@@ -43,8 +43,13 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {
+	"Leave Application": "public/js/leave_application.js"
+}
+doctype_list_js = {
+	"Job Applicant": "public/js/job_applicant_list.js",
+	"Application Form": "public/js/application_form_list.js"
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -137,13 +142,18 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Job Applicant": {
+		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
+	},
+	"Application Form": {
+		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
+	},
+	"File": {
+		"after_insert": "techner.techner.custom.job_applicant.file_changed",
+		"on_trash": "techner.techner.custom.job_applicant.file_changed"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
