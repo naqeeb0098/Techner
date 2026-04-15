@@ -27,7 +27,6 @@
    "default": "Open",
    "fieldname": "status",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Status",
    "options": "\nOpen\nComplete"
   },
@@ -35,28 +34,24 @@
    "columns": 1,
    "fieldname": "forcast",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "label": "Forcast"
   },
   {
    "columns": 1,
    "fieldname": "actual",
    "fieldtype": "Date",
-   "in_list_view": 1,
    "label": "Actual"
   },
   {
    "columns": 2,
    "fieldname": "remarks",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Remarks"
   },
   {
    "columns": 2,
    "fieldname": "assign_to",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Assign To",
    "options": "User"
   }
@@ -65,7 +60,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-11 11:21:08.717896",
+ "modified": "2026-04-13 16:55:51.919745",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Site Tracker Milestone Details",
