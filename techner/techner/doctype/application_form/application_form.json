@@ -467,14 +467,14 @@
   },
   {
    "fieldname": "resume_extraction",
-   "fieldtype": "Text",
+   "fieldtype": "Long Text",
    "label": "Resume Extraction"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-11 16:52:22.248812",
+ "modified": "2026-04-15 12:02:48.760850",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Application Form",
