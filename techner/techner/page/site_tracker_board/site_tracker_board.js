@@ -123,12 +123,14 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 		milestones.forEach((m, idx) => {
 			let c = MILESTONE_COLORS[idx % MILESTONE_COLORS.length];
-			html += `<th colspan="5" class="ms-header" style="background-color:${c.bg}; color:${c.text};">${m}</th>`;
+			// html += `<th colspan="5" class="ms-header" style="background-color:${c.bg}; color:${c.text};">${m}</th>`;
+			html += `<th colspan="4" class="ms-header" style="background-color:${c.bg}; color:${c.text};">${m}</th>`;
 		});
 		html += '</tr><tr>';
 
 		milestones.forEach(() => {
-			['Status', 'Forecast', 'Actual', 'Remarks', 'Assign To'].forEach(col => {
+			// ['Status', 'Forecast', 'Actual', 'Remarks', 'Assign To'].forEach(col => {
+				['Forecast', 'Actual', 'Remarks', 'Assign To'].forEach(col => {
 				html += `<th style="background-color:#f0f4f8; font-size:11px; font-weight:600; color:#475569; text-align:center; text-transform:uppercase; letter-spacing:0.4px;">${col}</th>`;
 			});
 		});
@@ -165,16 +167,16 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 				}
 
 				// --- Status column ---
-				let status_val = m_data.status || '';
-				let border_color = get_status_color(status_val);
-				let status_html = `<select class="board-input status-select" data-field="status" ${data_attrs}>`;
-				status_html += `<option value=""></option>`;
-				app_statuses.forEach(s => {
-					let sel = status_val === s ? 'selected' : '';
-					status_html += `<option value="${s}" ${sel}>${s}</option>`;
-				});
-				status_html += `</select>`;
-				html += `<td style="border-left:3px solid ${border_color};">${status_html}</td>`;
+				// let status_val = m_data.status || '';
+				// let border_color = get_status_color(status_val);
+				// let status_html = `<select class="board-input status-select" data-field="status" ${data_attrs}>`;
+				// status_html += `<option value=""></option>`;
+				// app_statuses.forEach(s => {
+				// 	let sel = status_val === s ? 'selected' : '';
+				// 	status_html += `<option value="${s}" ${sel}>${s}</option>`;
+				// });
+				// status_html += `</select>`;
+				// html += `<td style="border-left:3px solid ${border_color};">${status_html}</td>`;
 
 				// --- Forecast date column ---
 				let forecast_val = m_data.forcast || '';

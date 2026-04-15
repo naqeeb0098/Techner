@@ -24,10 +24,12 @@ def get_board_data(filters=None):
         if filters.get("site"):
             site_filters["site"] = filters.get("site")
 
-        sites = frappe.get_all("Site Projects Site Details", 
-                               filters=site_filters, 
-                               fields=["site", "site_name", "site_tracker"])
-        
+        sites = frappe.get_all(
+            "Site Projects Site Details",
+            filters=site_filters,
+            fields=["site", "site_name", "site_tracker"],
+            order_by="site_name asc"
+        )    
         for site in sites:
             row = {
                 "project": p.name,
