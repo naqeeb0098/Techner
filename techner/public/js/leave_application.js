@@ -19,7 +19,7 @@ frappe.ui.form.on('Leave Application', {
 
 function get_config(state) {
 	if (state === 'pending') {
-		return { title: 'Pending', msg: 'Approval pending by Line Manager', color: '#3b82f6', icon: '⏳' };
+		return { title: 'Pending', msg: 'Please forward this application to the respective Line Manager for Approval', color: '#3b82f6', icon: '⏳' };
 	}
 	if (state.includes('line manager')) {
 		return { title: 'Line Manager Approval', msg: 'Waiting for Line Manager approval', color: '#f59e0b', icon: '👤' };

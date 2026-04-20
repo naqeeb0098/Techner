@@ -122,13 +122,13 @@ doctype_list_js = {
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"Leave Application": "techner.techner.custom.leave_application_permission.get_permission_query_conditions",
+}
+
+has_permission = {
+	"Leave Application": "techner.techner.custom.leave_application_permission.has_permission",
+}
 
 # DocType Class
 # ---------------
@@ -152,29 +152,20 @@ doc_events = {
 	"File": {
 		"after_insert": "techner.techner.custom.job_applicant.file_changed",
 		"on_trash": "techner.techner.custom.job_applicant.file_changed"
+	},
+	"HD Ticket": {
+		"validate": "techner.techner.custom.hd_ticket.update_is_responded"
 	}
 }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"techner.tasks.all"
-# 	],
-# 	"daily": [
-# 		"techner.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"techner.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"techner.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"techner.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"hourly": [
+		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
+	]
+}
 
 # Testing
 # -------
