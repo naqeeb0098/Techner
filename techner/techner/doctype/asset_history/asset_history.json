@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-16 17:42:58.740408",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "assignee_name",
+  "designation",
+  "contact_no",
+  "reason_to_return",
+  "return_date",
+  "received_date",
+  "received_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "assignee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Assignee Name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  },
+  {
+   "fieldname": "contact_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contact No"
+  },
+  {
+   "fieldname": "reason_to_return",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason to Return"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Return Date"
+  },
+  {
+   "fieldname": "received_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Received Date"
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Received By"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-16 17:45:19.782286",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Asset History",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

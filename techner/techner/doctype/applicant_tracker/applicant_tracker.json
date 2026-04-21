@@ -11,10 +11,11 @@
   "column_break_pord",
   "job_opening",
   "job_opening_title",
-  "nationality",
+  "role",
   "column_break_syam",
   "initial_screening_date",
   "interviewer_name",
+  "nationality",
   "section_break_kghh",
   "education",
   "column_break_seat",
@@ -49,7 +50,6 @@
   "conclusionfeedback",
   "column_break_dzdv",
   "recommendation",
-  "column_break_imuj",
   "p2",
   "section_break_xesa",
   "reasoning",
@@ -290,11 +290,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Recommendation",
-   "options": "\nRecommended\nNot Recommended\nExpensive"
-  },
-  {
-   "fieldname": "column_break_imuj",
-   "fieldtype": "Column Break"
+   "options": "\nRecommended\nNot Recommended\nRecommended + Expensive"
   },
   {
    "fieldname": "p2",
@@ -355,12 +351,17 @@
    "fieldname": "skillset",
    "fieldtype": "Text Editor",
    "label": "Skillset"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Data",
+   "label": "Role"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-15 12:28:35.982388",
+ "modified": "2026-04-16 15:11:36.292338",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Applicant Tracker",

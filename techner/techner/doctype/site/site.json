@@ -59,8 +59,13 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-04-09 19:02:21.369543",
+ "links": [
+  {
+   "link_doctype": "Site Tracker",
+   "link_fieldname": "site"
+  }
+ ],
+ "modified": "2026-04-20 06:56:37.671974",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Site",

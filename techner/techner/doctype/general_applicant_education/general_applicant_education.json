@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-20 16:35:53.662360",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "schooluniversity",
+  "qualification",
+  "level",
+  "year_of_passing"
+ ],
+ "fields": [
+  {
+   "fieldname": "schooluniversity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School/University"
+  },
+  {
+   "fieldname": "qualification",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Qualification"
+  },
+  {
+   "fieldname": "level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Level",
+   "options": "\nUndergraduate\nGraduate\nPost Graduate"
+  },
+  {
+   "fieldname": "year_of_passing",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Year of Passing"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-20 16:38:11.831636",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "General Applicant Education",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{email_address}-{#}",
+ "creation": "2026-04-20 16:20:53.198797",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "applicant_name",
+  "email_address",
+  "relevant_years_of_experience",
+  "english_communication",
+  "phone_number",
+  "nationality",
+  "positions_held_in_the_relevant_industry",
+  "net_take_home_salary",
+  "expected_salary",
+  "notice_period",
+  "current_location",
+  "do_you_prefer_working_with_a_team_or_on_your_own",
+  "why_do_you_think_you_are_a_fit_for_the_role",
+  "column_break_brja",
+  "general_application_opening",
+  "application_opening_title",
+  "location",
+  "designation",
+  "education_section",
+  "general_applicant_education",
+  "applicant_notes_section",
+  "applicant_notes",
+  "resume_attachment",
+  "column_break_ngga",
+  "internal_status",
+  "applicant_rating"
+ ],
+ "fields": [
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Applicant Name"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_brja",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "general_application_opening",
+   "fieldtype": "Link",
+   "label": "General Application Opening",
+   "options": "General Application Opening"
+  },
+  {
+   "fetch_from": "general_application_opening.application_opening",
+   "fieldname": "application_opening_title",
+   "fieldtype": "Data",
+   "label": "Application Opening title"
+  },
+  {
+   "fetch_from": "general_application_opening.location",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fetch_from": "general_application_opening.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "relevant_years_of_experience",
+   "fieldtype": "Data",
+   "label": "Relevant Years of Experience"
+  },
+  {
+   "fieldname": "english_communication",
+   "fieldtype": "Select",
+   "label": "English Communication ",
+   "options": "\nExcellent\nGood\nAverage\nPoor"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "positions_held_in_the_relevant_industry",
+   "fieldtype": "Small Text",
+   "label": "Positions held in the Relevant Industry "
+  },
+  {
+   "fieldname": "net_take_home_salary",
+   "fieldtype": "Data",
+   "label": "Net Take Home Salary"
+  },
+  {
+   "fieldname": "expected_salary",
+   "fieldtype": "Data",
+   "label": "Expected Salary"
+  },
+  {
+   "fieldname": "notice_period",
+   "fieldtype": "Data",
+   "label": "Notice Period"
+  },
+  {
+   "fieldname": "current_location",
+   "fieldtype": "Data",
+   "label": "Current Location"
+  },
+  {
+   "fieldname": "do_you_prefer_working_with_a_team_or_on_your_own",
+   "fieldtype": "Small Text",
+   "label": "Do you prefer working with a team or on your own?"
+  },
+  {
+   "fieldname": "why_do_you_think_you_are_a_fit_for_the_role",
+   "fieldtype": "Small Text",
+   "label": "Why do you think you are a fit for the role"
+  },
+  {
+   "fieldname": "applicant_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Notes"
+  },
+  {
+   "fieldname": "applicant_notes",
+   "fieldtype": "Small Text",
+   "label": "Applicant Notes"
+  },
+  {
+   "fieldname": "resume_attachment",
+   "fieldtype": "Attach",
+   "label": "Resume Attachment"
+  },
+  {
+   "fieldname": "column_break_ngga",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "New",
+   "fieldname": "internal_status",
+   "fieldtype": "Select",
+   "label": "Internal Status",
+   "options": "\nNew\nReviewed\nInterviewed\nNot Recommended\nShortlisted"
+  },
+  {
+   "fieldname": "applicant_rating",
+   "fieldtype": "Rating",
+   "label": "Applicant Rating"
+  },
+  {
+   "fieldname": "education_section",
+   "fieldtype": "Section Break",
+   "label": "Education"
+  },
+  {
+   "fieldname": "general_applicant_education",
+   "fieldtype": "Table",
+   "label": "General Applicant Education",
+   "options": "General Applicant Education"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-20 16:38:54.628398",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "General Applicant",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
