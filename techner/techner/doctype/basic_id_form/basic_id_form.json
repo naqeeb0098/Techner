@@ -1,0 +1,357 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:email",
+ "creation": "2026-01-21 16:12:32.441854",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_o3wx",
+  "full_name",
+  "email",
+  "mobile_number",
+  "date_of_birth",
+  "current_residential_address",
+  "postal_code",
+  "permanent_home_address",
+  "column_break_lskq",
+  "nationality_all",
+  "home_telephone_number",
+  "cnicid_number",
+  "passport_num",
+  "amended_from",
+  "access_token",
+  "is_used",
+  "form_url",
+  "next_of_kin_section",
+  "name1",
+  "contact_number",
+  "postal_address",
+  "column_break_jrzu",
+  "relationship",
+  "email_address",
+  "self_declaration_section",
+  "have_you_ever_been_convicted_of_a_criminal_offense",
+  "please_specify_about_criminal_offense",
+  "have_you_ever_lost_a_job_due_to_drug_or_substance_misuse",
+  "please_specify_about_drug_or_substance_misuse",
+  "id_documents_section",
+  "documents_list",
+  "important_section",
+  "important",
+  "bank_details_for_payment_transfer_section",
+  "bank_name",
+  "name_on_the_account",
+  "iban",
+  "swift_code",
+  "account_currency",
+  "branch_address",
+  "branch_id",
+  "branch_name",
+  "column_break_mxoy",
+  "html_cext",
+  "declaration",
+  "declarations",
+  "date",
+  "section_break_zhdc",
+  "column_break_ldbv",
+  "html_gyan"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_o3wx",
+   "fieldtype": "Section Break",
+   "label": "BASIC DETAILS"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "unique": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Mobile Number"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "current_residential_address",
+   "fieldtype": "Data",
+   "label": "Current Residential Address"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "permanent_home_address",
+   "fieldtype": "Data",
+   "label": "Permanent Home Address"
+  },
+  {
+   "fieldname": "column_break_lskq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nationality_all",
+   "fieldtype": "Data",
+   "label": "Nationality (all)"
+  },
+  {
+   "fieldname": "home_telephone_number",
+   "fieldtype": "Data",
+   "label": "Home Telephone Number"
+  },
+  {
+   "fieldname": "cnicid_number",
+   "fieldtype": "Data",
+   "label": "CNIC/ID Number"
+  },
+  {
+   "fieldname": "passport_num",
+   "fieldtype": "Data",
+   "label": "Passport Number"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Basic ID Form",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Data",
+   "label": "Access Token",
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_used",
+   "fieldtype": "Check",
+   "label": "Token Used"
+  },
+  {
+   "fieldname": "form_url",
+   "fieldtype": "Text",
+   "label": "Form URL"
+  },
+  {
+   "fieldname": "next_of_kin_section",
+   "fieldtype": "Section Break",
+   "label": "Next of Kin"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "postal_address",
+   "fieldtype": "Data",
+   "label": "Postal Address"
+  },
+  {
+   "fieldname": "column_break_jrzu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Data",
+   "label": "Relationship"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "self_declaration_section",
+   "fieldtype": "Section Break",
+   "label": "SELF DECLARATION"
+  },
+  {
+   "fieldname": "have_you_ever_been_convicted_of_a_criminal_offense",
+   "fieldtype": "Select",
+   "label": "Have you ever been convicted of a criminal offense ",
+   "options": "\nYes\nNo"
+  },
+  {
+   "depends_on": "eval:doc.have_you_ever_been_convicted_of_a_criminal_offense == \"Yes\"\r\n",
+   "fieldname": "please_specify_about_criminal_offense",
+   "fieldtype": "Data",
+   "label": "Please Specify about Criminal offense"
+  },
+  {
+   "fieldname": "have_you_ever_lost_a_job_due_to_drug_or_substance_misuse",
+   "fieldtype": "Select",
+   "label": "Have you ever lost a job due to drug or substance misuse",
+   "options": "\nYes\nNo"
+  },
+  {
+   "depends_on": "eval:doc.have_you_ever_lost_a_job_due_to_drug_or_substance_misuse == \"Yes\"\r\n",
+   "fieldname": "please_specify_about_drug_or_substance_misuse",
+   "fieldtype": "Data",
+   "label": "Please Specify about drug or substance misuse"
+  },
+  {
+   "fieldname": "id_documents_section",
+   "fieldtype": "Section Break",
+   "label": "ID DOCUMENTS"
+  },
+  {
+   "fieldname": "documents_list",
+   "fieldtype": "HTML",
+   "label": "Documents List",
+   "options": "<div style=\"border: 1px solid #d1e7dd; background-color: #f0fff7; padding: 15px; border-radius: 6px;\">\n  <h4 style=\"color: #0f5132; margin-top: 0;\">\n    \ud83d\udcc4 Required Documents\n  </h4>\n\n  <p style=\"color: #0f5132; margin-bottom: 10px;\">\n    Please provide <strong>properly coloured scanned copies</strong> of the following documents:\n  </p>\n\n  <ul style=\"color: #0f5132; padding-left: 20px;\">\n    <li><strong>National Identity Card (CNIC / ID)</strong> \u2013 Both sides or equivalent</li>\n    <li><strong>Passport</strong> \u2013 Please include both pages <em>(Optional)</em></li>\n    <li>\n      <strong>Any one Utility Bill</strong> for proof of address  \n      <br>\n      <small>(Electricity, Gas, Landline, Broadband, etc.)</small>\n    </li>\n    <li>\n      <strong>6-month Bank Statement</strong> showing full name, address, and salary/income\n    </li>\n  </ul>\n</div>\n"
+  },
+  {
+   "fieldname": "important_section",
+   "fieldtype": "Section Break",
+   "label": "IMPORTANT"
+  },
+  {
+   "fieldname": "important",
+   "fieldtype": "HTML",
+   "label": "Important",
+   "options": "<div style=\"border: 1px solid #f5c2c7; background-color: #fff1f2; padding: 16px; border-radius: 6px;\">\n  <h4 style=\"color: #842029; margin-top: 0;\">\n    \u26a0 Important Security &amp; Conduct Guidelines\n  </h4>\n\n  <ol style=\"color: #842029; padding-left: 20px;\">\n    <li style=\"margin-bottom: 10px;\">\n      <strong>Protocol for Confidential Requests</strong><br>\n      Management will never request sensitive information via email. Any such communication should be reported immediately. \n      Project data, personal details, or financial matters will only be discussed following a formal verbal confirmation.\n    </li>\n\n    <li style=\"margin-bottom: 10px;\">\n      <strong>Bank Details Update</strong><br>\n      Requests to update bank account details will not be processed over email. Such changes will only be considered after a \n      formal video call with the concerned staff, ensuring proper identity verification and confirmation.\n    </li>\n\n    <li>\n      <strong>Client Interaction</strong><br>\n      All staff are expected to maintain a professional environment by avoiding political, religious, or other sensitive discussions \n      in the workplace or with clients. Personal beliefs should remain separate to ensure a respectful and positive professional setting.\n    </li>\n  </ol>\n</div>\n"
+  },
+  {
+   "fieldname": "bank_details_for_payment_transfer_section",
+   "fieldtype": "Section Break",
+   "label": "Bank Details for Payment Transfer"
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name"
+  },
+  {
+   "fieldname": "name_on_the_account",
+   "fieldtype": "Data",
+   "label": "Name on the Account"
+  },
+  {
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "label": "IBAN"
+  },
+  {
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "Swift Code"
+  },
+  {
+   "fieldname": "account_currency",
+   "fieldtype": "Data",
+   "label": "Account Currency"
+  },
+  {
+   "fieldname": "branch_address",
+   "fieldtype": "Data",
+   "label": "Branch Address"
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "label": "Branch ID"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "label": "Branch Name"
+  },
+  {
+   "fieldname": "column_break_mxoy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_cext",
+   "fieldtype": "HTML",
+   "options": "<div style=\"margin-bottom: 12px;\">\n  <h4 style=\"color: #0f5132; margin: 0 0 8px 0;\">\n    \ud83c\udfe6 Example to Fill the Bank Details\n  </h4>\n</div>\n\n<div style=\"display: flex; flex-wrap: wrap;\">\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Bank Name</strong><br>\n    <small>Name of Bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Name on the Account</strong><br>\n    <small>Your name exactly as it appears in the bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>IBAN</strong><br>\n    <small>XXXXXXXXXXXXXXXXXXXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Swift Code</strong><br>\n    <small>XXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Account Currency</strong><br>\n    <small>PKR</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Address</strong><br>\n    <small>Full address of bank branch including City and Country</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch ID</strong><br>\n    <small>XXXXX (also known as Branch Code)</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Name</strong><br>\n    <small>Official name of the branch where your account is held</small>\n  </div>\n\n</div>\n"
+  },
+  {
+   "fieldname": "declaration",
+   "fieldtype": "Section Break",
+   "label": "DECLARATION"
+  },
+  {
+   "fieldname": "declarations",
+   "fieldtype": "HTML",
+   "label": "Declaration",
+   "options": "<div style=\"border: 1px solid #f5c2c7; background-color: #fff1f2; padding: 16px; border-radius: 6px;\">\n  <h4 style=\"color: #842029; margin-top: 0;\">\n    \ud83d\udccc Declaration\n  </h4>\n\n  <p style=\"color: #842029; margin-bottom: 0;\">\n    I hereby declare that the information provided in this form is true and accurate to the best of my knowledge. \n    I understand that any misrepresentation or provision of false information may result in termination of employment \n    and may lead to subsequent legal action.\n  </p>\n</div>\n"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_zhdc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ldbv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html_gyan",
+   "fieldtype": "HTML",
+   "options": "<div style=\"border: 1px solid #badbcc; background-color: #eafaf1; padding: 14px; border-radius: 6px;\">\n  <p style=\"color: #0f5132; margin: 0;\">\n    <strong>Note:</strong> This is a digital data collection form; therefore, no signature, printing, or scanning is required.\n  </p>\n</div>\n"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-22 18:16:34.445874",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Basic ID Form",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -124,10 +124,12 @@ doctype_list_js = {
 
 permission_query_conditions = {
 	"Leave Application": "techner.techner.custom.leave_application_permission.get_permission_query_conditions",
+	"Employee Time Sheet": "techner.techner.custom.employee_time_sheet_permission.get_permission_query_conditions",
 }
 
 has_permission = {
 	"Leave Application": "techner.techner.custom.leave_application_permission.has_permission",
+	"Employee Time Sheet": "techner.techner.custom.employee_time_sheet_permission.has_permission"
 }
 
 # DocType Class
@@ -161,11 +163,11 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-scheduler_events = {
-	"hourly": [
-		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
-	]
-}
+# scheduler_events = {
+# 	"hourly": [
+# 		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
+# 	]
+# }
 
 # Testing
 # -------

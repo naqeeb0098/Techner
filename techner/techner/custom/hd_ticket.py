@@ -28,6 +28,11 @@ def send_auto_resolution_warning():
     Background job to send warning emails for tickets with no customer response for 48 hours.
     And automatically close the ticket.
     """
+    # Check if email sending is enabled in HD Ticket Settings
+    settings = frappe.get_single("HD Ticket Settings")
+    if not settings.send_email:
+        return
+
     # 48 hours threshold
     threshold_time = add_to_date(now_datetime(), hours=-48)
     
@@ -48,10 +53,9 @@ def send_auto_resolution_warning():
         # If agent response is more recent than customer response (or no customer response)
         if not last_cust or last_agent > last_cust:
             try:
-                send_warning_email(t)
+                send_warning_email(t, settings)
                 
                 # Update ticket: Set warning flag and close the ticket
-                # We use frappe.get_doc then save to ensure SLA and other hooks are properly settled
                 doc = frappe.get_doc("HD Ticket", t.name)
                 doc.custom_warning_mail_sent = 1
                 doc.status = "Closed"
@@ -61,21 +65,23 @@ def send_auto_resolution_warning():
             except Exception as e:
                 frappe.log_error(f"Error sending auto-resolution warning and closing {t.name}: {str(e)}", "Auto Resolution Warning")
 
-def send_warning_email(ticket_data):
+def send_warning_email(ticket_data, settings):
     """
-    Sends the HTML warning email using an Email Template record.
+    Sends the warning email using the Notification template selected in HD Ticket Settings.
     """
-    template_name = "HD Ticket Auto-Resolution Warning"
-    
-    if not frappe.db.exists("Email Template", template_name):
-        create_default_email_template(template_name)
-    
-    template_doc = frappe.get_doc("Email Template", template_name)
+    if not settings.email_template:
+        return
+
+    notification = frappe.get_doc("Notification", settings.email_template)
     doc = frappe.get_doc("HD Ticket", ticket_data['name'])
     
-    subject = frappe.render_template(template_doc.subject, {"doc": doc})
-    message = frappe.render_template(template_doc.response, {"doc": doc})
+    # Render subject and message using the Notification template and current doc as context
+    subject = frappe.render_template(notification.subject, {"doc": doc})
+    message = frappe.render_template(notification.message, {"doc": doc})
     
+    # Get sender from notification template
+    sender = notification.sender_email or notification.sender or frappe.session.user
+
     recipient = doc.raised_by
     if recipient == "Administrator":
         recipient = frappe.db.get_value("User", "Administrator", "email") or "admin@example.com"
@@ -85,45 +91,9 @@ def send_warning_email(ticket_data):
 
     frappe.sendmail(
         recipients=[recipient],
+        sender=sender,
         subject=subject,
         message=message,
         reference_doctype="HD Ticket",
         reference_name=doc.name
     )
-
-def create_default_email_template(name):
-    """
-    Creates a premium HTML email template if it doesn't exist.
-    """
-    if frappe.db.exists("Email Template", name):
-        return
-
-    template = frappe.new_doc("Email Template")
-    template.name = name
-    template.subject = "Ticket #{{ doc.name }} has been Closed due to inactivity"
-    template.response = """
-<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; color: #333; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px;">
-    <div style="text-align: center; margin-bottom: 20px;">
-        <h2 style="color: #2c3e50; margin-top: 0;">Ticket Resolved</h2>
-    </div>
-    
-    <p>Dear Customer,</p>
-    
-    <p>We are following up on your ticket <strong>#{{ doc.name }}</strong> (<em>{{ doc.subject }}</em>).</p>
-    
-    <div style="background-color: #f8f9fa; border-left: 5px solid #2c3e50; padding: 15px; margin: 20px 0; color: #555;">
-        Since we haven't received a response from you in over 48 hours, we have marked this ticket as <strong>Closed</strong>. 
-    </div>
-    
-    <p>We hope the information provided earlier was helpful. If you still have questions or need further assistance, please feel free to <strong>reply to this email</strong> to reopen the ticket.</p>
-    
-    <p>Your satisfaction is important to us!</p>
-    
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-    
-    <p style="font-size: 12px; color: #999; text-align: center;">
-        Thank you for choosing our services.
-    </p>
-</div>
-"""
-    template.insert(ignore_permissions=True)
