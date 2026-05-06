@@ -12,57 +12,72 @@
   "reason_to_return",
   "return_date",
   "received_date",
-  "received_by"
+  "received_by",
+  "attachment"
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "assignee_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Assignee Name"
   },
   {
+   "columns": 2,
    "fieldname": "designation",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Designation"
   },
   {
+   "columns": 1,
    "fieldname": "contact_no",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Contact No"
   },
   {
+   "columns": 1,
    "fieldname": "reason_to_return",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Reason to Return"
   },
   {
+   "columns": 1,
    "fieldname": "return_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Return Date"
   },
   {
+   "columns": 1,
    "fieldname": "received_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Received Date"
   },
   {
+   "columns": 1,
    "fieldname": "received_by",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Received By"
+  },
+  {
+   "columns": 1,
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Attachment "
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-16 17:45:19.782286",
+ "modified": "2026-04-28 18:16:15.827340",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Asset History",

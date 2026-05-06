@@ -23,6 +23,7 @@
   "access_token",
   "is_used",
   "form_url",
+  "test_lable",
   "next_of_kin_section",
   "name1",
   "contact_number",
@@ -321,13 +322,19 @@
    "fieldname": "html_gyan",
    "fieldtype": "HTML",
    "options": "<div style=\"border: 1px solid #badbcc; background-color: #eafaf1; padding: 14px; border-radius: 6px;\">\n  <p style=\"color: #0f5132; margin: 0;\">\n    <strong>Note:</strong> This is a digital data collection form; therefore, no signature, printing, or scanning is required.\n  </p>\n</div>\n"
+  },
+  {
+   "fieldname": "test_lable",
+   "fieldtype": "Link",
+   "label": "Employee Code",
+   "options": "Employee"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 18:16:34.445874",
+ "modified": "2026-04-29 15:41:08.387361",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",

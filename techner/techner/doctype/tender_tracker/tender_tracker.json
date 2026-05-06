@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-01 14:11:47.205865",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "site_and_tender_information_section",
+  "instruction_date",
+  "project",
+  "project_name",
+  "qs",
+  "column_break_hboq",
+  "site",
+  "site_address",
+  "site_type",
+  "column_break_vmke",
+  "tender_type",
+  "tender_prep__submission_date",
+  "tender_submission_value",
+  "tender_approval_value",
+  "tender_agreed_date",
+  "section_break_qezh",
+  "additional_remarks_qs_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "instruction_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Instruction Date"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Site Projects"
+  },
+  {
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "qs",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "QS"
+  },
+  {
+   "fieldname": "tender_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Tender Type",
+   "options": "\nComplete\nPartial"
+  },
+  {
+   "fieldname": "tender_prep__submission_date",
+   "fieldtype": "Date",
+   "label": "Tender Prep / Submission Date"
+  },
+  {
+   "fieldname": "tender_submission_value",
+   "fieldtype": "Currency",
+   "label": "Tender Submission Value"
+  },
+  {
+   "fieldname": "tender_approval_value",
+   "fieldtype": "Currency",
+   "label": "Tender Approval Value"
+  },
+  {
+   "fieldname": "tender_agreed_date",
+   "fieldtype": "Date",
+   "label": "Tender agreed date"
+  },
+  {
+   "fieldname": "additional_remarks_qs_notes",
+   "fieldtype": "Small Text",
+   "label": "Additional Remarks QS notes"
+  },
+  {
+   "fieldname": "column_break_hboq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "site.address",
+   "fieldname": "site_address",
+   "fieldtype": "Small Text",
+   "label": "Site Address"
+  },
+  {
+   "fetch_from": "site.site_type",
+   "fieldname": "site_type",
+   "fieldtype": "Data",
+   "label": "Site Type"
+  },
+  {
+   "fieldname": "column_break_vmke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_qezh",
+   "fieldtype": "Section Break",
+   "label": "Additional Remarks"
+  },
+  {
+   "fieldname": "site_and_tender_information_section",
+   "fieldtype": "Section Break",
+   "label": "Site and Tender Information"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-01 14:21:33.752789",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Tender Tracker",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
