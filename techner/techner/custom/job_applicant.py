@@ -88,3 +88,80 @@ def extract_text_from_file(file_doc):
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), f"Resume Extraction Error for {file_doc.name}")
         return ""
+
+
+@frappe.whitelist(allow_guest=True)
+def bulk_extract_existing_attachments(doctype="Job Applicant"):
+    """
+    Sab existing Job Applicant records ki attachments extract karo
+    jinki custom_resume_extraction field empty ho
+    """
+    records = frappe.get_all(
+        doctype,
+        filters={"custom_resume_extraction": ["in", ["", None]]},
+        fields=["name"]
+    )
+    
+    total = len(records)
+    success = 0
+    failed = 0
+    
+    for r in records:
+        try:
+            doc = frappe.get_doc(doctype, r.name)
+            extract_resume_text(doc=doc)
+            frappe.db.commit()
+            success += 1
+        except Exception as e:
+            frappe.log_error(frappe.get_traceback(), f"Bulk Extraction Error: {r.name}")
+            failed += 1
+    
+    return {
+        "total": total,
+        "success": success,
+        "failed": failed
+    }
+
+
+@frappe.whitelist()
+def extract_single_record(docname, doctype="Job Applicant"):
+    """
+    Single record ki attachments extract karo — force update bhi kare
+    """
+    doc = frappe.get_doc(doctype, docname)
+    
+    files = frappe.get_all(
+        "File",
+        filters={
+            "attached_to_doctype": doctype,
+            "attached_to_name": docname
+        },
+        fields=["name", "file_name"]
+    )
+    
+    if not files:
+        return {"status": "no_files", "message": "Koi attachment nahi mili"}
+    
+    extracted_text = ""
+    extracted_files = []
+    
+    for f in files:
+        file_doc = frappe.get_doc("File", f.name)
+        text = extract_text_from_file(file_doc)
+        if text:
+            extracted_text += " " + text
+            extracted_files.append(f.file_name)
+    
+    if extracted_text:
+        doc.db_set("custom_resume_extraction", extracted_text.strip()[:65000])
+        frappe.db.commit()
+        return {
+            "status": "success",
+            "message": f"{len(extracted_files)} file(s) extract hui",
+            "files": extracted_files
+        }
+    else:
+        return {
+            "status": "no_text",
+            "message": "Files mili lekin text extract nahi hua"
+        }
