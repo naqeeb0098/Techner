@@ -8,6 +8,8 @@
  "field_order": [
   "client_name",
   "client_website",
+  "status",
+  "existing_client",
   "column_break_kxfh",
   "group",
   "sales_manager",
@@ -69,6 +71,20 @@
    "fieldname": "about_company__opportunity",
    "fieldtype": "Text Editor",
    "label": "About Company / Opportunity"
+  },
+  {
+   "default": "Lead",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Lead\nExisting Client",
+   "read_only": 1
+  },
+  {
+   "fieldname": "existing_client",
+   "fieldtype": "Data",
+   "label": "Existing Client",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -79,7 +95,7 @@
    "link_fieldname": "customer_opportunity"
   }
  ],
- "modified": "2026-04-07 18:36:17.895563",
+ "modified": "2026-05-12 05:36:16.615977",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "CRM Leads",

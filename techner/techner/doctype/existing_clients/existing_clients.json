@@ -8,6 +8,7 @@
  "field_order": [
   "client_name",
   "client_website",
+  "crm_lead",
   "column_break_kxfh",
   "group",
   "sales_manager",
@@ -69,6 +70,13 @@
    "fieldname": "about_company__opportunity",
    "fieldtype": "Text Editor",
    "label": "About Company / Opportunity"
+  },
+  {
+   "fieldname": "crm_lead",
+   "fieldtype": "Link",
+   "label": "CRM Lead",
+   "options": "CRM Leads",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -79,7 +87,7 @@
    "link_fieldname": "customer_opportunity"
   }
  ],
- "modified": "2026-04-07 18:36:14.459322",
+ "modified": "2026-05-12 05:23:22.937594",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Existing Clients",

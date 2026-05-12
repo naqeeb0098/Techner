@@ -163,11 +163,11 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"hourly": [
-# 		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
-# 	]
-# }
+scheduler_events = {
+	"hourly": [
+		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
+	]
+}
 
 # Testing
 # -------
