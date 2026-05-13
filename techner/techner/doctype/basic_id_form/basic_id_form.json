@@ -56,7 +56,8 @@
   "date",
   "section_break_zhdc",
   "column_break_ldbv",
-  "html_gyan"
+  "html_gyan",
+  "basic_id_documents"
  ],
  "fields": [
   {
@@ -328,13 +329,19 @@
    "fieldtype": "Link",
    "label": "Employee Code",
    "options": "Employee"
+  },
+  {
+   "fieldname": "basic_id_documents",
+   "fieldtype": "Table",
+   "label": "Basic ID Documents",
+   "options": "Basic ID Documents"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-29 15:41:08.387361",
+ "modified": "2026-05-06 16:50:13.477353",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",
