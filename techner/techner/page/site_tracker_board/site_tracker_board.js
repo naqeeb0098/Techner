@@ -97,27 +97,29 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 	function draw_table(data, milestones) {
 		let html = '<style>';
-		html += '#tracker-board-table { border-collapse: collapse; width: 100%; font-size: 13px; font-family: "Inter", sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }';
-		html += '#tracker-board-table th, #tracker-board-table td { border: 1px solid #e2e8f0; padding: 6px 8px; text-align: left; vertical-align: middle; white-space: nowrap; height: 35px; }';
+		html += '#tracker-board-table { border-collapse: collapse; width: 100%; font-size: 12px; font-family: "Inter", sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }';
+		html += '#tracker-board-table th { border: 1px solid #e2e8f0; padding: 4px 6px; text-align: center; vertical-align: middle; white-space: normal; line-height: 1.2; }';
+		html += '#tracker-board-table td { border: 1px solid #e2e8f0; padding: 3px 4px; text-align: left; vertical-align: middle; height: 30px; }';
 		html += '#tracker-board-table thead th { position: sticky; top: 0; z-index: 2; font-weight: 600; }';
-		html += '#tracker-board-table thead tr:nth-child(2) th { top: 35px; }';
-		html += '.ms-header { text-align: center !important; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }';
-		html += '.board-input { border: 1px solid transparent; width: 100%; min-width: 90px; padding: 4px; box-sizing: border-box; background: transparent; border-radius: 3px; font-size: 12px; transition: border 0.2s; }';
+		html += '#tracker-board-table thead tr:nth-child(1) th { height: 40px; }';
+		html += '#tracker-board-table thead tr:nth-child(2) th { top: 40px; }';
+		html += '.ms-header { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }';
+		html += '.board-input { border: 1px solid transparent; width: 100%; min-width: 70px; padding: 2px; box-sizing: border-box; background: transparent; border-radius: 3px; font-size: 12px; transition: border 0.2s; }';
 		html += '.board-input:hover { border-color: #cbd5e1; }';
 		html += '.board-input:focus { border: 1px solid #3b82f6; background: #fff; outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }';
-		html += '.link-col { min-width: 150px; font-weight: 500; }';
+		html += '.link-col { min-width: 120px; font-weight: 500; }';
 		html += 'a.doc-link { color: #1d4ed8; text-decoration: none; font-weight: 600; } a.doc-link:hover { text-decoration: underline; }';
-		html += '.status-select { min-width: 110px; }';
-		html += '.date-input { min-width: 120px; }';
+		html += '.status-select { min-width: 90px; }';
+		html += '.date-input { min-width: 100px; }';
 		html += 'tbody tr:hover td { background-color: #f8fafc; }';
 		html += 'tbody td { background-color: #ffffff; }';
 
 		// Assign-to search wrapper
-		html += '.assign-wrapper { position: relative; min-width: 150px; }';
-		html += '.assign-search { width: 100%; border: 1px solid transparent; padding: 3px 6px; border-radius: 3px; font-size: 12px; background: transparent; box-sizing: border-box; cursor: pointer; }';
-		html += '.assign-search:hover { border-color: #cbd5e1; }';
-		html += '.assign-search:focus { border: 1px solid #3b82f6; background: #fff; outline: none; box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }';
-		html += '.assign-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; max-height: 200px; overflow-y: auto; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }';
+		html += '.assign-wrapper { position: relative; display: flex; justify-content: center; align-items: center; }';
+		html += '.assign-trigger { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; transition: background 0.2s; }';
+		html += '.assign-trigger:hover { filter: brightness(0.9); }';
+		html += '.assign-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }';
+		html += '.assign-options-list { max-height: 150px; overflow-y: auto; }';
 		html += '.assign-dropdown .assign-opt { padding: 6px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }';
 		html += '.assign-dropdown .assign-opt:hover { background: #eff6ff; color: #1d4ed8; }';
 		html += '.assign-dropdown .assign-opt.no-result { color: #94a3b8; cursor: default; }';
@@ -173,25 +175,30 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 					return;
 				}
 
-				// --- Assign To (searchable) ---
+				// --- Assign To (avatar/dropdown) ---
 				let assign_val = m_data.assign_to || '';
 				let assign_display = assign_val; // show email / name
-				// Try to find full_name from users list
 				let found_user = app_users.find(u => u.name === assign_val);
 				if (found_user) assign_display = found_user.full_name || found_user.name;
 
+				let avatar_html = '';
+				if (assign_val) {
+					let parts = assign_display.split(' ');
+					let initials = parts.map(p => p[0]).join('').substring(0, 2).toUpperCase();
+					avatar_html = `<div class="assign-trigger" style="background: #0070F3; color: #fff; font-size: 11px; font-weight: 600;" title="${assign_display}">${initials}</div>`;
+				} else {
+					avatar_html = `<div class="assign-trigger" style="background: #e2e8f0; color: #64748b; font-size: 14px;" title="Assign User">+</div>`;
+				}
+
 				html += `<td>
 					<div class="assign-wrapper" data-tracker="${site_tracker}" data-rowname="${row_name}">
-						<input type="text"
-							class="assign-search board-input"
-							data-field="assign_to"
-							data-tracker="${site_tracker}"
-							data-rowname="${row_name}"
-							data-value="${assign_val}"
-							value="${assign_display}"
-							placeholder="Search user..."
-							autocomplete="off">
-						<div class="assign-dropdown"></div>
+						${avatar_html}
+						<div class="assign-dropdown">
+							<div style="padding: 5px; border-bottom: 1px solid #e2e8f0;">
+								<input type="text" class="assign-search-input" placeholder="Search user..." style="width:100%; border:1px solid #cbd5e1; padding:3px 6px; border-radius:3px; font-size:12px;">
+							</div>
+							<div class="assign-options-list"></div>
+						</div>
 					</div>
 				</td>`;
 
@@ -230,7 +237,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 				html += `<td><input type="${aa_type}" onfocus="(this.type='date')" onblur="(this.type=this.value?'date':'text')" class="board-input date-input" data-field="approval_actual_date" ${data_attrs} value="${app_actual_val}" placeholder=""></td>`;
 
 				// --- Remarks ---
-				html += `<td><input type="text" class="board-input" data-field="remarks" ${data_attrs} value="${m_data.remarks || ''}"></td>`;
+				html += `<td><textarea class="board-input remarks-input" data-field="remarks" ${data_attrs} style="resize:none; height:24px; min-width:150px; white-space:normal; overflow:hidden;">${m_data.remarks || ''}</textarea></td>`;
 			});
 
 			html += '</tr>';
@@ -245,7 +252,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 	function save_field(tracker, rowname, field, value, $el) {
 		if (!tracker || !rowname) return;
 
-		$el.css('background-color', '#fff3cd'); // saving indicator
+		$el.css('opacity', '0.5'); // saving indicator
 
 		frappe.call({
 			method: 'techner.techner.page.site_tracker_board.site_tracker_board.update_milestone_field',
@@ -257,7 +264,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 			},
 			callback: function (r) {
 				if (!r.exc) {
-					$el.css('background-color', '#d1fae5');
+					$el.css('opacity', '1');
 					if (field === 'status') {
 						$el.closest('td').css('border-left', '3px solid ' + get_status_color(value));
 					}
@@ -276,9 +283,9 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 						$forecast_input.closest('td').css('background', css_bg);
 						$actual_input.closest('td').css('background', css_bg);
 					}
-					setTimeout(() => $el.css('background-color', ''), 2000);
 				} else {
-					$el.css('background-color', '#fee2e2');
+					$el.css('opacity', '1').css('border-color', 'red');
+					setTimeout(() => $el.css('border-color', ''), 2000);
 				}
 			}
 		});
@@ -299,26 +306,42 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 			);
 		});
 
-		// ── Assign-To searchable dropdown ─────────────────────────────────────
-		$container.on('input', '.assign-search', function () {
+		// Auto-resize remarks textarea
+		$container.on('input', '.remarks-input', function () {
+			this.style.height = 'auto';
+			this.style.height = (this.scrollHeight) + 'px';
+		});
+
+		// Click on avatar to toggle dropdown
+		$container.on('click', '.assign-trigger', function (e) {
+			e.stopPropagation();
+			let $trigger = $(this);
+			let $dd = $trigger.siblings('.assign-dropdown');
+			
+			// Close all other dropdowns
+			$('.assign-dropdown').not($dd).hide();
+			
+			$dd.toggle();
+			if ($dd.is(':visible')) {
+				$dd.find('.assign-search-input').focus();
+				// Render all users initially
+				let $list = $dd.find('.assign-options-list');
+				render_assign_dropdown_list($list, app_users);
+			}
+		});
+
+		// Search input inside dropdown
+		$container.on('input', '.assign-search-input', function () {
 			let $inp = $(this);
 			let query = $inp.val().toLowerCase().trim();
-			let $dd = $inp.siblings('.assign-dropdown');
+			let $list = $inp.closest('.assign-dropdown').find('.assign-options-list');
 
 			let filtered = app_users.filter(u => {
 				let label = (u.full_name || u.name).toLowerCase();
 				return !query || label.includes(query) || u.name.toLowerCase().includes(query);
 			});
 
-			render_assign_dropdown($dd, filtered, $inp);
-			$dd.show();
-		});
-
-		$container.on('focus', '.assign-search', function () {
-			let $inp = $(this);
-			let $dd = $inp.siblings('.assign-dropdown');
-			render_assign_dropdown($dd, app_users, $inp);
-			$dd.show();
+			render_assign_dropdown_list($list, filtered);
 		});
 
 		// Click on an option
@@ -329,18 +352,26 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 			let val        = $opt.data('value');
 			let label      = $opt.data('label');
 			let $dd        = $opt.closest('.assign-dropdown');
-			let $inp       = $dd.siblings('.assign-search');
+			let $wrapper   = $opt.closest('.assign-wrapper');
 
-			$inp.val(label);
-			$inp.data('value', val);
 			$dd.hide();
 
+			// Update avatar
+			let $trigger = $wrapper.find('.assign-trigger');
+			if (val) {
+				let parts = label.split(' ');
+				let initials = parts.map(p => p[0]).join('').substring(0, 2).toUpperCase();
+				$trigger.css('background', '#0070F3').css('color', '#fff').text(initials).attr('title', label);
+			} else {
+				$trigger.css('background', '#e2e8f0').css('color', '#64748b').text('+').attr('title', 'Assign User');
+			}
+
 			save_field(
-				$inp.data('tracker'),
-				$inp.data('rowname'),
+				$wrapper.data('tracker'),
+				$wrapper.data('rowname'),
 				'assign_to',
 				val,
-				$inp
+				$trigger
 			);
 		});
 
@@ -350,28 +381,20 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 				$container.find('.assign-dropdown').hide();
 			}
 		});
-
-		// Keyboard ESC to close
-		$container.on('keydown', '.assign-search', function (e) {
-			if (e.key === 'Escape') {
-				$(this).siblings('.assign-dropdown').hide();
-				$(this).blur();
-			}
-		});
 	}
 
-	function render_assign_dropdown($dd, users, $inp) {
-		$dd.empty();
+	function render_assign_dropdown_list($list, users) {
+		$list.empty();
 		if (!users.length) {
-			$dd.append('<div class="assign-opt no-result">No users found</div>');
+			$list.append('<div class="assign-opt no-result">No users found</div>');
 			return;
 		}
 		// Add blank/clear option
-		$dd.append(`<div class="assign-opt" data-value="" data-label=""><em style="color:#94a3b8;">— Clear —</em></div>`);
+		$list.append(`<div class="assign-opt" data-value="" data-label=""><em style="color:#94a3b8;">— Clear —</em></div>`);
 		users.forEach(u => {
 			let label = u.full_name ? `${u.full_name} <small style="color:#94a3b8;">(${u.name})</small>` : u.name;
 			let plain_label = u.full_name || u.name;
-			$dd.append(`<div class="assign-opt" data-value="${u.name}" data-label="${plain_label}">${label}</div>`);
+			$list.append(`<div class="assign-opt" data-value="${u.name}" data-label="${plain_label}">${label}</div>`);
 		});
 	}
 
@@ -379,4 +402,3 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 	render_board();
 }
-
