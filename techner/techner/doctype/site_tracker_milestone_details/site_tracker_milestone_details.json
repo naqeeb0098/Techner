@@ -11,7 +11,9 @@
   "forcast",
   "actual",
   "remarks",
-  "assign_to"
+  "assign_to",
+  "approval_forcast_date",
+  "approval_actual_date"
  ],
  "fields": [
   {
@@ -24,11 +26,10 @@
   },
   {
    "columns": 1,
-   "default": "Open",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nOpen\nComplete"
+   "options": "\nPartial\nCompleted\nPending"
   },
   {
    "columns": 1,
@@ -54,13 +55,23 @@
    "fieldtype": "Link",
    "label": "Assign To",
    "options": "User"
+  },
+  {
+   "fieldname": "approval_forcast_date",
+   "fieldtype": "Date",
+   "label": "Approval Forcast Date"
+  },
+  {
+   "fieldname": "approval_actual_date",
+   "fieldtype": "Date",
+   "label": "Approval Actual Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-13 16:55:51.919745",
+ "modified": "2026-05-18 12:31:51.922922",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Site Tracker Milestone Details",
