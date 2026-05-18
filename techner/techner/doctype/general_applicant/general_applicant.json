@@ -31,7 +31,9 @@
   "resume_attachment",
   "column_break_ngga",
   "internal_status",
-  "applicant_rating"
+  "applicant_rating",
+  "section_break_eqez",
+  "preview"
  ],
  "fields": [
   {
@@ -43,6 +45,7 @@
    "fieldname": "email_address",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Email Address",
    "reqd": 1
   },
@@ -53,6 +56,7 @@
   {
    "fieldname": "general_application_opening",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "General Application Opening",
    "options": "General Application Opening"
   },
@@ -60,6 +64,7 @@
    "fetch_from": "general_application_opening.application_opening",
    "fieldname": "application_opening_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Application Opening title"
   },
   {
@@ -139,6 +144,8 @@
   {
    "fieldname": "applicant_notes",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Applicant Notes"
   },
   {
@@ -154,6 +161,8 @@
    "default": "New",
    "fieldname": "internal_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Internal Status",
    "options": "\nNew\nReviewed\nInterviewed\nNot Recommended\nShortlisted"
   },
@@ -172,12 +181,21 @@
    "fieldtype": "Table",
    "label": "General Applicant Education",
    "options": "General Applicant Education"
+  },
+  {
+   "fieldname": "section_break_eqez",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "preview",
+   "fieldtype": "HTML",
+   "label": "Preview"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-20 16:38:54.628398",
+ "modified": "2026-05-15 12:42:24.809250",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "General Applicant",

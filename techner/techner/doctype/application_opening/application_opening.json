@@ -17,6 +17,7 @@
   "closing_date",
   "employment_type",
   "location",
+  "current_job_opening",
   "section_break_mxoh",
   "description"
  ],
@@ -93,6 +94,12 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
+  },
+  {
+   "fieldname": "current_job_opening",
+   "fieldtype": "Select",
+   "label": "Current Job Opening",
+   "options": "\nOpen\nClosed"
   }
  ],
  "grid_page_length": 50,
@@ -103,7 +110,7 @@
    "link_fieldname": "application_opening"
   }
  ],
- "modified": "2026-04-07 18:36:21.152611",
+ "modified": "2026-05-14 08:20:31.112419",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Application Opening",

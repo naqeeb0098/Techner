@@ -168,7 +168,7 @@
   },
   {
    "fieldname": "contact_number",
-   "fieldtype": "Data",
+   "fieldtype": "Phone",
    "label": "Contact Number"
   },
   {
@@ -293,7 +293,7 @@
   {
    "fieldname": "html_cext",
    "fieldtype": "HTML",
-   "options": "<div style=\"margin-bottom: 12px;\">\n  <h4 style=\"color: #0f5132; margin: 0 0 8px 0;\">\n    \ud83c\udfe6 Example to Fill the Bank Details\n  </h4>\n</div>\n\n<div style=\"display: flex; flex-wrap: wrap;\">\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Bank Name</strong><br>\n    <small>Name of Bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Name on the Account</strong><br>\n    <small>Your name exactly as it appears in the bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>IBAN</strong><br>\n    <small>XXXXXXXXXXXXXXXXXXXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Swift Code</strong><br>\n    <small>XXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Account Currency</strong><br>\n    <small>PKR</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Address</strong><br>\n    <small>Full address of bank branch including City and Country</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch ID</strong><br>\n    <small>XXXXX (also known as Branch Code)</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Name</strong><br>\n    <small>Official name of the branch where your account is held</small>\n  </div>\n\n</div>\n"
+   "options": "<div style=\"margin-bottom: 12px;\">\n  <h4 style=\"color: #0f5132; margin: 0 0 8px 0;\">\n    \ud83c\udfe6 Example to Fill the Bank Details\n  </h4>\n</div>\n\n<div style=\"display: flex; flex-wrap: wrap;\">\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Bank Name</strong><br>\n    <small>Name of Bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Name on the Account</strong><br>\n    <small>Your name exactly as it appears in the bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>IBAN</strong><br>\n    <small>PKXX-SCBL-XXXXXXXXXXXXXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Swift Code</strong><br>\n    <small>XXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Account Currency</strong><br>\n    <small>PKR</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Address</strong><br>\n    <small>Full address of bank branch including City and Country</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch ID</strong><br>\n    <small>XXXXX (also known as Branch Code)</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Name</strong><br>\n    <small>Official name of the branch where your account is held</small>\n  </div>\n\n</div>\n"
   },
   {
    "fieldname": "declaration",
@@ -341,7 +341,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-06 16:50:13.477353",
+ "modified": "2026-05-14 06:56:50.007456",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",
