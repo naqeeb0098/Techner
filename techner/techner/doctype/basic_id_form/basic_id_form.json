@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:email",
+ "autoname": "format:{email}-{######}",
  "creation": "2026-01-21 16:12:32.441854",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -20,10 +20,10 @@
   "cnicid_number",
   "passport_num",
   "amended_from",
-  "access_token",
-  "is_used",
   "form_url",
   "test_lable",
+  "token",
+  "revision",
   "next_of_kin_section",
   "name1",
   "contact_number",
@@ -75,8 +75,7 @@
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Email",
-   "unique": 1
+   "label": "Email"
   },
   {
    "fieldname": "mobile_number",
@@ -140,18 +139,6 @@
    "search_index": 1
   },
   {
-   "fieldname": "access_token",
-   "fieldtype": "Data",
-   "label": "Access Token",
-   "unique": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_used",
-   "fieldtype": "Check",
-   "label": "Token Used"
-  },
-  {
    "fieldname": "form_url",
    "fieldtype": "Text",
    "label": "Form URL"
@@ -168,7 +155,7 @@
   },
   {
    "fieldname": "contact_number",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "Contact Number"
   },
   {
@@ -293,7 +280,7 @@
   {
    "fieldname": "html_cext",
    "fieldtype": "HTML",
-   "options": "<div style=\"margin-bottom: 12px;\">\n  <h4 style=\"color: #0f5132; margin: 0 0 8px 0;\">\n    \ud83c\udfe6 Example to Fill the Bank Details\n  </h4>\n</div>\n\n<div style=\"display: flex; flex-wrap: wrap;\">\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Bank Name</strong><br>\n    <small>Name of Bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Name on the Account</strong><br>\n    <small>Your name exactly as it appears in the bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>IBAN</strong><br>\n    <small>PKXX-SCBL-XXXXXXXXXXXXXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Swift Code</strong><br>\n    <small>XXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Account Currency</strong><br>\n    <small>PKR</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Address</strong><br>\n    <small>Full address of bank branch including City and Country</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch ID</strong><br>\n    <small>XXXXX (also known as Branch Code)</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Name</strong><br>\n    <small>Official name of the branch where your account is held</small>\n  </div>\n\n</div>\n"
+   "options": "<div style=\"margin-bottom: 12px;\">\n  <h4 style=\"color: #0f5132; margin: 0 0 8px 0;\">\n    \ud83c\udfe6 Example to Fill the Bank Details\n  </h4>\n</div>\n\n<div style=\"display: flex; flex-wrap: wrap;\">\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Bank Name</strong><br>\n    <small>Name of Bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Name on the Account</strong><br>\n    <small>Your name exactly as it appears in the bank</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>IBAN</strong><br>\n    <small>XXXXXXXXXXXXXXXXXXXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Swift Code</strong><br>\n    <small>XXXXX</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Account Currency</strong><br>\n    <small>PKR</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Address</strong><br>\n    <small>Full address of bank branch including City and Country</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch ID</strong><br>\n    <small>XXXXX (also known as Branch Code)</small>\n  </div>\n\n  <div style=\"flex: 1 1 48%; border: 1px solid #d1e7dd; padding: 12px; border-radius: 6px; background-color: #f8fdfb;\">\n    <strong>Branch Name</strong><br>\n    <small>Official name of the branch where your account is held</small>\n  </div>\n\n</div>\n"
   },
   {
    "fieldname": "declaration",
@@ -335,17 +322,34 @@
    "fieldtype": "Table",
    "label": "Basic ID Documents",
    "options": "Basic ID Documents"
+  },
+  {
+   "fieldname": "token",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Token"
+  },
+  {
+   "default": "0",
+   "fieldname": "revision",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Revision",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-14 06:56:50.007456",
+ "modified": "2026-05-23 16:25:11.864292",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
