@@ -6,7 +6,6 @@ class BasicIDForm(Document):
 
 	def validate(self):
 		self.validate_email_token_revision()
-		self.validate_email_availability()
 
 	def validate_email_token_revision(self):
 
