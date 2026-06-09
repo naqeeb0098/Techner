@@ -16,6 +16,48 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 		</div>
 	`);
 
+	// ==========================================
+	// ⚙️ COLUMN WIDTH SETTINGS
+	// Yahan aap har column ki width apne hisaab se set kar sakte hain.
+	// Fieldname (database name) use karein. Example: 'skillset': '400px'
+	// ==========================================
+	const COLUMN_WIDTHS = {
+		'job_applicant': '120px',
+		'applicant_name': '150px',
+		'job_applicant_source': '150px',
+		'job_opening': '150px',
+		'job_opening_title': '135px',
+		'role': '120px',
+		'initial_screening_date': '90px',
+		'interviewer_name': '100px',
+		'nationality': '100px',
+		'education': '180px',
+		'experience': '250px',
+		'foreign_education': '250px',
+		'foreign_experience': '150px',
+		'cv_fit_for_role': '120px',
+		'competence_impression': '120px',
+		'management_skills': '120px',
+		'relevant_experience': '120px',
+		'customer_relationship': '120px',
+		'english_communication': '120px',
+		'contract_permanent_and_benefits': '180px',
+		'notice_period': '100px',
+		'location': '120px',
+		'current_salary': '100px',
+		'expected_salary': '100px',
+		'conclusionfeedback': '350px',
+		'recommendation': '130px',
+		'p2': '70px',
+		'reasoning': '150px',
+		'certifications_and_tools': '200px',
+		'interview_date': '90px',
+		'final_conclusion': '350px',
+		'client_interview_history': '250px',
+		'skillset': '500px',
+		'skills': '500px'
+	};
+
 	// ---------------- FILTERS ----------------
 	let f_applicant = page.add_field({ fieldtype: 'Link', fieldname: 'job_applicant', options: 'Job Applicant', label: 'Job Applicant', only_select: true, change: refresh_data });
 	let f_opening   = page.add_field({ fieldtype: 'Link', fieldname: 'job_opening', options: 'Job Opening', label: 'Job Opening', only_select: true, change: refresh_data });
@@ -81,7 +123,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 				z-index: 50;
 			}
 			.atbl thead th {
-				padding: 11px 14px;
+				padding: 6px 8px;
 				font-size: 11px;
 				font-weight: 600;
 				letter-spacing: 0.06em;
@@ -90,7 +132,8 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 				background: rgb(24, 126, 139);
 				border-right: 1px solid rgb(58, 138, 131);
 				border-bottom: 2px solid rgb(35, 142, 156);
-				white-space: nowrap;
+				white-space: normal;
+				word-break: break-word;
 				position: sticky;
 				top: 0;
 			}
@@ -115,7 +158,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 
 			/* ID column */
 			.atbl td.col-id {
-				padding: 10px 12px;
+				padding: 6px 8px;
 				white-space: nowrap;
 				vertical-align: middle;
 			}
@@ -130,7 +173,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 
 			/* Date column */
 			.atbl td.col-date {
-				padding: 8px 10px;
+				padding: 6px 8px;
 				white-space: nowrap;
 				font-size: 12px;
 				color: #4a6080;
@@ -149,15 +192,15 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 			.cell-display {
 				display: block;
 				width: 100%;
-				min-height: 42px;
-				padding: 10px 12px;
+				min-height: 24px;
+				padding: 6px 8px;
 				font-size: 13px;
 				color: #1e2d3d;
 				line-height: 1.5;
 				cursor: text;
 				box-sizing: border-box;
 				/* WRAP — yahi asli fix hai */
-				white-space: normal;
+				white-space: pre-wrap;
 				word-break: break-word;
 				overflow-wrap: break-word;
 			}
@@ -200,8 +243,8 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 			.direct-input {
 				display: block;
 				width: 100%;
-				min-height: 42px;
-				padding: 0 12px;
+				min-height: 24px;
+				padding: 0 8px;
 				font-size: 13px;
 				color: #1e2d3d;
 				background: #fff;
@@ -209,7 +252,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 				outline: none;
 				font-family: inherit;
 				box-sizing: border-box;
-				line-height: 42px;
+				line-height: 24px;
 				box-shadow: inset 0 0 0 2px #1a5faa;
 			}
 
@@ -217,8 +260,8 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 			.direct-select {
 				display: block;
 				width: 100%;
-				min-height: 42px;
-				padding: 0 12px;
+				min-height: 24px;
+				padding: 0 8px;
 				font-size: 13px;
 				color: #1e2d3d;
 				background: #fff;
@@ -235,8 +278,8 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 			textarea.direct-textarea {
 				display: block;
 				width: 100%;
-				min-height: 42px;
-				padding: 10px 12px;
+				min-height: 24px;
+				padding: 6px 8px;
 				font-size: 12px;
 				line-height: 1.6;
 				color: #1e2d3d;
@@ -263,9 +306,9 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 				border: none !important;
 				box-shadow: inset 0 0 0 2px #1a5faa !important;
 				border-radius: 0 !important;
-				height: 42px !important;
-				line-height: 42px !important;
-				padding: 0 12px !important;
+				height: 24px !important;
+				line-height: 24px !important;
+				padding: 0 8px !important;
 				background: #fff !important;
 			}
 			.link-wrap .link-btn,
@@ -282,20 +325,26 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 		<th class="th-id" style="min-width:130px">Applicant ID</th>
 		${order.map(f => {
 			let m = meta[f];
+			let custom_w = COLUMN_WIDTHS[f];
+			
 			if (m?.fieldtype === 'Date') {
-				return `<th class="th-date" style="min-width:90px; width:90px">${m?.label || f}</th>`;
+				let w = custom_w || '90px';
+				return `<th class="th-date" style="min-width:${w}; max-width:${w}; width:${w};">${m?.label || f}</th>`;
 			}
-			let w = '150px';
-			if (m?.fieldtype === 'Link')  w = '170px';
-			if (m?.fieldtype === 'Select') w = '150px';
-			if (['Text','Long Text','Small Text'].includes(m?.fieldtype)) w = '260px';
+			
+			let w = custom_w || '100px';
+			if (!custom_w) {
+				if (m?.fieldtype === 'Link')  w = '120px';
+				else if (m?.fieldtype === 'Select') w = '120px';
+				else if (['Text','Long Text','Small Text'].includes(m?.fieldtype)) w = '180px';
+			}
 
 			let cls = 'th-data';
 			if (m?.fieldtype === 'Link')   cls = 'th-link';
 			else if (m?.fieldtype === 'Select') cls = 'th-select';
 			else if (['Text','Long Text','Small Text'].includes(m?.fieldtype)) cls = 'th-text';
 
-			return `<th class="${cls}" style="min-width:${w}">${m?.label || f}</th>`;
+			return `<th class="${cls}" style="min-width:${w}; max-width:${w};">${m?.label || f}</th>`;
 		}).join('')}
 				</tr>
 			</thead>
@@ -321,10 +370,13 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 				let val = row[f] || '';
 				let esc = frappe.utils.escape_html(val);
 
+				let custom_w = COLUMN_WIDTHS[f];
+
 				// ---- LINK ----
 				if (m?.fieldtype === 'Link') {
+					let minW = custom_w || '120px';
 					html += `
-					<td style="min-width:170px" data-doc="${row.name}" data-field="${f}" data-type="link">
+					<td style="min-width:${minW}; max-width:${minW};" data-doc="${row.name}" data-field="${f}" data-type="link">
 						<span class="cell-display ${val ? '' : 'empty'}">${val || '—'}</span>
 						<div class="cell-editor">
 							<div class="link-wrap"
@@ -339,11 +391,12 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 
 				// ---- SELECT ----
 				else if (m?.fieldtype === 'Select') {
+					let minW = custom_w || '120px';
 					let opts = (m.options || '').split('\n')
 						.map(o => o ? `<option value="${o}" ${o == val ? 'selected' : ''}>${o}</option>` : '')
 						.join('');
 					html += `
-					<td style="min-width:150px" data-doc="${row.name}" data-field="${f}" data-type="select">
+					<td style="min-width:${minW}; max-width:${minW};" data-doc="${row.name}" data-field="${f}" data-type="select">
 						<span class="cell-display sel-display ${val ? '' : 'empty'}">${val || '—'}</span>
 						<div class="cell-editor">
 							<select class="direct-select cell-sel-input"
@@ -358,24 +411,30 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 
 				// ---- DATE ----
 				else if (m?.fieldtype === 'Date') {
-					html += `<td class="col-date" style="min-width:90px;width:90px;">${val}</td>`;
+					let minW = custom_w || '90px';
+					html += `<td class="col-date" style="min-width:${minW}; max-width:${minW}; width:${minW};">${val}</td>`;
 				}
 
 				// ---- TEXT / LONG TEXT / SMALL TEXT ----
 				else if (['Text','Long Text','Small Text'].includes(m?.fieldtype)) {
-					let minW = m?.fieldtype === 'Long Text' ? '260px' : m?.fieldtype === 'Text' ? '240px' : '220px';
+					let defW = m?.fieldtype === 'Long Text' ? '200px' : m?.fieldtype === 'Text' ? '180px' : '160px';
+					let minW = custom_w || defW;
 					html += `
-					<td style="min-width:${minW}; padding:0;">
-						<textarea class="direct-textarea cell-textarea"
-							data-doc="${row.name}"
-							data-field="${f}">${esc}</textarea>
+					<td style="min-width:${minW}; max-width:${minW}; padding:0;" data-doc="${row.name}" data-field="${f}" data-type="text">
+						<span class="cell-display ${val ? '' : 'empty'}">${esc || '—'}</span>
+						<div class="cell-editor">
+							<textarea class="direct-textarea cell-textarea"
+								data-doc="${row.name}"
+								data-field="${f}">${esc}</textarea>
+						</div>
 					</td>`;
 				}
 
 				// ---- DATA (short input) ----
 				else {
+					let minW = custom_w || '100px';
 					html += `
-					<td style="min-width:140px" data-doc="${row.name}" data-field="${f}" data-type="data">
+					<td style="min-width:${minW}; max-width:${minW};" data-doc="${row.name}" data-field="${f}" data-type="data">
 						<span class="cell-display ${val ? '' : 'empty'}">${esc || '—'}</span>
 						<div class="cell-editor">
 							<input class="direct-input cell-data-input"
@@ -453,6 +512,12 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 			$inp.focus();
 			let v = $inp.val();
 			$inp[0].setSelectionRange(v.length, v.length);
+		} else if (type === 'text') {
+			let $ta = $td.find('textarea');
+			$ta.focus();
+			let v = $ta.val();
+			$ta[0].setSelectionRange(v.length, v.length);
+			auto_height($ta[0]);
 		}
 	}
 
@@ -530,7 +595,14 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 		// Textarea — blur pe save
 		$('.cell-textarea').on('blur', function () {
 			let $el = $(this);
-			save($el.data('doc'), $el.data('field'), $el.val(), $el);
+			let $td = $el.closest('td');
+			let val = $el.val();
+			save($el.data('doc'), $el.data('field'), val, $el);
+			// display update
+			let $disp = $td.find('.cell-display');
+			$disp.text(val || '—');
+			$disp.toggleClass('empty', !val);
+			exit_edit($td);
 		});
 
 		// Textarea auto height
@@ -543,7 +615,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 
 	function auto_height(el) {
 		el.style.height = 'auto';
-		el.style.height = Math.max(42, el.scrollHeight) + 'px';
+		el.style.height = Math.max(24, el.scrollHeight) + 'px';
 	}
 
 	page.set_primary_action(__('Refresh'), refresh_data);
