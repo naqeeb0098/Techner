@@ -28,7 +28,7 @@ class BasicIDForm(Document):
 				child.revision,
 				parent.name as parent_name
 			FROM 
-				`tabBasic Id Form Emails` parent
+				`tabBasic ID Form Emails` parent
 			JOIN 
 				`tabEmails Details` child ON child.parent = parent.name
 			WHERE 
@@ -65,7 +65,7 @@ class BasicIDForm(Document):
 			used = frappe.db.count("Emails Details", {"parent": parent, "is_used": 1})
 
 			if total == used:
-				frappe.db.set_value("Basic Id Form Emails", parent, "is_used", 1)
+				frappe.db.set_value("Basic ID Form Emails", parent, "is_used", 1)
 
 
 # import frappe

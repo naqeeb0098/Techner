@@ -18,15 +18,17 @@ def get_tracker_data(filters=None):
             query_filters["applicant_name"] = ["like", f"%{filters.get('applicant_name')}%"]
         if filters.get("job_applicant_source"):
             query_filters["job_applicant_source"] = filters.get("job_applicant_source")
-        
-        # Date range filter for initial_screening_date
-        if filters.get("from_date") and filters.get("to_date"):
-            query_filters["initial_screening_date"] = ["between", [filters.get("from_date"), filters.get("to_date")]]
-        elif filters.get("from_date"):
-            query_filters["initial_screening_date"] = [">=", filters.get("from_date")]
-        elif filters.get("to_date"):
-            query_filters["initial_screening_date"] = ["<=", filters.get("to_date")]
-
+        if filters.get("role"):
+            query_filters["role"] = ["like", f"%{filters.get('role')}%"]
+        if filters.get("recommendation"):
+            query_filters["recommendation"] = filters.get("recommendation")
+        if filters.get("final_conclusion"):
+            query_filters["final_conclusion"] = ["like", f"%{filters.get('final_conclusion')}%"]
+        if filters.get("location"):
+            query_filters["location"] = ["like", f"%{filters.get('location')}%"]        
+        if filters.get("experience"):
+            query_filters["experience"] = ["like", f"%{filters.get('experience')}%"]   
+            
     meta = frappe.get_meta("Applicant Tracker")
     fields = [f.fieldname for f in meta.fields if f.fieldtype not in ["Section Break", "Column Break"]]
     

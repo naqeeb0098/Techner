@@ -9,6 +9,8 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 	let project_filter = page.add_field({ fieldtype: 'Link', fieldname: 'project', options: 'Site Projects', label: 'Project', change: function () { render_board(); } });
 	let site_filter = page.add_field({ fieldtype: 'Link', fieldname: 'site', options: 'Site', label: 'Site', change: function () { render_board(); } });
 	let user_filter = page.add_field({ fieldtype: 'Link', fieldname: 'assign_to', options: 'User', label: 'Assign To', change: function () { render_board(); } });
+	let status_filter = page.add_field({fieldtype: 'Select',fieldname: 'status',label: 'Status',options: '\nPending\nPartial\nCompleted',change: function () {render_board();}});
+	let remarks_filter = page.add_field({fieldtype: 'Data',fieldname: 'remarks',label: 'Remarks',change: frappe.utils.debounce(function () {render_board();}, 500)});
 
 	page.main.append('<div id="stats-container" style="padding: 10px 15px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 15px;">' +
 		'<div class="stats-card" style="background: #fff; padding: 10px 15px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; min-width: 120px;">' +
@@ -75,7 +77,9 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		return {
 			project: project_filter.get_value(),
 			site: site_filter.get_value(),
-			assign_to: user_filter.get_value()
+			assign_to: user_filter.get_value(),
+			status: status_filter.get_value(),
+			remarks: remarks_filter.get_value()
 		};
 	}
 
@@ -129,6 +133,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 		// Top header
 		html += '<thead><tr>';
+		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:50px; text-align:center;">Sr.</th>';
 		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Project</th>';
 		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Site Name</th>';
 
@@ -148,11 +153,14 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		// Body
 		html += '<tbody>';
 		if (data.length === 0) {
-			html += `<tr><td colspan="${2 + (milestones.length * 7)}" class="text-center text-muted" style="padding:20px;">No records found.</td></tr>`;
+			html += `<tr><td colspan="${3 + (milestones.length * 7)}" class="text-center text-muted" style="padding:20px;">No records found.</td></tr>`;
 		}
 
+		let index = 1;
 		data.forEach(row => {
 			html += '<tr>';
+
+			html += `<td style="text-align:center; font-weight:600; color:#64748b; background-color:#f8fafc;">${index++}</td>`;
 
 			let p_link = `<a href="/app/site-projects/${row.project}" class="doc-link">${row.project}</a>`;
 			let s_link = `<a href="/app/site/${row.site}" class="doc-link">${row.site_name || row.site || ''}</a>`;

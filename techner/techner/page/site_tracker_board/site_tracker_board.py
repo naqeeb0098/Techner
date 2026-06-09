@@ -1,8 +1,8 @@
 import frappe
+import json
 
 @frappe.whitelist()
 def get_board_data(filters=None):
-    import json
     if filters:
         filters = json.loads(filters)
     else:
@@ -51,6 +51,14 @@ def get_board_data(filters=None):
                 has_matched_user = False if filters.get("assign_to") else True
 
                 for m in milestones:
+                    # Status Filter
+                    if filters.get("status") and m.status != filters.get("status"):
+                        continue
+                    # Remarks Filter
+                    if filters.get("remarks"):
+                        remarks = (m.remarks or "").lower()
+                        if filters.get("remarks").lower() not in remarks:
+                            continue
                     m_name = m.project_milestone
                     if m_name:
                         milestone_names.add(m_name)
@@ -61,6 +69,8 @@ def get_board_data(filters=None):
                 # If a user is selected and NO milestone matches this user on this project-site, skip row
                 if not has_matched_user:
                     continue
+                if not row["milestones"]:
+                   continue
             else:
                 if filters.get("assign_to"):
                     # user filter active but no tracker

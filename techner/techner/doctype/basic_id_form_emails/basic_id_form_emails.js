@@ -1,7 +1,7 @@
 // Copyright (c) 2026, Naqeeb Khan and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Basic Id Form Emails", {
+// frappe.ui.form.on("Basic ID Form Emails", {
 // 	refresh(frm) {
 
 // 	},
