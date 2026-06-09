@@ -9,6 +9,7 @@
   "section_break_o3wx",
   "full_name",
   "email",
+  "personal_email",
   "mobile_number",
   "date_of_birth",
   "current_residential_address",
@@ -57,7 +58,15 @@
   "section_break_zhdc",
   "column_break_ldbv",
   "html_gyan",
-  "basic_id_documents"
+  "national_identity_card_front",
+  "national_identity_card_back",
+  "passport",
+  "any_one_utility_bill",
+  "any_other_document_1",
+  "any_other_document_2",
+  "any_other_document_3",
+  "any_other_document_4",
+  "bank_statement"
  ],
  "fields": [
   {
@@ -75,7 +84,7 @@
    "fieldname": "email",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Email"
+   "label": "Company Email"
   },
   {
    "fieldname": "mobile_number",
@@ -318,12 +327,6 @@
    "options": "Employee"
   },
   {
-   "fieldname": "basic_id_documents",
-   "fieldtype": "Table",
-   "label": "Basic ID Documents",
-   "options": "Basic ID Documents"
-  },
-  {
    "fieldname": "token",
    "fieldtype": "Data",
    "hidden": 1,
@@ -339,13 +342,63 @@
    "in_standard_filter": 1,
    "label": "Revision",
    "read_only": 1
+  },
+  {
+   "fieldname": "personal_email",
+   "fieldtype": "Data",
+   "label": "Personal Email"
+  },
+  {
+   "fieldname": "national_identity_card_front",
+   "fieldtype": "Attach",
+   "label": "National Identity Card (Front)"
+  },
+  {
+   "fieldname": "national_identity_card_back",
+   "fieldtype": "Attach",
+   "label": "National Identity Card (Back)"
+  },
+  {
+   "fieldname": "passport",
+   "fieldtype": "Attach",
+   "label": "Passport "
+  },
+  {
+   "fieldname": "any_one_utility_bill",
+   "fieldtype": "Attach",
+   "label": "Any One Utility Bill"
+  },
+  {
+   "fieldname": "any_other_document_1",
+   "fieldtype": "Attach",
+   "label": "Any Other Document 1"
+  },
+  {
+   "fieldname": "any_other_document_2",
+   "fieldtype": "Attach",
+   "label": "Any Other Document 2"
+  },
+  {
+   "fieldname": "any_other_document_3",
+   "fieldtype": "Attach",
+   "label": "Any Other Document 3"
+  },
+  {
+   "fieldname": "bank_statement",
+   "fieldtype": "Attach",
+   "label": "Bank Statement"
+  },
+  {
+   "fieldname": "any_other_document_4",
+   "fieldtype": "Attach",
+   "label": "Any Other Document 4"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-23 16:25:11.864292",
+ "modified": "2026-06-03 18:25:58.378539",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",

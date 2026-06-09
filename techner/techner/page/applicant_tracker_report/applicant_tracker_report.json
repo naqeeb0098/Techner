@@ -1,9 +1,10 @@
 {
  "content": null,
- "creation": "2026-04-27 19:46:00.000000",
+ "creation": "2026-04-27 19:46:00",
+ "docstatus": 0,
  "doctype": "Page",
  "idx": 0,
- "modified": "2026-04-27 19:46:00.000000",
+ "modified": "2026-06-05 12:22:42.014674",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "applicant-tracker-report",
@@ -15,8 +16,14 @@
   },
   {
    "role": "HR Manager"
+  },
+  {
+   "role": "Recruitment"
   }
  ],
+ "script": null,
  "standard": "Yes",
+ "style": null,
+ "system_page": 0,
  "title": "Applicant Tracker Report"
 }

@@ -10,6 +10,7 @@
   "posting_date",
   "section_break_zafd",
   "is_used",
+  "get_employees_email",
   "column_break_xnga",
   "send_email",
   "email_template",
@@ -79,15 +80,20 @@
    "fieldtype": "Link",
    "label": "Email Template",
    "options": "Notification"
+  },
+  {
+   "fieldname": "get_employees_email",
+   "fieldtype": "Button",
+   "label": "Get Employees Email"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 15:17:27.197777",
+ "modified": "2026-06-01 11:56:28.570640",
  "modified_by": "Administrator",
  "module": "Techner",
- "name": "Basic Id Form Emails",
+ "name": "Basic ID Form Emails",
  "owner": "Administrator",
  "permissions": [
   {

@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestBasicIDFormEmails(FrappeTestCase):
+class TestDocumentTrackingOwner(FrappeTestCase):
 	pass

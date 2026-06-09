@@ -3,7 +3,7 @@ import secrets
 from frappe.model.document import Document
 from frappe.utils import get_url
 
-class BasicIdFormEmails(Document):
+class BasicIDFormEmails(Document):
 
 	def validate(self):
 		if self.send_email:
@@ -26,10 +26,10 @@ class BasicIdFormEmails(Document):
 				{"email": row.email}
 			)
 
-			if exists:
-				row.revision = 1
-			else:
-				row.revision = 0
+			#if exists:
+			#	row.revision = 1
+			#else:
+			#	row.revision = 0
 
 	def send_emails_to_details(self):
 		if not self.email_template:
@@ -74,7 +74,7 @@ class BasicIdFormEmails(Document):
 # from frappe.model.document import Document
 # from frappe.utils import get_url
 
-# class BasicIdFormEmails(Document):
+# class BasicIDFormEmails(Document):
 # 	def validate(self):
 # 		if self.send_email:
 # 			self.send_emails_to_details()
@@ -117,7 +117,7 @@ class BasicIdFormEmails(Document):
 # from frappe.model.document import Document
 # from frappe.utils import get_url
 
-# class BasicIdFormEmails(Document):
+# class BasicIDFormEmails(Document):
 # 	def validate(self):
 # 		if self.send_email:
 # 			self.send_emails_to_details()

@@ -74,15 +74,14 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Revision",
-   "read_only": 1
+   "label": "Revision"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-23 15:30:29.436253",
+ "modified": "2026-06-01 16:15:20.726206",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Emails Details",

@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:DT-{####}",
+ "creation": "2026-06-08 16:06:59.106027",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "document_id",
+  "pro_number",
+  "ver",
+  "document_tracking_function",
+  "status",
+  "initial_date",
+  "column_break_ncbk",
+  "author",
+  "author_name",
+  "dt_owner",
+  "reviewed_by",
+  "reviewed_date",
+  "approver",
+  "approval_date",
+  "column_break_kfer",
+  "validy",
+  "description_of_changes",
+  "location"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "document_id",
+   "fieldtype": "Data",
+   "label": "Document ID"
+  },
+  {
+   "fieldname": "pro_number",
+   "fieldtype": "Data",
+   "label": "Policy Number"
+  },
+  {
+   "fieldname": "ver",
+   "fieldtype": "Float",
+   "label": "Ver"
+  },
+  {
+   "fieldname": "document_tracking_function",
+   "fieldtype": "Link",
+   "label": "Document Tracking Function",
+   "options": "Document Tracking Function"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nApproved\nHold"
+  },
+  {
+   "fieldname": "initial_date",
+   "fieldtype": "Date",
+   "label": "Initial Date"
+  },
+  {
+   "fieldname": "column_break_ncbk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "author",
+   "fieldtype": "Link",
+   "label": "Author\u00a0",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "author.employee_name",
+   "fieldname": "author_name",
+   "fieldtype": "Data",
+   "label": "Author Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dt_owner",
+   "fieldtype": "Link",
+   "label": "DT Owner",
+   "options": "Document Tracking Owner"
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Data",
+   "label": "Reviewed by"
+  },
+  {
+   "fieldname": "reviewed_date",
+   "fieldtype": "Date",
+   "label": "Reviewed date"
+  },
+  {
+   "fieldname": "approver",
+   "fieldtype": "Data",
+   "label": "Approver"
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "label": "Approval date"
+  },
+  {
+   "fieldname": "column_break_kfer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "validy",
+   "fieldtype": "Data",
+   "label": "Validy"
+  },
+  {
+   "fieldname": "description_of_changes",
+   "fieldtype": "Data",
+   "label": "Description of changes"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-08 16:23:53.875029",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Document Tracking",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
