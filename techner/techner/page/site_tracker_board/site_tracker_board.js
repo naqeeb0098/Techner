@@ -145,7 +145,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		html += '<thead><tr>';
 		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:50px; text-align:center;">Sr.</th>';
 		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Project</th>';
-		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Site Name</th>';
+		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Site</th>';
 
 		milestones.forEach((m, idx) => {
 			let c = MILESTONE_COLORS[idx % MILESTONE_COLORS.length];
@@ -173,7 +173,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 			html += `<td style="text-align:center; font-weight:600; color:#64748b; background-color:#f8fafc;">${index++}</td>`;
 
 			let p_link = `<a href="/app/site-projects/${row.project}" class="doc-link">${row.project}</a>`;
-			let s_link = `<a href="/app/site/${row.site}" class="doc-link">${row.site_name || row.site || ''}</a>`;
+			let s_link = `<a href="/app/site/${row.site}" class="doc-link">${row.site || ''}</a>`;
 
 			html += `<td class="link-col">${p_link}</td>`;
 			html += `<td class="link-col">${s_link}</td>`;
