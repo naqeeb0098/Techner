@@ -73,6 +73,16 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		return '';
 	}
 
+	function get_iso_week_number(date_str) {
+		if (!date_str) return '';
+		const date = new Date(date_str);
+		if (isNaN(date.getTime())) return '';
+		date.setHours(0, 0, 0, 0);
+		date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+		const week1 = new Date(date.getFullYear(), 0, 4);
+		return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+	}
+
 	function get_filters() {
 		return {
 			project: project_filter.get_value(),
@@ -139,12 +149,12 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 		milestones.forEach((m, idx) => {
 			let c = MILESTONE_COLORS[idx % MILESTONE_COLORS.length];
-			html += `<th colspan="7" class="ms-header" style="background-color:${c.bg}; color:${c.text};">${m}</th>`;
+			html += `<th colspan="8" class="ms-header" style="background-color:${c.bg}; color:${c.text};">${m}</th>`;
 		});
 		html += '</tr><tr>';
 
 		milestones.forEach(() => {
-				['Assign To', 'Status', 'Submission Forecast Date', 'Submission Actual Date', 'Approval Forecast Date', 'Approval Actual Date', 'Remarks'].forEach(col => {
+				['WK#', 'Assign To', 'Status', 'Submission Forecast Date', 'Submission Actual Date', 'Approval Forecast Date', 'Approval Actual Date', 'Remarks'].forEach(col => {
 				html += `<th style="background-color:#f0f4f8; font-size:11px; font-weight:600; color:#475569; text-align:center; text-transform:uppercase; letter-spacing:0.4px;">${col}</th>`;
 			});
 		});
@@ -153,7 +163,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		// Body
 		html += '<tbody>';
 		if (data.length === 0) {
-			html += `<tr><td colspan="${3 + (milestones.length * 7)}" class="text-center text-muted" style="padding:20px;">No records found.</td></tr>`;
+			html += `<tr><td colspan="${3 + (milestones.length * 8)}" class="text-center text-muted" style="padding:20px;">No records found.</td></tr>`;
 		}
 
 		let index = 1;
@@ -177,11 +187,17 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 				if (!site_tracker || !row_name) {
 					// No tracker — show dashes for all cols
-					for (let i = 0; i < 7; i++) {
+					for (let i = 0; i < 8; i++) {
 						html += `<td><span class="text-muted" style="opacity:0.3;">-</span></td>`;
 					}
 					return;
 				}
+
+				let actual_val   = m_data.actual   || '';
+				let wk_num = get_iso_week_number(actual_val);
+
+				// --- WK# ---
+				html += `<td style="text-align:center; background-color:#f8fafc; font-weight:500; color:#475569;"><span class="wk-num" data-tracker="${site_tracker}" data-rowname="${row_name}">${wk_num}</span></td>`;
 
 				// --- Assign To (avatar/dropdown) ---
 				let assign_val = m_data.assign_to || '';
@@ -224,7 +240,6 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 				// --- Forecast date column ---
 				let forecast_val = m_data.forcast || '';
-				let actual_val   = m_data.actual   || '';
 				let app_forecast_val = m_data.approval_forcast_date || '';
 				let app_actual_val = m_data.approval_actual_date || '';
 				
@@ -290,6 +305,11 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 						let css_bg = bg || '';
 						$forecast_input.closest('td').css('background', css_bg);
 						$actual_input.closest('td').css('background', css_bg);
+						
+						if (field === 'actual') {
+							let wk_val = get_iso_week_number(av);
+							$row.find(`.wk-num[data-tracker="${tracker_id}"][data-rowname="${rowname_id}"]`).text(wk_val);
+						}
 					}
 				} else {
 					$el.css('opacity', '1').css('border-color', 'red');
