@@ -6,7 +6,21 @@ class BasicIDForm(Document):
 
 	def validate(self):
 		self.convert_emails_to_lowercase()
-		self.validate_email_token_revision()
+		
+		run_validation = True
+		if not self.is_new() and self.get_doc_before_save():
+			changed = False
+			for df in self.meta.fields:
+				if df.is_virtual or df.fieldname == "test_lable":
+					continue
+				if self.has_value_changed(df.fieldname):
+					changed = True
+					break
+			if not changed:
+				run_validation = False
+				
+		if run_validation:
+			self.validate_email_token_revision()
   
 	def convert_emails_to_lowercase(self):
 		if self.email:
