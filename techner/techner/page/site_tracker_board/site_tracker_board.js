@@ -11,7 +11,7 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 	let user_filter = page.add_field({ fieldtype: 'Link', fieldname: 'assign_to', options: 'User', label: 'Assign To', change: function () { render_board(); } });
 	let status_filter = page.add_field({fieldtype: 'Select',fieldname: 'status',label: 'Status',options: '\nPending\nPartial\nCompleted',change: function () {render_board();}});
 	let remarks_filter = page.add_field({fieldtype: 'Data',fieldname: 'remarks',label: 'Remarks',change: frappe.utils.debounce(function () {render_board();}, 500)});
-
+	let week_filter = page.add_field({fieldtype: 'Data',fieldname: 'week_no',label: 'Week #',change: frappe.utils.debounce(function () {render_board();}, 300)});
 	page.main.append('<div id="stats-container" style="padding: 10px 15px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 15px;">' +
 		'<div class="stats-card" style="background: #fff; padding: 10px 15px; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; min-width: 120px;">' +
 			'<span style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600;">Total Sites</span>' +
@@ -89,7 +89,8 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 			site: site_filter.get_value(),
 			assign_to: user_filter.get_value(),
 			status: status_filter.get_value(),
-			remarks: remarks_filter.get_value()
+			remarks: remarks_filter.get_value(),
+			week_no: week_filter.get_value()
 		};
 	}
 
@@ -110,6 +111,29 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 	}
 
 	function draw_table(data, milestones) {
+		const selected_week = (week_filter.get_value() || '').trim();
+
+		if (selected_week) {
+			data = data.filter(row => {
+
+				let found = false;
+
+				milestones.forEach(m => {
+					let m_data = row.milestones[m] || {};
+					let actual_date = m_data.actual || '';
+
+					if (actual_date) {
+						let wk = String(get_iso_week_number(actual_date));
+
+						if (wk === selected_week) {
+							found = true;
+						}
+					}
+				});
+
+				return found;
+			});
+		}
 		let html = '<style>';
 		html += '#tracker-board-table { border-collapse: collapse; width: 100%; font-size: 12px; font-family: "Inter", sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }';
 		html += '#tracker-board-table th { border: 1px solid #e2e8f0; padding: 4px 6px; text-align: center; vertical-align: middle; white-space: normal; line-height: 1.2; }';

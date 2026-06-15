@@ -10,15 +10,19 @@ def get_report_data(filters=None):
     if not filters:
         filters = {}
         
-    records = get_raw_records(filters)
+    by_employee_code = filters.get("by_employee_code")
+        
+    records = get_raw_records(filters, by_employee_code)
     
-    # Group records by email
-    records_by_email = {}
+    # Group records by email or employee code
+    records_by_group = {}
     for r in records:
-        email_key = r.get("email") or ""
-        if email_key not in records_by_email:
-            records_by_email[email_key] = []
-        records_by_email[email_key].append(r)
+        group_key = r.get("test_lable") if by_employee_code else r.get("email")
+        if not group_key:
+            group_key = "Unknown"
+        if group_key not in records_by_group:
+            records_by_group[group_key] = []
+        records_by_group[group_key].append(r)
         
     compared_fields = [
         "full_name",
@@ -55,8 +59,8 @@ def get_report_data(filters=None):
     
     grouped_data = []
     
-    # Process each email group to create a grouped segment for each employee
-    for email_key, user_records in records_by_email.items():
+    # Process each group segment to create a grouped segment for each employee
+    for group_key, user_records in records_by_group.items():
         # Chronological order (oldest first)
         chrono_records = list(reversed(user_records))
         
@@ -75,11 +79,13 @@ def get_report_data(filters=None):
                     if values_differ(val_curr, val_prev):
                         rec["_changed_fields"].append(field)
                         
+        latest_first_records = list(reversed(chrono_records))
+                        
         grouped_data.append({
-            "employee_title": chrono_records[0].get("full_name") or chrono_records[0].get("email") or _("Record"),
-            "employee_code": chrono_records[0].get("test_lable") or chrono_records[0].get("name") or "",
-            "email": email_key,
-            "records": chrono_records
+            "employee_title": latest_first_records[0].get("full_name") or latest_first_records[0].get("email") or _("Record"),
+            "employee_code": latest_first_records[0].get("test_lable") or latest_first_records[0].get("name") or "",
+            "email": latest_first_records[0].get("email") or "",
+            "records": latest_first_records
         })
         
     # Sort grouped segments alphabetically by employee name
@@ -127,7 +133,7 @@ def get_report_data(filters=None):
     }
 
 
-def get_raw_records(filters):
+def get_raw_records(filters, by_employee_code=False):
     conditions = {}
 
     if filters.get("email"):
@@ -178,11 +184,13 @@ def get_raw_records(filters):
         "date",
     ]
 
+    order_by = "test_lable ASC, creation DESC" if by_employee_code else "email ASC, creation DESC"
+
     records = frappe.get_all(
         "Basic ID Form",
         filters=conditions,
         fields=fields,
-        order_by="email ASC, creation DESC",
+        order_by=order_by,
     )
     return records
 

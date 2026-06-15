@@ -5,7 +5,15 @@ from frappe.model.document import Document
 class BasicIDForm(Document):
 
 	def validate(self):
-		self.validate_email_token_revision()
+		self.convert_emails_to_lowercase()
+		# self.validate_email_token_revision()
+  
+	def convert_emails_to_lowercase(self):
+		if self.email:
+			self.email = self.email.strip().lower()
+
+		if self.email_address:
+			self.email_address = self.email_address.strip().lower()
 
 	def validate_email_token_revision(self):
 

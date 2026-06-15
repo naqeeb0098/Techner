@@ -17,10 +17,7 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 	`);
 
 	// ==========================================
-	// ⚙️ COLUMN WIDTH SETTINGS
-	// Yahan aap har column ki width apne hisaab se set kar sakte hain.
-	// Fieldname (database name) use karein. Example: 'skillset': '400px'
-	// ==========================================
+	//  COLUMN WIDTH SETTINGS
 	const COLUMN_WIDTHS = {
 		'job_applicant': '120px',
 		'applicant_name': '150px',
@@ -619,6 +616,9 @@ frappe.pages['applicant-tracker-report'].on_page_load = function (wrapper) {
 	}
 
 	page.set_primary_action(__('Refresh'), refresh_data);
+page.add_button(__('Applicant Tracker'), function () {
+	frappe.new_doc('Applicant Tracker');
+});
 	refresh_data();
 };
 

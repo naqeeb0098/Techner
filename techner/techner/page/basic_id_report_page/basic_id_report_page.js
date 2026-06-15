@@ -17,6 +17,7 @@ frappe.pages['basic-id-report-page'].on_page_load = function (wrapper) {
 	let f_employee = page.add_field({ fieldtype: 'Link', fieldname: 'employee', options: 'Employee', label: __('Employee Code'), change: refresh_data });
 	let f_from = page.add_field({ fieldtype: 'Date', fieldname: 'from_date', label: __('From Date'), change: refresh_data });
 	let f_to = page.add_field({ fieldtype: 'Date', fieldname: 'to_date', label: __('To Date'), change: refresh_data });
+	let f_by_emp_code = page.add_field({ fieldtype: 'Check', fieldname: 'by_employee_code', label: __('Group By Employee Code'), change: refresh_data });
 
 	// ---------------- CELL FORMATTER ----------------
 	function format_cell_value(val, col, row_data) {
@@ -61,7 +62,8 @@ frappe.pages['basic-id-report-page'].on_page_load = function (wrapper) {
 					email: f_email.get_value(),
 					employee: f_employee.get_value(),
 					from_date: f_from.get_value(),
-					to_date: f_to.get_value()
+					to_date: f_to.get_value(),
+					by_employee_code: f_by_emp_code.get_value()
 				}
 			},
 			callback: function (r) {
