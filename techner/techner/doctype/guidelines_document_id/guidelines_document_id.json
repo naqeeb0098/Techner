@@ -1,41 +1,52 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:function",
- "creation": "2026-06-08 16:08:23.059066",
+ "autoname": "field:document_id",
+ "creation": "2026-06-12 10:55:35.525062",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "document_id",
+  "title",
   "function"
  ],
  "fields": [
   {
-   "fieldname": "function",
+   "fieldname": "document_id",
    "fieldtype": "Data",
-   "label": "Function",
+   "label": "Document ID",
    "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "function",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Function",
+   "options": "Document Tracking Function"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [
   {
-   "link_doctype": "Procedure Document ID",
-   "link_fieldname": "function"
-  },
-  {
    "link_doctype": "Guidelines Document ID",
-   "link_fieldname": "function"
-  },
-  {
-   "link_doctype": "Policy Document ID",
-   "link_fieldname": "function"
+   "link_fieldname": "document_id"
   }
  ],
- "modified": "2026-06-15 06:53:17.145955",
+ "modified": "2026-06-15 06:47:10.843873",
  "modified_by": "Administrator",
  "module": "Techner",
- "name": "Document Tracking Function",
+ "name": "Guidelines Document ID",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [

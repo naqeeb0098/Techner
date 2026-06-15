@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestDocumentTracking(FrappeTestCase):
+class TestDocumentTrackingPolicy(FrappeTestCase):
 	pass

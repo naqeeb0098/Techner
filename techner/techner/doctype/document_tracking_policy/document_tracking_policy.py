@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class DocumentTracking(Document):
+class DocumentTrackingPolicy(Document):
 	pass
