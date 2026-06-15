@@ -6,7 +6,7 @@ class BasicIDForm(Document):
 
 	def validate(self):
 		self.convert_emails_to_lowercase()
-		# self.validate_email_token_revision()
+		self.validate_email_token_revision()
   
 	def convert_emails_to_lowercase(self):
 		if self.email:
