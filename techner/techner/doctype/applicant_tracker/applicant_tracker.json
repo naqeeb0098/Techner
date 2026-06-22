@@ -62,7 +62,8 @@
   "column_break_rbre",
   "client_interview_history",
   "section_break_wnfx",
-  "skillset"
+  "skillset",
+  "notes"
  ],
  "fields": [
   {
@@ -356,12 +357,17 @@
    "fieldname": "role",
    "fieldtype": "Data",
    "label": "Role"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-16 15:11:36.292338",
+ "modified": "2026-06-22 07:24:33.818721",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Applicant Tracker",

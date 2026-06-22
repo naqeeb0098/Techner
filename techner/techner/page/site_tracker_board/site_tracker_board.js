@@ -6,8 +6,8 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 	});
 
 	// Setup Filters
-	let project_filter = page.add_field({ fieldtype: 'Link', fieldname: 'project', options: 'Site Projects', label: 'Project', change: function () { render_board(); } });
-	let site_filter = page.add_field({ fieldtype: 'Link', fieldname: 'site', options: 'Site', label: 'Site', change: function () { render_board(); } });
+	let project_filter = page.add_field({ fieldtype: 'Link', fieldname: 'project', options: 'Site Projects', label: 'Project ID', change: function () { render_board(); } });
+	let site_filter = page.add_field({ fieldtype: 'Link', fieldname: 'site', options: 'Site', label: 'Site ID', change: function () { render_board(); } });
 	let user_filter = page.add_field({ fieldtype: 'Link', fieldname: 'assign_to', options: 'User', label: 'Assign To', change: function () { render_board(); } });
 	let status_filter = page.add_field({fieldtype: 'Select',fieldname: 'status',label: 'Status',options: '\nPending\nPartial\nCompleted',change: function () {render_board();}});
 	let remarks_filter = page.add_field({fieldtype: 'Data',fieldname: 'remarks',label: 'Remarks',change: frappe.utils.debounce(function () {render_board();}, 500)});
@@ -168,8 +168,9 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 		// Top header
 		html += '<thead><tr>';
 		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:50px; text-align:center;">Sr.</th>';
-		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Project</th>';
-		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Site</th>';
+		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Project ID</th>';
+		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:220px;">Project Name</th>';
+		html += '<th rowspan="2" style="background-color:#f1f5f9; min-width:180px;">Site ID</th>';
 
 		milestones.forEach((m, idx) => {
 			let c = MILESTONE_COLORS[idx % MILESTONE_COLORS.length];
@@ -196,10 +197,16 @@ frappe.pages['site-tracker-board'].on_page_load = function (wrapper) {
 
 			html += `<td style="text-align:center; font-weight:600; color:#64748b; background-color:#f8fafc;">${index++}</td>`;
 
-			let p_link = `<a href="/app/site-projects/${row.project}" class="doc-link">${row.project}</a>`;
+			// let p_link = `<a href="/app/site-projects/${row.project}" class="doc-link">${row.project}</a>`;
+			let p_id = `<a href="/app/site-projects/${row.project}" class="doc-link">${row.project}</a>`;
+			let p_name = row.project_name || '';
+
+			html += `<td class="link-col">${p_id}</td>`;
+			html += `<td class="link-col">${p_name}</td>`;
+
 			let s_link = `<a href="/app/site/${row.site}" class="doc-link">${row.site || ''}</a>`;
 
-			html += `<td class="link-col">${p_link}</td>`;
+			// html += `<td class="link-col">${p_link}</td>`;
 			html += `<td class="link-col">${s_link}</td>`;
 
 			milestones.forEach((m) => {

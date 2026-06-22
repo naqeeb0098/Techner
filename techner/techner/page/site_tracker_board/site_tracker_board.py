@@ -13,7 +13,7 @@ def get_board_data(filters=None):
     if filters.get("project"):
         project_filters["name"] = filters.get("project")
 
-    projects = frappe.get_all("Site Projects", filters=project_filters, fields=["name", "project_id"])
+    projects = frappe.get_all("Site Projects", filters=project_filters, fields=["name", "project_id","project_name"])
     
     data = []
     milestone_names = set()
@@ -34,6 +34,7 @@ def get_board_data(filters=None):
             row = {
                 "project": p.name,
                 "project_id": p.project_id,
+                "project_name": p.project_name,
                 "site": site.site,
                 "site_name": site.site_name,
                 "site_tracker": site.site_tracker,

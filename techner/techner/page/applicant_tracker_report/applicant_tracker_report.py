@@ -10,10 +10,10 @@ def get_tracker_data(filters=None):
     query_filters = {}
     
     if filters:
-        if filters.get("job_applicant"):
-            query_filters["job_applicant"] = filters.get("job_applicant")
-        if filters.get("job_opening"):
-            query_filters["job_opening"] = filters.get("job_opening")
+        # if filters.get("job_applicant"):
+        #     query_filters["job_applicant"] = filters.get("job_applicant")
+        # if filters.get("job_opening"):
+        #     query_filters["job_opening"] = filters.get("job_opening")
         if filters.get("applicant_name"):
             query_filters["applicant_name"] = ["like", f"%{filters.get('applicant_name')}%"]
         if filters.get("job_applicant_source"):
@@ -28,9 +28,11 @@ def get_tracker_data(filters=None):
             query_filters["location"] = ["like", f"%{filters.get('location')}%"]        
         if filters.get("experience"):
             query_filters["experience"] = ["like", f"%{filters.get('experience')}%"]   
-            
+        if filters.get("conclusionfeedback"):
+            query_filters["conclusionfeedback"] = ["like", f"%{filters.get('conclusionfeedback')}%"]  
+                       
     meta = frappe.get_meta("Applicant Tracker")
-    fields = [f.fieldname for f in meta.fields if f.fieldtype not in ["Section Break", "Column Break"]]
+    fields = [f.fieldname for f in meta.fields if f.fieldtype not in ["Section Break", "Column Break"] and f.fieldname not in ["job_applicant", "job_opening"]]
     
     # Always include name and basic info
     data = frappe.get_all("Applicant Tracker", 
