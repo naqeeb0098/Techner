@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:APT-{####}",
  "creation": "2026-04-15 11:53:28.213315",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -367,10 +368,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-06-22 07:24:33.818721",
+ "modified": "2026-06-22 08:49:50.644614",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Applicant Tracker",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

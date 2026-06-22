@@ -29,8 +29,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Site Name",
-   "reqd": 1
+   "label": "Site Name"
   },
   {
    "fieldname": "site_type",
@@ -38,8 +37,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": " Site Type",
-   "options": "Site Type",
-   "reqd": 1
+   "options": "Site Type"
   },
   {
    "fieldname": "column_break_kbet",
@@ -65,7 +63,7 @@
    "link_fieldname": "site"
   }
  ],
- "modified": "2026-04-20 06:56:37.671974",
+ "modified": "2026-06-19 16:06:35.006850",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Site",

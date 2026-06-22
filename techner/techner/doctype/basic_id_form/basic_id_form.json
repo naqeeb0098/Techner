@@ -66,7 +66,8 @@
   "any_other_document_2",
   "any_other_document_3",
   "any_other_document_4",
-  "bank_statement"
+  "bank_statement",
+  "download_all_attachments"
  ],
  "fields": [
   {
@@ -392,13 +393,17 @@
    "fieldname": "any_other_document_4",
    "fieldtype": "Attach",
    "label": "Any Other Document 4"
+  },
+  {
+   "fieldname": "download_all_attachments",
+   "fieldtype": "Button",
+   "label": "Download All Attachments"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2026-06-03 18:25:58.378539",
+ "modified": "2026-06-19 15:26:36.981403",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Basic ID Form",
@@ -415,7 +420,6 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],
