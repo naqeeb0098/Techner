@@ -18,6 +18,21 @@
   "column_break_rsrd",
   "sales_manager",
   "sale_manager_name",
+  "communication_details_section",
+  "first_email",
+  "remarks",
+  "column_break_arsb",
+  "second_email",
+  "notes",
+  "column_break_vpxs",
+  "third_email",
+  "connection_and_message_details_section",
+  "connection_request",
+  "linkedin_link",
+  "column_break_iwjk",
+  "first_message",
+  "column_break_lmao",
+  "second_message",
   "section_break_yjxo",
   "communication_details"
  ],
@@ -99,12 +114,84 @@
    "fieldtype": "Table",
    "label": "Communication Details",
    "options": "Contact Task Detail"
+  },
+  {
+   "fieldname": "communication_details_section",
+   "fieldtype": "Section Break",
+   "label": "Communication Details"
+  },
+  {
+   "fieldname": "first_email",
+   "fieldtype": "Date",
+   "label": "First Email"
+  },
+  {
+   "fieldname": "column_break_arsb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "second_email",
+   "fieldtype": "Date",
+   "label": "Second Email"
+  },
+  {
+   "fieldname": "column_break_vpxs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "third_email",
+   "fieldtype": "Date",
+   "label": "Third Email"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "connection_and_message_details_section",
+   "fieldtype": "Section Break",
+   "label": "Connection and Message Details"
+  },
+  {
+   "fieldname": "connection_request",
+   "fieldtype": "Select",
+   "label": "Connection Request",
+   "options": "Not Connected\nRequested\nConnected"
+  },
+  {
+   "fieldname": "column_break_iwjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_message",
+   "fieldtype": "Date",
+   "label": "First Message"
+  },
+  {
+   "fieldname": "column_break_lmao",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "second_message",
+   "fieldtype": "Date",
+   "label": "Second Message"
+  },
+  {
+   "fieldname": "linkedin_link",
+   "fieldtype": "Small Text",
+   "label": "Linkedin Link"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-07 18:36:15.147838",
+ "modified": "2026-07-02 13:35:24.175489",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Lead Contact Person",

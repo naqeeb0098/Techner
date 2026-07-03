@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-02 06:43:16.419759",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "applicant_name",
+  "email_address",
+  "years_of_experience_in_industry",
+  "english_communication",
+  "positions_held_in_the_industry",
+  "foreign_education_and_experience",
+  "net_take_home_salary",
+  "expected_salary",
+  "notice_period",
+  "current_location",
+  "do_you_prefer_working_with_a_team_or_on_your_own",
+  "why_do_you_think_you_are_a_fit_for_the_role",
+  "column_break_dakf",
+  "job_opening",
+  "job_opening_title",
+  "location",
+  "designation",
+  "status",
+  "applicant_notes_section",
+  "applicant_notes",
+  "resume",
+  "column_break_bdal",
+  "internal_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Applicant Name"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "options": "Email"
+  },
+  {
+   "fieldname": "years_of_experience_in_industry",
+   "fieldtype": "Data",
+   "label": "Years of Experience in Industry"
+  },
+  {
+   "fieldname": "english_communication",
+   "fieldtype": "Select",
+   "label": "English Communication",
+   "options": "\nExcellent\nGood\nAverage\nPoor"
+  },
+  {
+   "fieldname": "positions_held_in_the_industry",
+   "fieldtype": "Small Text",
+   "label": "Positions Held in the Industry"
+  },
+  {
+   "description": "On Site / Remote",
+   "fieldname": "foreign_education_and_experience",
+   "fieldtype": "Small Text",
+   "label": "Foreign Education and Experience"
+  },
+  {
+   "fieldname": "net_take_home_salary",
+   "fieldtype": "Data",
+   "label": "Net Take Home Salary"
+  },
+  {
+   "fieldname": "expected_salary",
+   "fieldtype": "Data",
+   "label": "Expected Salary"
+  },
+  {
+   "fieldname": "notice_period",
+   "fieldtype": "Data",
+   "label": "Notice Period"
+  },
+  {
+   "fieldname": "current_location",
+   "fieldtype": "Data",
+   "label": "Current Location"
+  },
+  {
+   "fieldname": "do_you_prefer_working_with_a_team_or_on_your_own",
+   "fieldtype": "Small Text",
+   "label": "Do you prefer working with a team or on your own?"
+  },
+  {
+   "fieldname": "why_do_you_think_you_are_a_fit_for_the_role",
+   "fieldtype": "Small Text",
+   "label": "Why do you think you are a fit for the role"
+  },
+  {
+   "fieldname": "applicant_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Notes"
+  },
+  {
+   "fieldname": "applicant_notes",
+   "fieldtype": "Small Text",
+   "label": "Applicant Notes"
+  },
+  {
+   "fieldname": "column_break_bdal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "New",
+   "fieldname": "internal_status",
+   "fieldtype": "Select",
+   "label": "Internal Status ",
+   "options": "\nNew\nReviewed\nTo be Interviewed\nInterviewed\nShortlisted\nNot Recommended"
+  },
+  {
+   "fieldname": "column_break_dakf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "job_opening",
+   "fieldtype": "Link",
+   "label": "Job Opening",
+   "options": "Utility Applicant Opening"
+  },
+  {
+   "fetch_from": "job_opening.application_opening",
+   "fieldname": "job_opening_title",
+   "fieldtype": "Data",
+   "label": "Job Opening Title",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_opening.location",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_opening.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nReplied\nRejected\nHold\nAccepted"
+  },
+  {
+   "fieldname": "resume",
+   "fieldtype": "Attach",
+   "label": "Resume"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-02 07:00:17.339195",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "Utility Applicants",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
