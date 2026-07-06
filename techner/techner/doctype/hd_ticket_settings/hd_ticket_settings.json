@@ -7,7 +7,9 @@
  "field_order": [
   "send_email",
   "column_break_dujv",
-  "email_template"
+  "hours",
+  "section_break_xmta",
+  "hd_ticket_settings_child"
  ],
  "fields": [
   {
@@ -21,17 +23,30 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "email_template",
-   "fieldtype": "Link",
-   "label": "Email Template",
-   "options": "Notification"
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Hours"
+  },
+  {
+   "fieldname": "section_break_xmta",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "hd_ticket_settings_child",
+   "fieldtype": "Table",
+   "label": "HD Ticket Settings Child",
+   "options": "HD Ticket Settings Child"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-04-27 15:32:43.799965",
+ "modified": "2026-07-03 07:36:33.467279",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "HD Ticket Settings",
