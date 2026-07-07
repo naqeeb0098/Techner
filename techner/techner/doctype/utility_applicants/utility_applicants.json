@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:email_address",
  "creation": "2026-07-02 06:43:16.419759",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -33,13 +34,20 @@
   {
    "fieldname": "applicant_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Applicant Name"
   },
   {
    "fieldname": "email_address",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Email Address",
-   "options": "Email"
+   "options": "Email",
+   "unique": 1
   },
   {
    "fieldname": "years_of_experience_in_industry",
@@ -111,6 +119,9 @@
    "default": "New",
    "fieldname": "internal_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Internal Status ",
    "options": "\nNew\nReviewed\nTo be Interviewed\nInterviewed\nShortlisted\nNot Recommended"
   },
@@ -128,6 +139,9 @@
    "fetch_from": "job_opening.application_opening",
    "fieldname": "job_opening_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Job Opening Title",
    "read_only": 1
   },
@@ -160,10 +174,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-02 07:00:17.339195",
+ "modified": "2026-07-03 15:13:30.357083",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Utility Applicants",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
