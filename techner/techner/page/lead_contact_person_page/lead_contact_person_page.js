@@ -90,13 +90,13 @@ const connection_filter = page.add_field({
 		.lcp-tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
 
 		/* group header */
-		.lcp-tbl thead tr.grp th { padding: 6px 10px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; text-align: center; position: sticky; top: 48px; z-index: 60; }
+		.lcp-tbl thead tr.grp th { padding: 6px 10px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; text-align: center; position: sticky; top: 0px; z-index:3; }
 		.lcp-tbl thead tr.grp th.g-contact { background: #4F46E5; }
 		.lcp-tbl thead tr.grp th.g-comm    { background: #0891B2; }
 		.lcp-tbl thead tr.grp th.g-conn    { background: #7C3AED; }
 
 		/* field header */
-		.lcp-tbl thead tr.fld th { padding: 7px 10px; font-size: 11px; font-weight: 600; color: #e2e8f0; white-space: nowrap; position: sticky; top: 79px; z-index: 55; border-bottom: 2px solid rgba(255,255,255,.15); border-right: 1px solid rgba(255,255,255,.1); }
+		.lcp-tbl thead tr.fld th { padding: 7px 10px; font-size: 11px; font-weight: 600; color: #e2e8f0; white-space: nowrap; position: sticky; top: 29px; z-index: 2; border-bottom: 2px solid rgba(255,255,255,.15); border-right: 1px solid rgba(255,255,255,.1); }
 		.lcp-tbl thead tr.fld th.h-contact { background: #4338CA; }
 		.lcp-tbl thead tr.fld th.h-comm    { background: #0E7490; }
 		.lcp-tbl thead tr.fld th.h-conn    { background: #6D28D9; }
@@ -289,9 +289,38 @@ function getFilters() {
 			const email = frappe.utils.escape_html(row.contact_person_email || '');
 
 			// editable text cell helper
+			// function editCell(field, val, type = 'text') {
+			// 	const esc = frappe.utils.escape_html(val || '');
+			// 	const empty = !val ? 'empty' : '';
+			// 	const editor = type === 'select'
+			// 		? `<select class="lcp-sel lcp-sel-input" data-doc="${row.name}" data-field="${field}">
+			// 				<option value=""></option>
+			// 				${['Not Connected', 'Requested', 'Connected'].map(o =>
+			// 			`<option value="${o}" ${o === val ? 'selected' : ''}>${o}</option>`
+			// 		).join('')}
+			// 			</select>`
+			// 		: type === 'date'
+			// 			? `<input class="lcp-inp lcp-date-input" type="date" data-doc="${row.name}" data-field="${field}" value="${val || ''}">`
+			// 			: `<textarea class="lcp-ta lcp-ta-input" data-doc="${row.name}" data-field="${field}">${esc}</textarea>`;
+			// 	return `
+			// 		<div class="lcp-cell-wrap">
+			// 			<span class="lcp-display ${empty}" data-type="${type}">${esc || '—'}</span>
+			// 			<div class="lcp-editor">${editor}</div>
+			// 		</div>`;
+			// }
+
 			function editCell(field, val, type = 'text') {
 				const esc = frappe.utils.escape_html(val || '');
 				const empty = !val ? 'empty' : '';
+
+				// display content depends on type
+				let displayHtml;
+				if (type === 'date') {
+					displayHtml = val ? datePill(val) : '<span class="lcp-dash">—</span>';
+				} else {
+					displayHtml = esc || '—';
+				}
+
 				const editor = type === 'select'
 					? `<select class="lcp-sel lcp-sel-input" data-doc="${row.name}" data-field="${field}">
 							<option value=""></option>
@@ -304,7 +333,7 @@ function getFilters() {
 						: `<textarea class="lcp-ta lcp-ta-input" data-doc="${row.name}" data-field="${field}">${esc}</textarea>`;
 				return `
 					<div class="lcp-cell-wrap">
-						<span class="lcp-display ${empty}" data-type="${type}">${esc || '—'}</span>
+						<span class="lcp-display ${empty}" data-type="${type}">${displayHtml}</span>
 						<div class="lcp-editor">${editor}</div>
 					</div>`;
 			}
@@ -334,9 +363,20 @@ function getFilters() {
 				<td style="padding:4px 6px;font-size:11px;color:#334155;min-width:80px;">
 					${company ? `<a href="/app/crm-leads/${row.crm_leads}" style="color:#4F46E5;text-decoration:none;font-weight:400;">${company}</a>` : '<span class="lcp-dash">—</span>'}
 				</td>
-				<td class="col-date">${datePill(row.first_email)}</td>
-				<td class="col-date">${datePill(row.second_email)}</td>
-				<td class="col-date">${datePill(row.third_email)}</td>
+
+
+				<td class="col-date" data-doc="${row.name}" data-field="first_email" data-type="date">
+					${editCell('first_email', row.first_email, 'date')}
+				</td>
+				<td class="col-date" data-doc="${row.name}" data-field="second_email" data-type="date">
+					${editCell('second_email', row.second_email, 'date')}
+				</td>
+				<td class="col-date" data-doc="${row.name}" data-field="third_email" data-type="date">
+					${editCell('third_email', row.third_email, 'date')}
+				</td>				
+				
+
+
 				<td style="min-width:400px; max-width:1000px;" data-doc="${row.name}" data-field="remarks" data-type="text">
 					${editCell('remarks', row.remarks)}
 				</td>
@@ -347,8 +387,15 @@ function getFilters() {
 				<td class="col-badge" data-doc="${row.name}" data-field="connection_request" data-type="select">
 					${editCell('connection_request', row.connection_request, 'select')}
 				</td>
-				<td class="col-date">${datePill(row.first_message)}</td>
-				<td class="col-date">${datePill(row.second_message)}</td>
+
+				<td class="col-date" data-doc="${row.name}" data-field="first_message" data-type="date">
+					${editCell('first_message', row.first_message, 'date')}
+				</td>
+				<td class="col-date" data-doc="${row.name}" data-field="second_message" data-type="date">
+					${editCell('second_message', row.second_message, 'date')}
+				</td>				
+
+
 			</tr>`;
 		}).join('');
 
@@ -427,13 +474,21 @@ function getFilters() {
 		}).off('input.lcp').on('input.lcp', function () { autoH(this); });
 
 		// date input change → save + exit
+		// $('.lcp-date-input').off('change.lcp').on('change.lcp', function () {
+		// 	const $el = $(this), val = $el.val();
+		// 	const $td = $el.closest('td');
+		// 	save($el.data('doc'), $el.data('field'), val);
+		// 	$td.removeClass('td-editing');
+		// });
+		// date input change → save + exit
 		$('.lcp-date-input').off('change.lcp').on('change.lcp', function () {
 			const $el = $(this), val = $el.val();
 			const $td = $el.closest('td');
 			save($el.data('doc'), $el.data('field'), val);
+			const $disp = $td.find('.lcp-display');
+			$disp.html(val ? datePill(val) : '<span class="lcp-dash">—</span>').toggleClass('empty', !val);
 			$td.removeClass('td-editing');
 		});
-
 		// Escape to cancel
 		$(document).off('keydown.lcp').on('keydown.lcp', '.td-editing textarea, .td-editing select, .td-editing input', function (e) {
 			if (e.key === 'Escape') $(this).closest('td').removeClass('td-editing');
