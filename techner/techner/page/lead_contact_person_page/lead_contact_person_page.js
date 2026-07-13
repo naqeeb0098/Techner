@@ -256,11 +256,14 @@ function getFilters() {
 
 	// ── Stats cards ────────────────────────────────────────────────────────
 	const CARDS = [
-		{ key: 'total', label: 'Total Contacts', sub: 'All records', grad: 'linear-gradient(135deg,#4F46E5,#7C3AED)' },
-		{ key: 'connected', label: 'Connected', sub: 'LinkedIn connected', grad: 'linear-gradient(135deg,#059669,#10B981)' },
-		{ key: 'requested', label: 'Requested', sub: 'Pending connection', grad: 'linear-gradient(135deg,#D97706,#F59E0B)' },
-		{ key: 'contacted', label: 'Total Email Sent', sub: 'Email sent', grad: 'linear-gradient(135deg,#0891B2,#06B6D4)' },
 		{ key: 'companies', label: 'Companies', sub: 'Unique companies', grad: 'linear-gradient(135deg,#7C3AED,#A855F7)' },
+		{ key: 'total', label: 'Total Contacts', sub: 'All records', grad: 'linear-gradient(135deg,#4F46E5,#7C3AED)' },
+		{ key: 'contacted', label: 'Total Email Sent', sub: 'Email sent', grad: 'linear-gradient(135deg,#0891B2,#06B6D4)' },
+		// { key: 'connected', label: 'Connected', sub: 'LinkedIn connected', grad: 'linear-gradient(135deg,#059669,#10B981)' },
+		{ key: 'requested', label: 'Requested', sub: 'Pending connection', grad: 'linear-gradient(135deg,#D97706,#F59E0B)' },
+		{ key: 'message_sent', label: 'Total Messages Sent', sub: 'Messages sent', grad: 'linear-gradient(135deg,#D97706,#F59E0B)'},
+		
+		
 	];
 
 	function renderStats(stats) {

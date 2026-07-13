@@ -47,6 +47,7 @@ def get_page_data(filters=None):
     requested = 0
     not_connected = 0
     contacted = 0
+    message_sent = 0
     companies_set = set()
 
     for row in data:
@@ -57,11 +58,17 @@ def get_page_data(filters=None):
             requested += 1
         elif row.get("connection_request") == "Not Connected":
             not_connected += 1
+        elif row.get("first_message"):
+            message_sent += 1
+        elif row.get("second_message"):
+            message_sent += 1
 
         # Total emails sent across 1st, 2nd, 3rd email fields for this row
         if row.get("first_email"): contacted += 1
         if row.get("second_email"): contacted += 1
         if row.get("third_email"): contacted += 1
+        if row.get("first_message"): message_sent += 1
+        if row.get("second_message"): message_sent += 1
 
         # Unique companies
         if row.get("crm_leads"):
@@ -75,6 +82,7 @@ def get_page_data(filters=None):
         "requested": requested,
         "not_connected": not_connected,
         "contacted": contacted,
+        "message_sent": message_sent,
         "companies": companies,
     }
 
