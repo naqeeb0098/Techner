@@ -45,8 +45,7 @@ app_license = "mit"
 # include js in doctype views
 doctype_js = {
 	"Leave Application": "public/js/leave_application.js",
-	"HD Ticket": "public/js/hd_ticket.js",
-	"Notification": "public/js/notification.js"
+	"HD Ticket": "public/js/hd_ticket.js"
 }
 doctype_list_js = {
 	"Job Applicant": "public/js/job_applicant_list.js",
@@ -147,13 +146,6 @@ has_permission = {
 # Hook on document methods and events
 
 doc_events = {
-	# Global: Child Table Notification Engine (Notification doctype ke against)
-	"*": {
-		"before_save": "techner.techner.custom.notification_child_handler.process_notification_doc_event",
-		"after_save": "techner.techner.custom.notification_child_handler.process_notification_doc_event",
-		"on_submit": "techner.techner.custom.notification_child_handler.process_notification_doc_event",
-		"on_cancel": "techner.techner.custom.notification_child_handler.process_notification_doc_event",
-	},
 	"Job Applicant": {
 		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
 	},
@@ -174,12 +166,10 @@ doc_events = {
 
 scheduler_events = {
 	"hourly": [
-		"techner.techner.custom.hd_ticket.send_auto_resolution_warning",
-		"techner.techner.custom.notification_child_handler.process_notification_hourly",
+		"techner.techner.custom.hd_ticket.send_auto_resolution_warning"
 	],
 	"daily": [
-		"techner.techner.custom.onboarding_notification.send_onboarding_tracker_notifications",
-		"techner.techner.custom.notification_child_handler.process_notification_daily",
+		"techner.techner.custom.onboarding_notification.send_onboarding_tracker_notifications"
 	]
 }
 
