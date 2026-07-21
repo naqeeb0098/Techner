@@ -176,10 +176,12 @@ scheduler_events = {
 	"hourly": [
 		"techner.techner.custom.hd_ticket.send_auto_resolution_warning",
 		"techner.techner.custom.notification_child_handler.process_notification_hourly",
+		"techner.techner.custom.child_table_notification_scheduler.run_hourly",
 	],
 	"daily": [
 		"techner.techner.custom.onboarding_notification.send_onboarding_tracker_notifications",
 		"techner.techner.custom.notification_child_handler.process_notification_daily",
+		"techner.techner.custom.child_table_notification_scheduler.run_daily",
 	]
 }
 

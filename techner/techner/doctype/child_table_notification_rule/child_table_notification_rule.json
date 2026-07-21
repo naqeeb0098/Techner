@@ -10,12 +10,11 @@
   "enabled",
   "column_break_basic",
   "parent_doctype",
-  "child_table_field",
   "child_doctype",
+  "child_table_field",
   "event_config_section",
   "event_type",
   "date_config_section",
-  "date_field",
   "date_condition",
   "column_break_date",
   "days",
@@ -27,6 +26,7 @@
   "email_field",
   "column_break_recip",
   "role_based",
+  "section_break_lllo",
   "specific_users",
   "template_tab",
   "subject",
@@ -68,15 +68,13 @@
    "fieldname": "child_table_field",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Child Table Field",
-   "reqd": 1
+   "label": "Child Table Field"
   },
   {
    "fieldname": "child_doctype",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Child DocType",
-   "reqd": 1
+   "label": "Child DocType"
   },
   {
    "fieldname": "event_config_section",
@@ -87,19 +85,14 @@
    "fieldname": "event_type",
    "fieldtype": "Select",
    "label": "Event Type",
-   "options": "\nBefore Save\nAfter Save\nSubmit\nCancel\nDaily Scheduler\nHourly Scheduler\nDate Based Reminder",
+   "options": "\nDays Before\nDays After\nHourly\nDaily\nOn Same Date",
    "reqd": 1
   },
   {
-   "depends_on": "eval:doc.event_type == 'Date Based Reminder'",
+   "depends_on": "eval:in_list(['Days Before', 'Days After', 'On Same Date'], doc.event_type)",
    "fieldname": "date_config_section",
    "fieldtype": "Section Break",
    "label": "Date Configuration"
-  },
-  {
-   "fieldname": "date_field",
-   "fieldtype": "Select",
-   "label": "Date Field"
   },
   {
    "fieldname": "date_condition",
@@ -143,12 +136,14 @@
    "description": "Fieldname of user in child or parent doctype",
    "fieldname": "user_field",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "User Field"
   },
   {
    "description": "Fieldname of email in child or parent doctype",
    "fieldname": "email_field",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Email Field"
   },
   {
@@ -184,10 +179,14 @@
    "fieldtype": "Text Editor",
    "label": "Message",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_lllo",
+   "fieldtype": "Section Break"
   }
  ],
  "links": [],
- "modified": "2026-07-12 06:36:08.908824",
+ "modified": "2026-07-21 07:41:00.655283",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Child Table Notification Rule",

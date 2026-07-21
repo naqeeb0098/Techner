@@ -22,6 +22,7 @@ frappe.ui.form.on('Notification', {
             frm.set_value('custom_child_doctype', '');
             frm.set_value('custom_child_table_field', '');
             frm.set_value('custom_event_type', '');
+			frm.set_value('custom_days_offset', 0);
         }
     },
 
@@ -99,8 +100,8 @@ function load_child_field_options(frm) {
     frappe.model.with_doctype(child_doctype_name, function () {
         let child_meta = frappe.get_meta(child_doctype_name);
         let field_options = child_meta.fields
-            // Sirf Date datatype wale child-table fields selectable hon.
-            .filter(df => df.fieldtype === 'Date')
+            // Only date-based child-table fields can drive scheduled notifications.
+            .filter(df => ['Date', 'Datetime'].includes(df.fieldtype))
             .map(df => df.fieldname);
 
         frm.set_df_property('custom_child_table_field', 'options', [''].concat(field_options).join('\n'));
@@ -124,22 +125,8 @@ function update_event_type_hint(frm) {
     let watched_df = child_meta.fields.find(df => df.fieldname === frm.doc.custom_child_table_field);
     if (!watched_df) return;
 
-    let is_date_field = ['Date', 'Datetime'].includes(watched_df.fieldtype);
-
-    if (is_date_field) {
-        // Date field hai — scheduler events relevant hain
-        frappe.show_alert({
-            message: `<b>${frm.doc.custom_child_table_field}</b> is <b>${watched_df.fieldtype}</b> field.<br>
-                      To send notifications when the date matches, please select either <b>Daily Scheduler</b> or <b>Date Based Reminder</b>.`,
-            indicator: 'blue'
-        }, 6);
-    } else {
-        // Non-date field
-        frappe.show_alert({
-            message: `<b>${frm.doc.custom_child_table_field}</b> is <b>${watched_df.fieldtype}</b> field.<br>
-                      Please use Document save/submit events or schedulars
-                      .`,
-            indicator: 'orange'
-        }, 5);
-    }
+    frappe.show_alert({
+        message: `<b>${frm.doc.custom_child_table_field}</b> is a <b>${watched_df.fieldtype}</b> field and can be used for scheduled child notifications.`,
+        indicator: 'blue'
+    }, 5);
 }
