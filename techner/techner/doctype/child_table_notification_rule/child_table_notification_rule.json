@@ -26,6 +26,8 @@
   "email_field",
   "column_break_recip",
   "role_based",
+  "sender",
+  "sender_email",
   "section_break_lllo",
   "specific_users",
   "template_tab",
@@ -183,10 +185,24 @@
   {
    "fieldname": "section_break_lllo",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sender",
+   "fieldtype": "Link",
+   "label": "Sender",
+   "options": "Email Account",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "sender.email_id",
+   "fieldname": "sender_email",
+   "fieldtype": "Data",
+   "label": "Sender Email",
+   "read_only": 1
   }
  ],
  "links": [],
- "modified": "2026-07-21 07:41:00.655283",
+ "modified": "2026-07-22 07:05:19.834350",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Child Table Notification Rule",

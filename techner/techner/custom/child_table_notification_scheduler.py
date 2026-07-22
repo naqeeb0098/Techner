@@ -57,6 +57,7 @@ def create_log(rule_name, parent_doctype, parent_name, row_name, status="Sent"):
         "notification_status": status
     }).insert(ignore_permissions=True)
 
+
 def send_notification(rule, parent_doc, child_row):
     recipients = get_recipients(rule, parent_doc, child_row)
     if not recipients:
@@ -66,11 +67,15 @@ def send_notification(rule, parent_doc, child_row):
     subject = frappe.render_template(rule.subject or "", context)
     message = frappe.render_template(rule.message or "", context)
 
+    # Use selected Email Account's address as sender, else fall back to default
+    sender = rule.sender_email or None
+
     try:
         frappe.sendmail(
             recipients=recipients,
             subject=subject,
             message=message,
+            sender=sender,
             reference_doctype=parent_doc.doctype,
             reference_name=parent_doc.name
         )
@@ -78,6 +83,27 @@ def send_notification(rule, parent_doc, child_row):
     except Exception as e:
         frappe.log_error(str(e), f"Child Notification Rule Send Error [{rule.name}]")
         return False
+# def send_notification(rule, parent_doc, child_row):
+#     recipients = get_recipients(rule, parent_doc, child_row)
+#     if not recipients:
+#         return False
+
+#     context = {"doc": parent_doc, "row": child_row, "frappe": frappe}
+#     subject = frappe.render_template(rule.subject or "", context)
+#     message = frappe.render_template(rule.message or "", context)
+
+#     try:
+#         frappe.sendmail(
+#             recipients=recipients,
+#             subject=subject,
+#             message=message,
+#             reference_doctype=parent_doc.doctype,
+#             reference_name=parent_doc.name
+#         )
+#         return True
+#     except Exception as e:
+#         frappe.log_error(str(e), f"Child Notification Rule Send Error [{rule.name}]")
+#         return False
 
 def process_rules_for_events(event_types):
     rules = frappe.get_all(
