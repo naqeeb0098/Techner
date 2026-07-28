@@ -4,7 +4,13 @@ import json
 
 
 @frappe.whitelist()
-def get_page_data(filters=None):
+def get_page_data(
+    filters=None,
+    email_from_date=None,
+    email_to_date=None,
+    msg_from_date=None,
+    msg_to_date=None,
+):
     if isinstance(filters, str):
         filters = json.loads(filters)
 
@@ -32,17 +38,54 @@ def get_page_data(filters=None):
         "second_message",
     ]
 
-    data = frappe.get_all(
+    raw_data = frappe.get_all(
         "Lead Contact Person",
         filters=filters,
         fields=fields,
         order_by="modified desc",
     )
 
+    data = []
+    has_email_filter = bool(email_from_date or email_to_date)
+    has_msg_filter = bool(msg_from_date or msg_to_date)
+
+    def is_date_in_range(val, from_date, to_date):
+        if not val:
+            return False
+        val_str = str(val)
+        if from_date and val_str < str(from_date):
+            return False
+        if to_date and val_str > str(to_date):
+            return False
+        return True
+
+    for row in raw_data:
+        if has_email_filter:
+            email_dates = [
+                row.get("first_email"),
+                row.get("second_email"),
+                row.get("third_email"),
+            ]
+            if not any(
+                is_date_in_range(d, email_from_date, email_to_date)
+                for d in email_dates
+            ):
+                continue
+
+        if has_msg_filter:
+            msg_dates = [row.get("first_message"), row.get("second_message")]
+            if not any(
+                is_date_in_range(d, msg_from_date, msg_to_date)
+                for d in msg_dates
+            ):
+                continue
+
+        data.append(row)
+
     # ── Stats ────────────────────────────────────────────────────────────────
     # Calculate stats directly from the filtered data to respect all active filters
     total = len(data)
-    
+
     connected = 0
     requested = 0
     not_connected = 0
@@ -58,17 +101,18 @@ def get_page_data(filters=None):
             requested += 1
         elif row.get("connection_request") == "Not Connected":
             not_connected += 1
-        elif row.get("first_message"):
-            message_sent += 1
-        elif row.get("second_message"):
-            message_sent += 1
 
         # Total emails sent across 1st, 2nd, 3rd email fields for this row
-        if row.get("first_email"): contacted += 1
-        if row.get("second_email"): contacted += 1
-        if row.get("third_email"): contacted += 1
-        if row.get("first_message"): message_sent += 1
-        if row.get("second_message"): message_sent += 1
+        if row.get("first_email"):
+            contacted += 1
+        if row.get("second_email"):
+            contacted += 1
+        if row.get("third_email"):
+            contacted += 1
+        if row.get("first_message"):
+            message_sent += 1
+        if row.get("second_message"):
+            message_sent += 1
 
         # Unique companies
         if row.get("crm_leads"):

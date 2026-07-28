@@ -48,6 +48,34 @@ const connection_filter = page.add_field({
 	options: "\nNot Connected\nRequested\nConnected",
 	change: refresh
 });
+
+const email_from_filter = page.add_field({
+	label: __("Email From"),
+	fieldname: "email_from_date",
+	fieldtype: "Date",
+	change: refresh
+});
+
+const email_to_filter = page.add_field({
+	label: __("Email To"),
+	fieldname: "email_to_date",
+	fieldtype: "Date",
+	change: refresh
+});
+
+const msg_from_filter = page.add_field({
+	label: __("Msg From"),
+	fieldname: "msg_from_date",
+	fieldtype: "Date",
+	change: refresh
+});
+
+const msg_to_filter = page.add_field({
+	label: __("Msg To"),
+	fieldname: "msg_to_date",
+	fieldtype: "Date",
+	change: refresh
+});
 	page.set_primary_action(__('+ Add Contact'), () => frappe.new_doc('Lead Contact Person'));
 	page.add_button(__('Refresh'), refresh, { icon: 'refresh' });
 
@@ -244,7 +272,13 @@ function getFilters() {
 		$('#lcp-table-wrap').html(`<div class="lcp-empty">Loading…</div>`);
 		frappe.call({
 			method: 'techner.techner.page.lead_contact_person_page.lead_contact_person_page.get_page_data',
-			args: { filters: getFilters() },
+			args: {
+				filters: getFilters(),
+				email_from_date: email_from_filter ? email_from_filter.get_value() : null,
+				email_to_date: email_to_filter ? email_to_filter.get_value() : null,
+				msg_from_date: msg_from_filter ? msg_from_filter.get_value() : null,
+				msg_to_date: msg_to_filter ? msg_to_filter.get_value() : null
+			},
 			callback(r) {
 				if (!r.message) return;
 				currentData = r.message.data || [];
