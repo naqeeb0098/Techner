@@ -47,7 +47,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Pending\nCompleted"
+   "options": "Pending\nCompleted\nNot Applicable"
   },
   {
    "columns": 1,
@@ -68,7 +68,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-07 18:36:13.975876",
+ "modified": "2026-07-24 15:52:09.934426",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Employee Response Tracker Details",

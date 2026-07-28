@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:client_name",
  "creation": "2026-02-18 16:41:18.515381",
@@ -92,10 +93,10 @@
  "links": [
   {
    "link_doctype": "Lead Contact Person",
-   "link_fieldname": "customer_opportunity"
+   "link_fieldname": "crm_leads"
   }
  ],
- "modified": "2026-05-12 05:36:16.615977",
+ "modified": "2026-07-22 15:19:02.990627",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "CRM Leads",

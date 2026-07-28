@@ -11,6 +11,8 @@
   "column_break_sufj",
   "employee",
   "designation",
+  "column_break_izcw",
+  "status",
   "section_break_teyp",
   "html_pqox",
   "phase_1_date",
@@ -104,12 +106,24 @@
    "fieldname": "table_ikva",
    "fieldtype": "Table",
    "options": "Onboarding Tracker details"
+  },
+  {
+   "fieldname": "column_break_izcw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Completed\nIn process\nHold"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-07 18:36:15.998078",
+ "modified": "2026-07-24 15:51:39.460658",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "On Boarding Tracker",
