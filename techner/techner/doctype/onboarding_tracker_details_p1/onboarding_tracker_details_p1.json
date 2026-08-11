@@ -34,7 +34,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Pending\nIn-process\nHold\nCompleted"
+   "options": "Pending\nIn-process\nHold\nCompleted\nNot Applicable"
   },
   {
    "columns": 2,
@@ -55,7 +55,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-22 07:36:26.084995",
+ "modified": "2026-07-31 14:55:54.325124",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Onboarding Tracker Details P1",
