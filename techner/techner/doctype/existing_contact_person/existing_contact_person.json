@@ -12,6 +12,7 @@
   "column_break_khvq",
   "contact_person_email",
   "contact_person_number",
+  "crm_lead",
   "column_break_hrjo",
   "customer_opportunity",
   "website",
@@ -102,17 +103,21 @@
    "options": "Contact Task Detail"
   },
   {
-   "default": "Active",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Active\nLeft the Business"
+   "fieldname": "crm_lead",
+   "fieldtype": "Data",
+   "label": "CRM Lead",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-07-24 15:53:31.380730",
+ "links": [
+  {
+   "link_doctype": "CRM Leads",
+   "link_fieldname": "existing_contact_person"
+  }
+ ],
+ "modified": "2026-08-11 13:27:21.821590",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Existing Contact Person",

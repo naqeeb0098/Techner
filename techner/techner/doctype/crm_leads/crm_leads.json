@@ -15,6 +15,7 @@
   "group",
   "sales_manager",
   "name1",
+  "existing_contact_person",
   "section_break_bgfg",
   "about_company__opportunity"
  ],
@@ -86,6 +87,12 @@
    "fieldtype": "Data",
    "label": "Existing Client",
    "read_only": 1
+  },
+  {
+   "fieldname": "existing_contact_person",
+   "fieldtype": "Link",
+   "label": "Existing Contact Person",
+   "options": "Existing Contact Person"
   }
  ],
  "grid_page_length": 50,
@@ -96,7 +103,7 @@
    "link_fieldname": "crm_leads"
   }
  ],
- "modified": "2026-07-22 15:19:02.990627",
+ "modified": "2026-08-11 12:41:34.753078",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "CRM Leads",

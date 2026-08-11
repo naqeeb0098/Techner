@@ -30,7 +30,10 @@ app_license = "mit"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/techner/css/techner.css"
-# web_include_js = "/assets/techner/js/techner.js"
+# web_include_js = [
+#     "/assets/techner/js/job_applicant_webform.js"
+# ]
+
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "techner/public/scss/website"
@@ -46,7 +49,9 @@ app_license = "mit"
 doctype_js = {
 	"Leave Application": "public/js/leave_application.js",
 	"HD Ticket": "public/js/hd_ticket.js",
-	"Notification": "public/js/notification.js"
+	"Notification": "public/js/notification.js",
+	"Job Applicant": "public/js/job_applicant.js",
+	"Application Form": "public/js/application_form.js"
 }
 doctype_list_js = {
 	"Job Applicant": "public/js/job_applicant_list.js",
@@ -155,9 +160,11 @@ doc_events = {
 		"on_cancel": "techner.techner.custom.notification_child_handler.process_notification_doc_event",
 	},
 	"Job Applicant": {
+		"validate": "techner.techner.custom.job_applicant.validate",
 		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
 	},
 	"Application Form": {
+		"validate": "techner.techner.custom.job_applicant.validate",
 		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
 	},
 	"File": {
@@ -166,6 +173,14 @@ doc_events = {
 	},
 	"HD Ticket": {
 		"validate": "techner.techner.custom.hd_ticket.update_is_responded"
+	},
+	
+	"Utility Applicants": {
+		"validate": "techner.techner.custom.utility_applicants.validate",
+	},
+	
+	"General Applicant": {
+		"validate": "techner.techner.custom.job_applicant.validate"
 	}
 }
 
