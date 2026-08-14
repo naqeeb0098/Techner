@@ -2,6 +2,9 @@ import frappe
 
 def validate(doc, method=None):
     """Server-side: Ensure resume_attachment is a PDF file only."""
+    if not doc.is_new():
+        return
+
     if doc.get("resume_attachment"):
         url = doc.resume_attachment
         if not url.lower().endswith(".pdf"):
