@@ -64,7 +64,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Customer Opportunity ",
+   "label": "Customer Opportunity",
    "options": "Existing Clients"
   },
   {
@@ -107,6 +107,12 @@
    "fieldtype": "Data",
    "label": "CRM Lead",
    "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nActive\nLeft the Business"
   }
  ],
  "grid_page_length": 50,
@@ -117,7 +123,7 @@
    "link_fieldname": "existing_contact_person"
   }
  ],
- "modified": "2026-08-11 13:27:21.821590",
+ "modified": "2026-08-13 12:18:15.846546",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Existing Contact Person",
