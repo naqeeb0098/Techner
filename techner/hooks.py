@@ -181,6 +181,9 @@ doc_events = {
 	
 	"General Applicant": {
 		"validate": "techner.techner.custom.job_applicant.validate"
+	},
+	"Expense Claim": {
+		"validate":"techner.techner.custom.expense_claim.make_attachments_public"
 	}
 }
 
