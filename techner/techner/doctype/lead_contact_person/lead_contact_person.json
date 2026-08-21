@@ -15,6 +15,7 @@
   "column_break_hrjo",
   "crm_leads",
   "website",
+  "groups",
   "column_break_rsrd",
   "sales_manager",
   "sale_manager_name",
@@ -186,12 +187,20 @@
    "fieldname": "linkedin_link",
    "fieldtype": "Small Text",
    "label": "Linkedin Link"
+  },
+  {
+   "fetch_from": "crm_leads.group",
+   "fieldname": "groups",
+   "fieldtype": "Link",
+   "label": "Groups",
+   "options": "Opportunity Groups",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-02 13:35:24.175489",
+ "modified": "2026-08-21 15:11:05.177762",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Lead Contact Person",
