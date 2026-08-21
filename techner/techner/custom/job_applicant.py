@@ -1,4 +1,11 @@
 import frappe
+import re
+
+def clean_unicode_text(text):
+    """Remove invalid surrogate characters that MySQL utf8mb4 can't encode."""
+    if not text:
+        return text
+    return re.sub(r'[\ud800-\udfff]', '', text)
 
 def validate(doc, method=None):
     """Server-side: Ensure resume_attachment is a PDF file only."""
@@ -97,10 +104,51 @@ def extract_text_from_file(file_doc):
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 text = f.read()
         
-        return text
+        return clean_unicode_text(text) 
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), f"Resume Extraction Error for {file_doc.name}")
         return ""
+    
+# def extract_text_from_file(file_doc):
+#     try:
+#         import os
+#         file_path = file_doc.get_full_path()
+#         if not os.path.exists(file_path):
+#             return ""
+            
+#         ext = file_doc.file_name.split(".")[-1].lower() if file_doc.file_name else ""
+#         text = ""
+        
+#         if ext == "pdf":
+#             import pypdf
+#             reader = pypdf.PdfReader(file_path)
+#             for page in reader.pages:
+#                 t = page.extract_text()
+#                 if t: text += t + " "
+                
+#         elif ext == "docx":
+#             import docx
+#             file_obj = docx.Document(file_path)
+#             for para in file_obj.paragraphs:
+#                 text += para.text + " "
+                
+#         elif ext in ["xlsx", "xls"]:
+#             import openpyxl
+#             wb = openpyxl.load_workbook(file_path, data_only=True)
+#             for sheet in wb.worksheets:
+#                 for row in sheet.iter_rows(values_only=True):
+#                     row_texts = [str(cell) for cell in row if cell is not None]
+#                     if row_texts:
+#                         text += " ".join(row_texts) + " "
+                        
+#         elif ext == "txt":
+#             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+#                 text = f.read()
+        
+#         return text
+#     except Exception as e:
+#         frappe.log_error(frappe.get_traceback(), f"Resume Extraction Error for {file_doc.name}")
+#         return ""
 
 
 @frappe.whitelist(allow_guest=True)
