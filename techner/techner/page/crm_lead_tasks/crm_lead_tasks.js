@@ -23,7 +23,7 @@ class CRMLeadTasks {
 		
 		// Action buttons
 		let btn = this.page.add_inner_button('View Calendar', () => {
-			frappe.set_route('List', 'Lead Contact Person Tasks', 'Calendar');
+			frappe.set_route('List', 'Lead Contact Person Tasks', 'Calendar', 'Lead Contact Person');
 		});
 
 		// Add custom date filter next to the button
