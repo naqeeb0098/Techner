@@ -1,10 +1,10 @@
-frappe.pages['crm-lead-tasks'].on_page_load = function(wrapper) {
+frappe.pages['crm-lead-tasks'].on_page_load = function (wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
 		title: 'CRM Lead Tasks',
 		single_column: true
 	});
-	
+
 	wrapper.crm_page = new CRMLeadTasks(page, wrapper);
 }
 
@@ -13,14 +13,14 @@ class CRMLeadTasks {
 		this.page = page;
 		this.wrapper = wrapper;
 		this.selected_date = frappe.datetime.get_today();
-		
+
 		this.setup_page();
 		this.fetch_and_render();
 	}
-	
+
 	setup_page() {
 		this.page.set_title_sub('Stay on top of your meetings, calls and follow-ups');
-		
+
 		// Action buttons
 		let btn = this.page.add_inner_button('View Calendar', () => {
 			frappe.set_route('List', 'Lead Contact Person Tasks', 'Calendar', 'Lead Contact Person');
@@ -43,7 +43,7 @@ class CRMLeadTasks {
 		// Main container
 		this.container = $(`<div class="crm-tasks-wrapper"></div>`).appendTo(this.page.main);
 	}
-	
+
 	fetch_and_render() {
 		frappe.call({
 			method: 'techner.techner.page.crm_lead_tasks.crm_lead_tasks.get_lead_tasks',
@@ -51,13 +51,13 @@ class CRMLeadTasks {
 				selected_date: this.selected_date
 			},
 			callback: (r) => {
-				if(r.message) {
+				if (r.message) {
 					this.render(r.message);
 				}
 			}
 		});
 	}
-	
+
 	render(data) {
 		let html = `
 			<div class="crm-summary-cards">
@@ -71,14 +71,14 @@ class CRMLeadTasks {
 			${this.get_task_section("Next 7 Days Tasks", data.next_7_days_tasks, 'calendar-plus', data.summary.next_7_days)}
 			${this.get_task_section("Overdue Tasks", data.overdue_tasks, 'clock-o', data.summary.overdue)}
 		`;
-		
+
 		this.container.html(html);
 		this.setup_events();
 	}
-	
-	get_summary_card(title, value, desc, color_class, icon, total, show_progress=false, filter_type='') {
+
+	get_summary_card(title, value, desc, color_class, icon, total, show_progress = false, filter_type = '') {
 		let progress_html = '';
-		if(show_progress) {
+		if (show_progress) {
 			let percent = total ? Math.round((value / total) * 100) : 0;
 			progress_html = `
 				<div class="crm-card-progress">
@@ -89,7 +89,7 @@ class CRMLeadTasks {
 				</div>
 			`;
 		}
-		
+
 		return `
 			<div class="crm-card ${color_class}" style="cursor: pointer;" data-filter-type="${filter_type}">
 				<div class="crm-card-icon">
@@ -104,17 +104,17 @@ class CRMLeadTasks {
 			</div>
 		`;
 	}
-	
+
 	get_task_section(title, tasks, icon, count) {
-		if(!tasks || tasks.length === 0) {
+		if (!tasks || tasks.length === 0) {
 			return '';
 		}
-		
+
 		// Group by Sales Owner (link_lvha)
 		let grouped = {};
 		tasks.forEach(t => {
 			let group_by_val = t.link_lvha || 'Unassigned';
-			if(!grouped[group_by_val]) {
+			if (!grouped[group_by_val]) {
 				grouped[group_by_val] = {
 					name: group_by_val,
 					tasks: []
@@ -122,7 +122,7 @@ class CRMLeadTasks {
 			}
 			grouped[group_by_val].tasks.push(t);
 		});
-		
+
 		let rows_html = '';
 		Object.values(grouped).forEach(g => {
 			let contact_name = g.name.substring(0, 2).toUpperCase(); // initials placeholder
@@ -135,23 +135,23 @@ class CRMLeadTasks {
 					</td>
 				</tr>
 			`;
-			
+
 			g.tasks.forEach(t => {
-				let time_str = t.time ? t.time.substring(0,5) : '';
+				let time_str = t.time ? t.time.substring(0, 5) : '';
 				let date_str = frappe.datetime.str_to_user(t.date);
 				let ampm = '';
-				if(time_str) {
+				if (time_str) {
 					let hrs = parseInt(time_str.split(':')[0]);
 					ampm = hrs >= 12 ? 'PM' : 'AM';
 					hrs = hrs % 12;
 					hrs = hrs ? hrs : 12;
-					time_str = (hrs < 10 ? '0'+hrs : hrs) + ':' + time_str.split(':')[1] + ' ' + ampm;
+					time_str = (hrs < 10 ? '0' + hrs : hrs) + ':' + time_str.split(':')[1] + ' ' + ampm;
 				}
-				
+
 				let badge_class_type = 'badge-' + (t.type || '').toLowerCase();
 				let badge_class_priority = 'badge-' + (t.priority || '').toLowerCase();
 				let badge_class_status = 'badge-' + (t.task_status || '').toLowerCase().replace(' ', '');
-				
+
 				rows_html += `
 					<tr class="crm-task-row" data-name="${t.name}">
 						<td style="width: 85px; font-size: 11px; white-space: nowrap;">
@@ -183,7 +183,7 @@ class CRMLeadTasks {
 				`;
 			});
 		});
-		
+
 		return `
 			<div class="crm-section">
 				<div class="crm-section-header">
@@ -196,7 +196,7 @@ class CRMLeadTasks {
 					<thead>
 						<tr>
 							<th class="col-time">Time</th>
-							<th class="col-contact">Contact Person / Designation / Company</th>
+							<th class="col-contact">Contact Person</th>
 							<th class="col-title">Task Title</th>
 							<th class="col-type">Type</th>
 							<th class="col-priority">Priority</th>
@@ -212,27 +212,27 @@ class CRMLeadTasks {
 			</div>
 		`;
 	}
-	
+
 	strip_html(html) {
 		let tmp = document.createElement("DIV");
 		tmp.innerHTML = html;
 		return tmp.textContent || tmp.innerText || "";
 	}
-	
+
 	setup_events() {
 		this.container.find('.crm-action-btn').on('click', (e) => {
 			let name = $(e.currentTarget).data('name');
 			frappe.set_route('Form', 'Lead Contact Person Tasks', name);
 		});
-		
+
 		this.container.find('.crm-card').on('click', (e) => {
 			let filter_type = $(e.currentTarget).data('filter-type');
-			if(!filter_type) return;
-			
+			if (!filter_type) return;
+
 			frappe.route_options = {
 				"task_status": ["not in", ["Completed", "Cancelled"]]
 			};
-			
+
 			if (filter_type === 'today') {
 				frappe.route_options["date"] = this.selected_date;
 			} else if (filter_type === 'next7') {
@@ -245,14 +245,14 @@ class CRMLeadTasks {
 			} else if (filter_type === 'overdue') {
 				frappe.route_options["date"] = ["<", frappe.datetime.get_today()];
 			}
-			
+
 			frappe.set_route('List', 'Lead Contact Person Tasks');
 		});
-		
+
 		this.container.find('.crm-group-header').on('click', (e) => {
 			let row = $(e.currentTarget);
 			let icon = row.find('i.fa-chevron-down, i.fa-chevron-right');
-			if(icon.hasClass('fa-chevron-down')) {
+			if (icon.hasClass('fa-chevron-down')) {
 				icon.removeClass('fa-chevron-down').addClass('fa-chevron-right');
 				row.nextUntil('.crm-group-header').hide();
 			} else {
