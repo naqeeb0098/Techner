@@ -16,6 +16,7 @@
   "sales_manager",
   "name1",
   "existing_contact_person",
+  "sales_owner",
   "section_break_bgfg",
   "about_company__opportunity"
  ],
@@ -54,11 +55,13 @@
   {
    "fieldname": "sales_manager",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Sales Manager",
    "options": "Employee"
   },
   {
+   "bold": 1,
    "fetch_from": "sales_manager.employee_name",
    "fieldname": "name1",
    "fieldtype": "Data",
@@ -93,6 +96,12 @@
    "fieldtype": "Link",
    "label": "Existing Contact Person",
    "options": "Existing Contact Person"
+  },
+  {
+   "fieldname": "sales_owner",
+   "fieldtype": "Link",
+   "label": "Sales Owner",
+   "options": "Sales Person"
   }
  ],
  "grid_page_length": 50,
@@ -103,7 +112,7 @@
    "link_fieldname": "crm_leads"
   }
  ],
- "modified": "2026-08-11 12:41:34.753078",
+ "modified": "2026-08-29 06:19:20.127654",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "CRM Leads",
