@@ -163,6 +163,7 @@
 .crm-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .crm-table th {
@@ -258,13 +259,32 @@
     border-color: #ced4da;
 }
 
-.crm-desc-text {
-    max-width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* ========================================
+   COLUMN WIDTHS - Adjust values here
+   ======================================== */
+.col-time        { width: 100px; }
+.col-contact     { width: 250px; }
+.col-title       { width: 250px; }
+.col-type        { width: 100px; }
+.col-priority    { width: 100px; }
+.col-status      { width: 150px; }
+.col-description { /* auto - takes all remaining space */ }
+.col-actions     { width: 60px; }
+
+.crm-title-text {
     display: block;
+    white-space: normal;
+    word-break: break-word;
     font-size: 11px;
+    line-height: 1.4;
+}
+
+.crm-desc-text {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 11px;
+    line-height: 1.4;
 }
 
 .crm-desc-date {

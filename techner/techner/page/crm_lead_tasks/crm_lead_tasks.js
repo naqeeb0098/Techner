@@ -166,13 +166,13 @@ class CRMLeadTasks {
 								</div>
 							</div>
 						</td>
-						<td style="font-size: 11px; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${t.title}"><strong>${t.title}</strong></td>
+						<td><span class="crm-title-text" title="${t.title}"><strong>${t.title}</strong></span></td>
 						<td><span class="crm-badge ${badge_class_type}">${t.type || '-'}</span></td>
 						<td><span class="crm-badge ${badge_class_priority}">${t.priority || '-'}</span></td>
 						<td><span class="crm-badge ${badge_class_status}">${t.task_status || '-'}</span></td>
-						<td>
-							<span class="crm-desc-text" style="max-width: 200px; font-size: 10px;" title="${this.strip_html(t.description || '')}">${this.strip_html(t.description || '-')}</span>
-							<span class="crm-desc-date" style="font-size: 9px;">${date_str}</span>
+						<td class="crm-desc-cell">
+							<span class="crm-desc-text" title="${this.strip_html(t.description || '')}">${this.strip_html(t.description || '-')}</span>
+							<span class="crm-desc-date">${date_str}</span>
 						</td>
 						<td style="text-align: right; width: 40px;">
 							<button class="crm-action-btn" data-name="${t.name}">
@@ -195,14 +195,14 @@ class CRMLeadTasks {
 				<table class="crm-table">
 					<thead>
 						<tr>
-							<th>Time</th>
-							<th>Contact Person / Designation / Company</th>
-							<th>Task Title</th>
-							<th>Type</th>
-							<th>Priority</th>
-							<th>Task Status</th>
-							<th>Last Communication</th>
-							<th>Actions</th>
+							<th class="col-time">Time</th>
+							<th class="col-contact">Contact Person / Designation / Company</th>
+							<th class="col-title">Task Title</th>
+							<th class="col-type">Type</th>
+							<th class="col-priority">Priority</th>
+							<th class="col-status">Task Status</th>
+							<th class="col-description">Description</th>
+							<th class="col-actions">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
