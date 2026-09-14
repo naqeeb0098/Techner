@@ -21,6 +21,7 @@
   {
    "fieldname": "attachments_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Attachments"
   },
   {
@@ -31,14 +32,13 @@
   {
    "fieldname": "html",
    "fieldtype": "HTML Editor",
-   "label": "HTML",
-   "permlevel": 2
+   "label": "HTML"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-28 16:23:52.405887",
+ "modified": "2026-09-09 10:20:54.786689",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Employee Guidelines",
