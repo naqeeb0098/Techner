@@ -20,6 +20,21 @@ def validate(doc, method=None):
                 title=frappe._("Invalid File Type")
             )
 
+def accept_word_pdf_png(doc, method=None):
+    """Server-side: Ensure resume_attachment is a PDF, Word, PNG or JPEG file only."""
+    if not doc.is_new():
+        return
+
+    if doc.get("resume_attachment"):
+        url = doc.resume_attachment.lower()
+        allowed_extensions = (".pdf", ".doc", ".docx", ".png", ".jpg", ".jpeg")
+
+        if not url.endswith(allowed_extensions):
+            frappe.throw(
+                frappe._("Resume attachment must be a PDF, Word, PNG or JPEG file. Please upload a valid file."),
+                title=frappe._("Invalid File Type")
+            )
+            
 def create_resume_text_field():
     if not frappe.db.get_value("Custom Field", {"dt": "Job Applicant", "fieldname": "custom_resume_extraction"}):
         frappe.get_doc({

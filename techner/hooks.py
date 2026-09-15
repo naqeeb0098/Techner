@@ -164,7 +164,7 @@ doc_events = {
 		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
 	},
 	"Application Form": {
-		"validate": "techner.techner.custom.job_applicant.validate",
+		"validate": "techner.techner.custom.job_applicant.accept_word_pdf_png",
 		"on_update": "techner.techner.custom.job_applicant.extract_resume_text"
 	},
 	"File": {
