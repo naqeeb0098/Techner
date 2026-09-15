@@ -34,9 +34,7 @@
   "column_break_iwjk",
   "first_message",
   "column_break_lmao",
-  "second_message",
-  "section_break_yjxo",
-  "communication_details"
+  "second_message"
  ],
  "fields": [
   {
@@ -108,16 +106,6 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Sale Manager Name"
-  },
-  {
-   "fieldname": "section_break_yjxo",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "communication_details",
-   "fieldtype": "Table",
-   "label": "Communication Details",
-   "options": "Contact Task Detail"
   },
   {
    "fieldname": "communication_details_section",
@@ -214,7 +202,7 @@
    "link_fieldname": "lead_contact_person"
   }
  ],
- "modified": "2026-09-04 07:57:50.369014",
+ "modified": "2026-09-14 16:32:25.342250",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Lead Contact Person",
