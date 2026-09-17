@@ -38,7 +38,7 @@ def get_page_data(
         "second_message",
     ]
 
-    raw_data = frappe.get_all(
+    raw_data = frappe.get_list(
         "Lead Contact Person",
         filters=filters,
         fields=fields,
