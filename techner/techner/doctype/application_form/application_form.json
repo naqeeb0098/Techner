@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:MCAF - {#####}",
  "creation": "2026-03-17 15:28:41.171746",
@@ -474,7 +475,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-06-03 15:24:51.544430",
+ "modified": "2026-09-25 10:55:16.185840",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Application Form",
