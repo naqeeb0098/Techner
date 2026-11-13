@@ -1,0 +1,40 @@
+{
+ "attach_files": "",
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "",
+ "creation": "2026-10-06 15:27:27.904207",
+ "custom_child_doctype": "",
+ "custom_child_table_field": "",
+ "custom_enable_notification_for_child": 0,
+ "custom_enable_on_boarding_tracker_child": 0,
+ "custom_event_type": "",
+ "date_changed": "due_date",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "CRM Task",
+ "enabled": 1,
+ "event": "Days Before",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Add your message here</p>\n",
+ "message_type": "Markdown",
+ "modified": "2026-10-06 15:54:09.245460",
+ "modified_by": "Administrator",
+ "module": "Techner",
+ "name": "CRM Task Notification Due Date",
+ "notification_message": "You have a Due Task Today",
+ "notification_title": "CRM Task Notification Due Date",
+ "notification_type": "Alert",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": ""
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "CRM Task Notification"
+}

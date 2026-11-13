@@ -13,6 +13,7 @@
   "group",
   "sales_manager",
   "name1",
+  "location",
   "section_break_bgfg",
   "about_company__opportunity"
  ],
@@ -77,6 +78,13 @@
    "label": "CRM Lead",
    "options": "CRM Leads",
    "read_only": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Location"
   }
  ],
  "grid_page_length": 50,
@@ -87,7 +95,7 @@
    "link_fieldname": "customer_opportunity"
   }
  ],
- "modified": "2026-05-12 05:23:22.937594",
+ "modified": "2026-11-12 15:19:08.264318",
  "modified_by": "Administrator",
  "module": "Techner",
  "name": "Existing Clients",
