@@ -241,3 +241,65 @@ def extract_single_record(docname, doctype="Job Applicant"):
             "status": "no_text",
             "message": "Files mili lekin text extract nahi hua"
         }
+
+@frappe.whitelist()
+def get_applications_by_email(email):
+    """Saari Job Applicant entries jin mein ye email use hui hai (latest pehle)."""
+    email = (email or "").strip()
+    if not email:
+        return []
+
+    applications = frappe.get_list(
+        "Job Applicant",
+        filters={"email_id": email},
+        fields=[
+            "name",
+            "applicant_name",
+            "job_title",
+            "custom_job_opening_title",
+            "custom_internal_status",
+            "custom_applicant_notes",
+            "status",
+            "creation",
+        ],
+        order_by="creation desc",
+        limit_page_length=0,
+    )
+
+    # purani entries mein custom_job_opening_title khali ho sakta hai, Job Opening se title le lo
+    missing = {d.job_title for d in applications if d.job_title and not d.custom_job_opening_title}
+    if missing:
+        titles = dict(
+            frappe.get_all(
+                "Job Opening",
+                filters={"name": ("in", list(missing))},
+                fields=["name", "job_title"],
+                as_list=True,
+            )
+        )
+        for d in applications:
+            if not d.custom_job_opening_title:
+                d.custom_job_opening_title = titles.get(d.job_title)
+
+    return applications
+
+
+@frappe.whitelist()
+def update_applications(changes):
+    """Popup se badle gaye Internal Status / Applicant Notes sirf unhi records par save karo."""
+    changes = frappe.parse_json(changes) or []
+    allowed_fields = ("custom_internal_status", "custom_applicant_notes")
+
+    updated = []
+    for row in changes:
+        values = {k: v for k, v in row.items() if k in allowed_fields}
+        if not row.get("name") or not values:
+            continue
+
+        doc = frappe.get_doc("Job Applicant", row["name"])
+        doc.check_permission("write")
+        doc.update(values)
+        doc.save()
+        updated.append(doc.name)
+
+    return updated
